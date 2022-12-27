@@ -1,0 +1,48 @@
+.navbar {
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+    
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: white;
+  transition: 0.3s;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #caec7d;
+  transition: 0.3s;
+}
+
+.navbar-brand {
+  color: white;
+  transition: 0.3s;
+}
+
+.navbar-brand:hover {
+  color: #caec7d;
+  transition: 0.3s;
+}
+
+.navbar-toggler {
+  border: 0;
+
+  background-color: white;
+  transition: 0.3s;
+}
+
+.container-fluid {
+  margin: 0;
+  border: 0;
+  padding: 1%;
+
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background: rgba(45, 75, 17, 0.75);
+  box-shadow: 0px 0px 20px rgba(44, 47, 37, 0.3);
+  backdrop-filter: blur(20px);
+
+  
+}
