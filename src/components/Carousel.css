@@ -1,7 +1,15 @@
 .carousel-fade {
-  height: 600px;
+  height: 500px;
 }
 
 .carousel-fade .carousel-item {
-  height: 600px;
+  height: 500px;
+}
+
+.carousel-item p {
+  text-shadow: 0 0 0.2em black;
+}
+
+.carousel-item h3 {
+  text-shadow: 0 0 0.1em black;
 }

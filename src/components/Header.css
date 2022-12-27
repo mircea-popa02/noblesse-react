@@ -2,13 +2,19 @@
   margin: 0;
   padding: 0;
   border: 0;
-
-    
 }
 
+#logo {
+  width: 20px;
+  margin-right: 0.5rem;
+}
 .navbar-light .navbar-nav .nav-link {
   color: white;
   transition: 0.3s;
+  font-family: "Work sans";
+  font-weight: 400;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
@@ -17,8 +23,13 @@
 }
 
 .navbar-brand {
+  font-family: "Work sans";
+  font-weight: 400;
+  font-size: 1.2rem;
   color: white;
   transition: 0.3s;
+  
+  
 }
 
 .navbar-brand:hover {
@@ -36,13 +47,13 @@
 .container-fluid {
   margin: 0;
   border: 0;
-  padding: 1%;
-
+  padding: 0.5rem;
+  padding-left: 2%;
+  padding-right: 2%;
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   background: rgba(45, 75, 17, 0.75);
   box-shadow: 0px 0px 20px rgba(44, 47, 37, 0.3);
   backdrop-filter: blur(20px);
-
-  
 }
+

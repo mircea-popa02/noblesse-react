@@ -11,10 +11,11 @@ import './Header.css';
 const NavbarInstance = () => {
     return (
 
-        <Navbar  expand="lg" sticky="top">
+        <Navbar expand="lg" sticky="top">
             <Container fluid>
                 <Navbar.Brand href="/home">
-                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg id="logo"
+                        width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 19.9091C17.2635 19.9091 19.9091 17.2635 19.9091 14C19.9091 10.7365 17.2635 8.09091 14 8.09091C10.7365 8.09091 8.09094 10.7365 8.09094 14C8.09094 17.2635 10.7365 19.9091 14 19.9091Z" stroke="#CAEC7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         <path d="M14 1V3.36364" stroke="#CAEC7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         <path d="M14 24.6364V27" stroke="#CAEC7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -34,9 +35,9 @@ const NavbarInstance = () => {
                         style={{ maxHeight: '200px' }}
                         navbarScroll
                     >
-                        <Nav.Link href="/home">Buchete</Nav.Link>
-                        <Nav.Link href="/home">Coroane</Nav.Link>
-                        <Nav.Link href="/home">Aranjamente</Nav.Link>
+                        <Nav.Link href="/">Buchete</Nav.Link>
+                        <Nav.Link href="/">Coroane</Nav.Link>
+                        <Nav.Link href="/">Aranjamente</Nav.Link>
                         <Nav.Link href="/contact">Contact</Nav.Link>
                         <NavDropdown title="Diverse" id="navbarScrollingDropdown">
                             <NavDropdown.Item href="action3">Crama Casa Panciu</NavDropdown.Item>
@@ -53,7 +54,8 @@ const NavbarInstance = () => {
                         </Nav.Link> */}
                     </Nav>
                     <Navbar.Brand href="/home" className="d-flex">
-                        <svg width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg
+                            id="logo" width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15.3486 27.86C22.7658 27.86 28.7786 21.8472 28.7786 14.43C28.7786 7.01281 22.7658 1 15.3486 1C7.93139 1 1.91858 7.01281 1.91858 14.43C1.91858 21.8472 7.93139 27.86 15.3486 27.86Z" stroke="#CAEC7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             <path d="M1.91858 14.43H28.7786" stroke="#CAEC7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             <path d="M15.3486 1C18.7078 4.67761 20.6168 9.4502 20.7206 14.43C20.6168 19.4098 18.7078 24.1824 15.3486 27.86C11.9893 24.1824 10.0803 19.4098 9.97656 14.43C10.0803 9.4502 11.9893 4.67761 15.3486 1V1Z" stroke="#CAEC7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />

@@ -17,7 +17,7 @@ ReactDOM.render(
     <Header sticky="top" />
     
     <Routes>
-      <Route path="home" element={<App />} />
+      <Route path="/" element={<App />} />
     </Routes>
     
   </Router>,
