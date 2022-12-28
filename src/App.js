@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import Toast from 'react-bootstrap/Toast';
-import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Deliveries from './components/Deliveries';
 import Footer from './components/Footer';
-
 import Carousel from './components/Carousel';
 import './App.css';
+
 
 const ExampleToast = ({ children }) => {
   const [show, toggleShow] = useState(false);
@@ -24,22 +23,22 @@ const ExampleToast = ({ children }) => {
   );
 };
 
+// const App = () => (
+//   <div>
+//     <Carousel />
+//     <Deliveries />
+//     <Footer/>
+//   </div>
+// );
+function App() {
 
-const App = () => (
-  <div>
-    <Carousel />
-    <Deliveries />
-    <Footer/>
-  </div>
-
-
-  //   <ExampleToast>
-  //     We now have Toasts
-  //     <span role="img" aria-label="tada">
-  //       🎉
-  //     </span>
-  //   </ExampleToast>
-
-);
+  return (
+    <div>
+      <Carousel />
+      <Deliveries />
+      <Footer/>
+    </div>
+  );
+}
 
 export default App;

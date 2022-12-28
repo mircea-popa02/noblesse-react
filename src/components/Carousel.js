@@ -1,15 +1,35 @@
 import Carousel from 'react-bootstrap/Carousel';
 import React from 'react';
 import './Carousel.css'
-
+import { storage } from '../firebase';
+import { ref } from "firebase/storage";
+import { useEffect, useState } from 'react';
+import { listAll, getDownloadURL } from 'firebase/storage';
 
 function CarouselFadeExample() {
+    const [images, setImages] = useState([]);
+    const storageRef = ref(storage, "images/");
+
+    useEffect(() => {
+        console.log("here");
+        listAll(storageRef).then((res) => {
+                console.log("here");
+                console.log(res);
+                res.items.forEach((storageRef) => {
+                    getDownloadURL(storageRef).then((url) => {
+                        setImages((images) => [...images, url]);
+                    });
+                });
+            })
+    }, []);
+
     return (
         <Carousel fade>
             <Carousel.Item>
+
                 <img
                     className="d-block w-100"
-                    src="slide1.jpg"
+                    src={images[1]}
                     alt="First slide"
                 />
                 <Carousel.Caption >
@@ -21,7 +41,7 @@ function CarouselFadeExample() {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="slide2.jpg"
+                    src={images[0]}
                     alt="Second slide"
                 />
                 <Carousel.Caption>
@@ -32,7 +52,7 @@ function CarouselFadeExample() {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="slide3.jpg"
+                    src={images[2]}
                     alt="Third slide"
                 />
                 <Carousel.Caption>
