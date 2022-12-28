@@ -22,7 +22,7 @@ const deliveries = () => {
                         </button>
                     </div>
                 </Row>
-                <Row>
+                <Row className="d-none d-lg-block">
                     <div className="picture">
                         <img src="pic3.jpg" alt="delivery" />
                     </div>

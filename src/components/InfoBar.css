@@ -1,6 +1,5 @@
 .infobar .col {
     display: flex;
-    
     align-items: center;
     background-color: #F8FBEF;
     color: #2C2F25;
@@ -20,10 +19,12 @@
     transition: 0.3s;
 }
 
+
 .infobar .col:hover {
     background-color: #CAEC7D;
     transition: 0.3s;
 }
+
 
 
 .infobar .row {

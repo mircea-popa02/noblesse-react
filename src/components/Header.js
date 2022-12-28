@@ -14,7 +14,7 @@ const NavbarInstance = () => {
             <Navbar expand="lg" sticky="top" style={{ padding: 0 }}>
                 <Container fluid>
                     
-                    {/* <h1 className='header-mobile'>Noblesse</h1> */}
+                    
                     <Navbar.Toggle aria-controls="basic-navbar-nav">
 
                         <svg width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,6 +24,7 @@ const NavbarInstance = () => {
                         </svg>
 
                     </Navbar.Toggle>
+                    <h1 className="header-mobile d-lg-none d-xl-none">Noblesse</h1>
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
                             className="me-auto my-2 my-lg-0"

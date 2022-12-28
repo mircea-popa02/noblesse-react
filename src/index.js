@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
     <div className='title'>
-      <h1 className="header">Noblesse</h1>
+      <h1 className="header d-none d-lg-block">Noblesse</h1>
     </div>
     
     <Routes>
