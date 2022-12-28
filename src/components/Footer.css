@@ -1,12 +1,25 @@
 .footer {
     background-color: #F8FBEF;
-    color: #2C2F25;
-    padding: 20px 0;
+    color: #526336;
+    padding: 2rem 0;
+    padding-bottom: 0;
     text-align: center;
     border-top: 1px solid #E7E7E7;
+    font-size: small;
+    font-weight: 600;
 }
 
 .footer a {
     color: #526336;
     text-decoration: none;
+}
+
+
+.footer .container .row {
+    align-items: flex-start;
+}
+
+.footer .container .col{
+    margin: 0;
+    flex-direction: column;
 }

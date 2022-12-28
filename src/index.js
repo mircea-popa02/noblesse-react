@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import AppEng from './AppEng';
 import { Routes, Route } from 'react-router-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,10 +15,10 @@ root.render(
     <div className='title'>
       <h1 className="header">Noblesse</h1>
     </div>
-    <Header sticky="top" />
-
+    
     <Routes>
       <Route path="/" element={<App />} />
+      <Route path="/en" element={<AppEng />} />
     </Routes>
 
   </Router>

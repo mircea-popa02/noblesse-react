@@ -5,6 +5,8 @@ import Deliveries from './components/Deliveries';
 import Footer from './components/Footer';
 import Carousel from './components/Carousel';
 import './App.css';
+import Header from './components/Header';
+import InfoBar from './components/InfoBar';
 
 
 const ExampleToast = ({ children }) => {
@@ -23,18 +25,12 @@ const ExampleToast = ({ children }) => {
   );
 };
 
-// const App = () => (
-//   <div>
-//     <Carousel />
-//     <Deliveries />
-//     <Footer/>
-//   </div>
-// );
 function App() {
-
   return (
     <div>
+      <Header sticky="top" />
       <Carousel />
+      <InfoBar />
       <Deliveries />
       <Footer/>
     </div>

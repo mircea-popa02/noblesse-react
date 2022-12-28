@@ -13,14 +13,14 @@ function CarouselFadeExample() {
     useEffect(() => {
         console.log("here");
         listAll(storageRef).then((res) => {
-                console.log("here");
-                console.log(res);
-                res.items.forEach((storageRef) => {
-                    getDownloadURL(storageRef).then((url) => {
-                        setImages((images) => [...images, url]);
-                    });
+            console.log("here");
+            console.log(res);
+            res.items.forEach((storageRef) => {
+                getDownloadURL(storageRef).then((url) => {
+                    setImages((images) => [...images, url]);
                 });
-            })
+            });
+        })
     }, []);
 
     return (
@@ -28,24 +28,23 @@ function CarouselFadeExample() {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src={images[0]}
+                    src={images[1]}
                     alt="First slide"
                 />
                 <Carousel.Caption >
-                    <h3>Aranajmente florare pentru </h3>
-                    <h3> orice ocazie</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <h3>Floral arrangaments for every occasion</h3>
+                    <p>Some english text</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src={images[1]}
+                    src={images[0]}
                     alt="Second slide"
                 />
                 <Carousel.Caption>
-                    <h3>Nu știi ce să îi cumperi?</h3>
-                    <p>Un buchet de flori va impresiona întotdeauna</p>
+                    <h3>Don't know what to get?</h3>
+                    <p>A bouquet of flower will always impress</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -55,9 +54,9 @@ function CarouselFadeExample() {
                     alt="Third slide"
                 />
                 <Carousel.Caption>
-                    <h3>Pregătim cadoul perfect</h3>
+                    <h3>We are delivering the perfect present</h3>
                     <p>
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                        Some english text
                     </p>
                 </Carousel.Caption>
             </Carousel.Item>

@@ -1,0 +1,40 @@
+.infobar .col {
+    display: flex;
+    
+    align-items: center;
+    background-color: #F8FBEF;
+    color: #2C2F25;
+    color: rgba(44, 47, 37, 0.5);
+    border-radius: 5px;
+    font-size: small;
+    padding: 0.2rem;
+    flex-wrap: nowrap;
+    justify-content: center;
+    font-weight: 600;
+    margin: 0.5rem;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(44, 47, 37, 0.5);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(44, 47, 37, 0.5);
+    box-shadow: 0px 0px 5px 0px rgba(44, 47, 37, 0.5);
+    transition: 0.3s;
+}
+
+.infobar .col:hover {
+    background-color: #CAEC7D;
+    transition: 0.3s;
+}
+
+
+.infobar .row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.infobar .row svg {
+    width: 16px;
+    height: 1rem;
+    margin-left: 0.5rem;
+}

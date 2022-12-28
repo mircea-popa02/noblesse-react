@@ -7,9 +7,4 @@
 * {
     font-family: "work sans", sans-serif;
     font-weight: 400;
-
-  /* 👇️ or use Operating system default fonts 👇️ */
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
 }

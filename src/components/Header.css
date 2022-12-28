@@ -1,4 +1,4 @@
-.navbar {
+.navbar-expand {
   margin: 0;
   padding: 0;
   border: 0;
@@ -14,7 +14,7 @@
   font-family: "Work sans";
   font-weight: 400;
   font-size: 1.2rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.5rem;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
@@ -23,13 +23,12 @@
 }
 
 .navbar-brand {
+  display: flex;
   font-family: "Work sans";
   font-weight: 400;
   font-size: 1.2rem;
   color: white;
   transition: 0.3s;
-  
-  
 }
 
 .navbar-brand:hover {
@@ -37,17 +36,11 @@
   transition: 0.3s;
 }
 
-.navbar-toggler {
-  border: 0;
-
-  background-color: white;
-  transition: 0.3s;
-}
-
 .container-fluid {
   margin: 0;
   border: 0;
-  padding: 0.5rem;
+  outline: 0;
+  padding: 1rem;
   padding-left: 2%;
   padding-right: 2%;
   -webkit-backdrop-filter: blur(20px);
@@ -57,3 +50,33 @@
   backdrop-filter: blur(20px);
 }
 
+.container-fluid button {
+  margin: 0 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.container-fluid button:focus {
+  margin: 0 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.container-fluid button:active {
+  margin: 0 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.header-mobile {
+  color: #ffffff;
+}
+
+.navbar-toggler {
+  display: flex;
+  align-items: baseline;
+  margin-left: 30%;
+}

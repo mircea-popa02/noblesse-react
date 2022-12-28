@@ -1,10 +1,13 @@
-.carousel-fade {
-  height: 500px;
+.carousel-fade .carousel-item {
+  height: 60vh;
 }
 
-.carousel-fade .carousel-item {
-  height: 500px;
+@media screen and (max-width: 768px) {
+  .carousel-fade .carousel-item {
+    height: auto;
+  }
 }
+  
 
 .carousel-item p {
   text-shadow: 0 0 0.2em black;
