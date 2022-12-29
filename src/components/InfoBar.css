@@ -17,12 +17,14 @@
     -moz-box-shadow: 0px 0px 5px 0px rgba(44, 47, 37, 0.5);
     box-shadow: 0px 0px 5px 0px rgba(44, 47, 37, 0.5);
     transition: 0.3s;
+    cursor: default;
 }
 
 
 .infobar .col:hover {
     background-color: #CAEC7D;
     transition: 0.3s;
+    cursor: default;
 }
 
 
@@ -32,10 +34,12 @@
     justify-content: center;
     flex-wrap: nowrap;
     align-items: center;
+    cursor: default;
 }
 
 .infobar .row svg {
     width: 16px;
     height: 1rem;
     margin-left: 0.5rem;
+    cursor: default;
 }
