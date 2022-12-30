@@ -5,8 +5,7 @@
 }
 
 #logo {
-  width: 20px;
-  margin-right: 0.5rem;
+  width: 27px;
 }
 .navbar-light .navbar-nav .nav-link {
   color: white;
@@ -22,13 +21,14 @@
   transition: 0.3s;
 }
 
-.navbar-brand {
+.navbar-brand a {
   display: flex;
   font-family: "Work sans";
   font-weight: 400;
-  font-size: 1.2rem;
+  /* font-size: 0.5rem; */
   color: white;
   transition: 0.3s;
+  margin: 0;
 }
 
 .navbar-brand:hover {
@@ -48,6 +48,7 @@
   background: rgba(45, 75, 17, 0.75);
   box-shadow: 0px 0px 20px rgba(44, 47, 37, 0.3);
   backdrop-filter: blur(20px);
+  /* drop shadow */
 }
 
 .container-fluid button {
@@ -79,4 +80,26 @@
   display: flex;
   align-items: baseline;
   margin-left: 30%;
+}
+
+.container-fluid a {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  padding-right: 0.5rem;
+}
+
+.container-fluid p {
+  position: absolute;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  margin-left: 2rem;
+}
+
+.container-fluid h1 {
+  margin: 0;
+  font-weight: 500;
 }

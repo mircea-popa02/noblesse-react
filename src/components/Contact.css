@@ -1,0 +1,57 @@
+.contact {
+  margin-bottom: 10vh;
+  margin-top: 10vh;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  color: #526336;
+  border: 1px solid #e6e6e6;
+  padding: 2% !important;
+  width: 40rem !important;
+  /* drop shadow */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  /* align right */
+}
+
+@media (max-width: 768px) {
+  .contact {
+    width: 20rem !important;
+    padding: 6% !important;
+    padding-bottom: 0;
+  }
+}
+
+.contact button {
+  background: #526336;
+  border: 1px solid rgba(82, 99, 54, 0.25);
+  border-radius: 10px;
+  padding: 0.3rem;
+  transition: 0.3s;
+  width: 6rem;
+}
+
+.contact .col {
+    margin:0
+}
+
+
+.contact button:hover {
+  background: #caec7d;
+  transition: 0.3s;
+  color: #526336;
+  border: 1px solid rgba(82, 99, 54, 0.25) !important;
+}
+
+.contact button:active {
+    background: #ffffff !important;
+    transition: 0.3s;
+    color: #526336 !important;
+    border: 1px solid rgba(82, 99, 54, 0.25) !important;
+}
+
+
+
+.contact h1 {
+    padding-bottom: 2rem;
+}
+
+

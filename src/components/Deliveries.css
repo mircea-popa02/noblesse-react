@@ -1,12 +1,15 @@
-.row .outside-link {
+.card {
   color: #fff;
-  background-color: #526336;
   width: 20rem;
-  height: 100%;
-  border-radius: 10px;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px !important;
+  background-color: #526336 !important;
 }
+
+.deliveries {
+  margin-top: 5vh;
+}
+
 
 .container-delivery {
   margin: 0px;
@@ -25,14 +28,15 @@
   align-content: space-around;
 }
 
-.outside-link p {
+.card p {
   font-size: 1.5rem;
   font-family: "work sans";
   font-weight: 300;
   padding-left: 6%;
 }
 
-.outside-link h2 {
+
+.card h2 {
   font-size: 2rem;
   font-family: "work sans";
   font-weight: 500;
@@ -40,12 +44,12 @@
   padding-bottom: 0;
 }
 
-.outside-link p svg {
+.card p svg {
   margin-left: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
-.outside-link button {
+.card button {
   background: #caec7d;
   border: 1px solid rgba(82, 99, 54, 0.25);
   border-radius: 10px;
@@ -53,38 +57,38 @@
   margin-bottom: 10%;
   margin-left: 6%;
   transition: 0.3s;
+  width: 6rem;
 }
 
-.outside-link button:hover {
+.card button:hover {
   background: #ffffff;
   transition: 0.3s;
 }
 
-.outside-link button a {
+.card button a {
   color: #526336;
   text-decoration: none;
 }
 
-
-.row .picture {
-  width: 22rem;
-  height: 16rem;
+.pic {
+  overflow: hidden;
+  border-radius: 20px !important;
 }
-.picture img {
-  position: relative;
-  width: 100%;
-  height: 100%;
+
+
+.pic img {
   margin: auto;
   transition: 0.3s;
-  transform: scale(1);
-  border-radius: 10px;
-  object-fit: cover;
-  background-position: center;
-  background-size: cover;
+  border-radius: 10px !important;
+  /* object-fit: cover; */
+  height: 16rem;
+  transform: scale(1.1);
+  z-index: -99 !important;
 }
 
-.picture:hover img,
-.picture:focus img {
-  transform: scale(1.1);
+.pic:hover img,
+.pic:focus img {
+  transform: scale(1.2);
   transition: 0.3s;
+  z-index: 0;
 }

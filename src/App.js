@@ -7,6 +7,7 @@ import Carousel from './components/Carousel';
 import './App.css';
 import Header from './components/Header';
 import InfoBar from './components/InfoBar';
+import Contact from './components/Contact';
 
 
 const ExampleToast = ({ children }) => {
@@ -32,6 +33,7 @@ function App() {
       <Carousel />
       <InfoBar />
       <Deliveries />
+      <Contact />
       <Footer/>
     </div>
   );
