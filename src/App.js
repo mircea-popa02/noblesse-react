@@ -8,6 +8,7 @@ import './App.css';
 import Header from './components/Header';
 import InfoBar from './components/InfoBar';
 import Contact from './components/Contact';
+import Map from './components/Map';
 
 
 const ExampleToast = ({ children }) => {
@@ -26,6 +27,12 @@ const ExampleToast = ({ children }) => {
   );
 };
 
+const location = {
+  address: 'Calea Călărașilor, Brăila 810253',
+  lat: 45.257559,
+  lng: 27.960914
+}
+
 function App() {
   return (
     <div>
@@ -34,6 +41,7 @@ function App() {
       <InfoBar />
       <Deliveries />
       <Contact />
+      <Map location={location} zoomLevel={17} />
       <Footer/>
     </div>
   );

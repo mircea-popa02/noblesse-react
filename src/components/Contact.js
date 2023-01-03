@@ -76,7 +76,7 @@ const Contact = () => {
                     id='form-input-control-email'
                     control={Input}
                     label='Email'
-                    name='user_email'
+                    name='from_email'
                     placeholder='Email…'
                     required
                     icon='mail'
@@ -86,7 +86,7 @@ const Contact = () => {
                     id='form-input-control-last-name'
                     control={Input}
                     label='Nume'
-                    name='user_name'
+                    name='from_name'
                     placeholder='Nume…'
                     required
                     icon='user circle'
