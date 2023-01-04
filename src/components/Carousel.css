@@ -24,5 +24,12 @@
 .carousel-item img {
   height: 45vh;
   object-fit: cover;  
+  transition: 0.3s;
+}
 
+.carousel-item img:hover ,
+.carousel-item img:focus {
+  transform: scale(1.1);
+  transition: 0.3s;
+  z-index: 0;
 }

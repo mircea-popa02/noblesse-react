@@ -1,0 +1,74 @@
+.title .header {
+  font-weight: 700;
+
+  font-family: "Oswald", sans-serif;
+  margin-bottom: 16px;
+  font-size: 64px;
+  --bg-size: 400%;
+  --color-one: #526336;
+  --color-two: #2C2F25;
+  background: linear-gradient(
+      90deg,
+      var(--color-one),
+      var(--color-two),
+      var(--color-one)
+    )
+    0 0 / var(--bg-size) 100%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: move-bg 60s infinite linear;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .boujee-text {
+    animation: move-bg 8s linear infinite;
+  }
+  @keyframes move-bg {
+    to {
+      background-position: var(--bg-size) 0;
+    }
+  }
+}
+
+.title .info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.title .info div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: flex-start;
+
+  margin-right: 16px;
+  border-radius: 32px;
+  margin-top: 8px;
+  margin-left: 16px;
+  margin-bottom: 0px;
+
+  /* background-color: #F8FBEF; */
+  color: rgba(44, 47, 37, 0.5);
+  font-weight: 600;
+  font-size: small;
+  cursor: default;
+  /* border: 1px solid rgba(82, 99, 54, 0.25); */
+}
+
+.title .info hr {
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.title .container {
+  padding: 0 !important;
+  margin: 0 !important;
+}

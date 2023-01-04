@@ -11,10 +11,7 @@ function CarouselFadeExample() {
     const storageRef = ref(storage, "images/");
 
     useEffect(() => {
-        console.log("here");
         listAll(storageRef).then((res) => {
-                console.log("here");
-                console.log(res);
                 res.items.forEach((storageRef) => {
                     getDownloadURL(storageRef).then((url) => {
                         setImages((images) => [...images, url]);

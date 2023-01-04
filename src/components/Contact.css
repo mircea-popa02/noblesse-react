@@ -1,25 +1,32 @@
 .contact {
-  margin-bottom: 10vh;
-  margin-top: 10vh;
-  background-color: rgb(255, 255, 255);
-  border-radius: 20px;
   color: #526336;
   border: 1px solid #e6e6e6;
-  padding: 2% !important;
+  padding: 16px !important;
+  /* padding-top: 32px !important; */
   width: 40rem !important;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5vh;
+  transition: 0.4s;
 }
 
 @media (max-width: 600px) {
   .contact {
     width: 20rem !important;
-    padding: 4% !important;
+    padding: 16px !important;
     padding-bottom: 0;
+
+  }
+
+  .g-recaptcha {
+    transform: scale(0.815) !important;
+    -webkit-transform: scale(0.815) !important;
+    transform-origin: 0 0 !important;
+    -webkit-transform-origin: 0 0 !important;
   }
 }
 
 .required.field label {
-  font-weight: 400 !important;
+  font-weight: 300 !important;
   color: #526336 !important;
 }
 
@@ -27,16 +34,29 @@
   color: #526336 !important;
 }
 
-
 .contact .button {
-  background: #526336;
+  backdrop-filter: blur(20px) !important;
+  background: rgba(45, 75, 17, 0.75) !important;
+  box-shadow: 0px 0px 20px rgba(44, 47, 37, 0.3) !important;
+  backdrop-filter: blur(20px);
   border: 1px solid rgba(82, 99, 54, 0.25);
   color: #ffffff;
-  border-radius: 10px;
-  padding: 0.5rem !important;
+  border-radius: 32px;
+  padding: 8px !important;
   transition: 0.3s;
   width: 6rem;
   margin: 0;
+  font-size: small !important;
+  font-family: work sans;
+  font-weight: 400 !important;
+  margin-top: 32px;
+}
+
+.line {
+  width: 8rem !important;
+  border-bottom: 4px solid #caec7d;
+  margin-bottom: 32px;
+  border-radius: 32px;
 }
 
 .contact button:hover {
@@ -53,20 +73,15 @@
   border: 1px solid rgba(82, 99, 54, 0.25) !important;
 }
 
-.contact h1 {
-  padding-bottom: 2rem;
+.contact h2 {
+  font-size: 28px;
+  font-family: "work sans";
+  font-weight: 500;
+  padding-bottom: 0;
+  margin-bottom: 8px;
 }
-
-.g-recaptcha {
-  transform: scale(0.77);
-  -webkit-transform: scale(0.77);
-  transform-origin: 0 0;
-  -webkit-transform-origin: 0 0;
-}
-
 
 form {
   align-items: stretch;
   flex-direction: column;
 }
-

@@ -2,31 +2,25 @@
     display: flex;
     align-items: center;
     background-color: #F8FBEF;
-    color: #2C2F25;
     color: rgba(44, 47, 37, 0.5);
-    border-radius: 5px;
+    border-radius: 32px;
     font-size: small;
-    padding: 0.2rem;
+    padding: 4px;
     flex-wrap: nowrap;
     justify-content: center;
     font-weight: 600;
     margin: 0.5rem;
     margin-top: 5vh;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(44, 47, 37, 0.5);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(44, 47, 37, 0.5);
-    box-shadow: 0px 0px 5px 0px rgba(44, 47, 37, 0.5);
     transition: 0.3s;
     cursor: default;
+    border: 1px solid rgba(82, 99, 54, 0.25);
 }
-
 
 .infobar .col:hover {
     background-color: #CAEC7D;
     transition: 0.3s;
     cursor: default;
 }
-
-
 
 .infobar .row {
     display: flex;
@@ -41,4 +35,6 @@
     height: 1rem;
     margin-left: 0.5rem;
     cursor: default;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
 }
