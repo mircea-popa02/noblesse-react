@@ -6,7 +6,7 @@
   font-size: 64px;
   --bg-size: 400%;
   --color-one: #526336;
-  --color-two: #2C2F25;
+  --color-two: #2c2f25;
   background: linear-gradient(
       90deg,
       var(--color-one),

@@ -9,7 +9,7 @@
   transition: 0.4s;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .contact {
     width: 20rem !important;
     padding: 16px !important;

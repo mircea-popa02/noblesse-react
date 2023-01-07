@@ -13,6 +13,7 @@ import Title from './components/Title';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
+import Slider from './components/Slider';
 
 
 // const ExampleToast = ({ children }) => {
@@ -88,6 +89,7 @@ function App() {
       }
     );
   }, []);
+  
 
   return (
     <div ref={ref}>
@@ -96,6 +98,7 @@ function App() {
       <Carousel />
       <InfoBar />
       <Deliveries />
+      {/* <Slider /> */}
       <Contact />
       <Map location={location} zoomLevel={17} />
       <Footer />

@@ -1,0 +1,21 @@
+.horizontal-snap {
+  margin: 0 auto;
+  display: grid;
+  grid-auto-flow: column;
+  height: 23rem;
+  gap: 16px;
+  padding: 16px !important;
+  overflow: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  margin-bottom: 5vh;
+  overflow-x: scroll !important;
+  align-items: center;
+  box-shadow: 0 0 8px 0 rgba(44, 47, 37, 0.3);
+  padding: 0;
+}
+
+.slider img {
+  width: 10rem !important;
+  height: 10rem !important;
+}

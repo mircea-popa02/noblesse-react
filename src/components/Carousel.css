@@ -2,13 +2,19 @@
   height: 45vh;
 }
 
+.carousel-item .carousel-fade{
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+
 @media only screen and (max-width: 768px) {
   .carousel-fade .carousel-item {
-    height: 30vh;
+    height: 20rem;
   }
 
   .carousel-item img {
-    height: 30vh;
+    height: 20rem !important;
     object-fit: cover;  
   
   }
