@@ -30,30 +30,47 @@ const Items = () => {
     useEffect(() => {
         fetchPost();
     }, [])
-    
+
     const [images, setImages] = useState([]);
     const storageRef = ref(storage, "wreaths/");
     const [metaDatas, setMetaDatas] = useState([]);
-    useEffect(() => {
-        listAll(storageRef).then((res) => {
-            res.items.forEach((storageRef) => {
-                getDownloadURL(storageRef).then((url) => {
-                    setImages((images) => [...images, url]);
-                    
-                });
 
-                getMetadata(storageRef).then((metadata) => {
-                    setMetaDatas((metaDatas) => [...metaDatas, metadata.name]);
-                }
-                )
+    // useEffect(() => {
+    //     listAll(storageRef).then((res) => {
+    //         res.items.forEach((storageRef) => {
+    //             getDownloadURL(storageRef).then((url) => {
+    //                 setImages((images) => [...images, url]);
+    //             });
+
+    //             getMetadata(storageRef).then((metadata) => {
+    //                 setMetaDatas((metaDatas) => [...metaDatas, metadata.name]);
+    //             }
+    //             )
+    //         });
+    //     })
+    // }, []);
+
+
+    useEffect(() => {
+        listAll(storageRef).then(async function (result) {
+            result.items.forEach(async function (imageRef) {
+                // const metadata = await getMetadata(imageRef);
+                // setMetaDatas((metaDatas) => [...metaDatas, metadata.name]);
+                // const url = await getDownloadURL(imageRef);
+                // setImages((images) => [...images, url]);
+
+                let [metaPoint, img] = await Promise.all([getMetadata(imageRef), getDownloadURL(imageRef)])
+                setMetaDatas((metaDatas) => [...metaDatas, metaPoint.name]);
+                setImages((images) => [...images, img]);
+                
             });
-        })
+        }).catch(function (error) {
+            // Uh-oh, an error occurred!
+        });
     }, []);
 
 
-    
-
-
+    console.log(metaDatas);
     if (itemInfo[0] !== undefined && images.length === metaDatas.length && images.length !== 0) {
         return (
             <div className="gallery">
@@ -61,15 +78,11 @@ const Items = () => {
                     return (
                         <div className="gallery-item">
                             <img src={image} alt="coroana" />
-                            {/* {console.log(index)}
-                            {console.log(metaDatas[index])} */}
                             {itemInfo[0].descriptions.map((description) => {
                                 return (
                                     <div className="gallery-item-info">
                                         {metaDatas[index] === description.title &&
                                             <div className="d-flex mini-container">
-                                                {/* {console.log(description.title + " title " + metaDatas[index]+ " meta ")} */}
-
                                                 {description.desc.map((desc) => {
                                                     return (
                                                         <span>{desc}</span>
