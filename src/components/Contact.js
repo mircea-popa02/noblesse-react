@@ -1,21 +1,29 @@
-// import React from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 import "semantic-ui-css/semantic.min.css";
 import './Contact.css'
 import emailjs from 'emailjs-com';
 import { Form, Input, TextArea, Button } from 'semantic-ui-react';
 import Swal from 'sweetalert2';
-import React, { useRef } from 'react';
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 
 
 const Contact = () => {
     const SERVICE_ID = "service_zf4a1jv";
     const TEMPLATE_ID = "template_0yyo3hd";
-    const USER_ID = "YAmXjPUJ52n0jJC4z";
+    // const USER_ID = "YAmXjPUJ52n0jJC4z";
+    const recaptchaRef = React.createRef();
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
+
+        // reset the captcha
+
+
+
+        // recaptchaRef.current.execute()
         // console.log(e.target);
         // console.log(e);
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, "YAmXjPUJ52n0jJC4z")
@@ -47,8 +55,8 @@ const Contact = () => {
                     name='from_email'
                     placeholder='Email'
                     required
-                    // icon='mail'
-                    // iconPosition='left'
+                // icon='mail'
+                // iconPosition='left'
                 />
                 <Form.Field
                     id='form-input-control-last-name'
@@ -56,8 +64,8 @@ const Contact = () => {
                     name='from_name'
                     placeholder='Nume'
                     required
-                    // icon='user circle'
-                    // iconPosition='left'
+                // icon='user circle'
+                // iconPosition='left'
                 />
                 <Form.Field
                     id='form-textarea-control-opinion'
@@ -66,7 +74,25 @@ const Contact = () => {
                     placeholder='Mesajul tău'
                     required
                 />
-                <div className="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+                {/* <div className="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div> */}
+                <div className="d-lg-none d-xl-none">
+                    <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                        size="compact"
+                        hl="ro"
+                    />
+                </div>
+                <div className="d-none d-lg-block d-xl-block">
+                <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                        hl="ro"
+                    />
+                </div>
+
+
+
                 <Button type='submit'>Trimite</Button>
             </Form>
         </Container>
@@ -74,5 +100,6 @@ const Contact = () => {
 
 
 }
+
 
 export default Contact;

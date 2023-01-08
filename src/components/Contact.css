@@ -5,8 +5,9 @@
   /* padding-top: 32px !important; */
   width: 40rem !important;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  margin-bottom: 5vh;
+  margin-bottom: 5vh !important;
   transition: 0.4s;
+  /* margin: auto; */
 }
 
 @media (max-width: 768px) {
@@ -14,14 +15,6 @@
     width: 20rem !important;
     padding: 16px !important;
     padding-bottom: 0;
-
-  }
-
-  .g-recaptcha {
-    transform: scale(0.815) !important;
-    -webkit-transform: scale(0.815) !important;
-    transform-origin: 0 0 !important;
-    -webkit-transform-origin: 0 0 !important;
   }
 }
 
@@ -49,14 +42,14 @@
   font-size: small !important;
   font-family: work sans;
   font-weight: 400 !important;
-  margin-top: 32px;
+  margin-top: 24px;
 }
 
 .line {
   width: 8rem !important;
-  border-bottom: 4px solid #caec7d;
-  margin-bottom: 32px;
-  border-radius: 32px;
+  border-bottom: 4px solid #caec7d !important;
+  margin-bottom: 24px !important;
+  border-radius: 32px !important;
 }
 
 .contact button:hover {
@@ -84,4 +77,8 @@
 form {
   align-items: stretch;
   flex-direction: column;
+}
+
+.contact p {
+  margin-bottom: 8px!important;
 }

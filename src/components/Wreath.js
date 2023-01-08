@@ -35,29 +35,9 @@ const Items = () => {
     const storageRef = ref(storage, "wreaths/");
     const [metaDatas, setMetaDatas] = useState([]);
 
-    // useEffect(() => {
-    //     listAll(storageRef).then((res) => {
-    //         res.items.forEach((storageRef) => {
-    //             getDownloadURL(storageRef).then((url) => {
-    //                 setImages((images) => [...images, url]);
-    //             });
-
-    //             getMetadata(storageRef).then((metadata) => {
-    //                 setMetaDatas((metaDatas) => [...metaDatas, metadata.name]);
-    //             }
-    //             )
-    //         });
-    //     })
-    // }, []);
-
-
     useEffect(() => {
         listAll(storageRef).then(async function (result) {
             result.items.forEach(async function (imageRef) {
-                // const metadata = await getMetadata(imageRef);
-                // setMetaDatas((metaDatas) => [...metaDatas, metadata.name]);
-                // const url = await getDownloadURL(imageRef);
-                // setImages((images) => [...images, url]);
 
                 let [metaPoint, img] = await Promise.all([getMetadata(imageRef), getDownloadURL(imageRef)])
                 setMetaDatas((metaDatas) => [...metaDatas, metaPoint.name]);
@@ -78,6 +58,7 @@ const Items = () => {
                     return (
                         <div className="gallery-item">
                             <img src={image} alt="coroana" />
+                            
                             {itemInfo[0].descriptions.map((description) => {
                                 return (
                                     <div className="gallery-item-info">
@@ -117,23 +98,21 @@ const Items = () => {
 
 
 const Wreath = () => {
-
-
-    function openModal(numberOfImag) {
-        Swal.fire({
-            title: 'Descriere coroană',
-            text: 'Modal with a custom image.',
-            imageUrl: numberOfImag,
-            // imageWidth: 400,
-            imageHeight: 300,
-            showCloseButton: true,
-            showCancelButton: false,
-            showConfirmButton: false,
-            imageAlt: 'Descriere coroană',
-            html:
-                '<a href="https://www.google.com/maps/dir/?api=1&destination=Floraria+Noblesse%2C+Braila">Comandă online</a>'
-        })
-    }
+    // function openModal(numberOfImag) {
+    //     Swal.fire({
+    //         title: 'Descriere coroană',
+    //         text: 'Modal with a custom image.',
+    //         imageUrl: numberOfImag,
+    //         // imageWidth: 400,
+    //         imageHeight: 300,
+    //         showCloseButton: true,
+    //         showCancelButton: false,
+    //         showConfirmButton: false,
+    //         imageAlt: 'Descriere coroană',
+    //         html:
+    //             '<a href="https://www.google.com/maps/dir/?api=1&destination=Floraria+Noblesse%2C+Braila">Comandă online</a>'
+    //     })
+    // }
 
     return (
         <div>
@@ -147,33 +126,6 @@ const Wreath = () => {
                 </p>
 
                 <Items></Items>
-                {/* <div className="gallery"> */}
-                {/* <div className="gallery-item">
-                        <img onClick={() => openModal("1.jpg")} src={images[0]} alt="coroana" />
-                        <div className="gallery-item-info">
-                            <div className="d-flex mini-container">
-                                <span className="text-center">ieftin</span>
-                                <span className="text-center">clasic</span>
-                                <span className="text-center">simplu</span>
-                                <span className="text-center">elegant</span>
-                            </div>
-                            <a href="google.com">
-                                <button className="btn btn-primary">Comandă</button>
-                            </a>
-                        </div>
-                    </div>
-                    <img onClick={() => openModal("2.jpg")} src={images[1]} alt="coroana" /> */}
-                {/* <img onClick={() => openModal("3.jpg")} src={images[2]} alt="coroana" />
-                    <img onClick={() => openModal("4.jpg")} src={images[3]} alt="coroana" />
-                    <img onClick={() => openModal("5.jpg")} src="5.jpg" alt="coroana" />
-                    <img onClick={() => openModal("6.jpg")} src="6.jpg" alt="coroana" />
-                    <img onClick={() => openModal("7.jpg")} src="7.jpg" alt="coroana" />
-                    <img onClick={() => openModal("8.jpg")} src="8.jpg" alt="coroana" />
-                    <img onClick={() => openModal("9.jpg")} src="9.jpg" alt="coroana" />
-                    <img onClick={() => openModal("10.jpg")} src="10.jpg" alt="coroana" />
-                    <img onClick={() => openModal("11.jpg")} src="11.jpg" alt="coroana" /> */}
-
-                {/* </div> */}
             </Container>
             <Footer></Footer>
         </div>

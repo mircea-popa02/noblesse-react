@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-// import Toast from 'react-bootstrap/Toast';
-// import Button from 'react-bootstrap/Button';
+import React from 'react';
 import Deliveries from './components/Deliveries';
 import Footer from './components/Footer';
 import Carousel from './components/Carousel';
@@ -13,7 +11,8 @@ import Title from './components/Title';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
-import Slider from './components/Slider';
+import { Container } from "react-bootstrap";
+import InfoBarMobile from './components/InfoBarMobile';
 
 
 // const ExampleToast = ({ children }) => {
@@ -31,7 +30,6 @@ import Slider from './components/Slider';
 //     </>
 //   );
 // };
-
 const location = {
   address: 'Noblesse Brăila',
   lat: 45.257559,
@@ -39,6 +37,8 @@ const location = {
 }
 
 function App() {
+  
+
   gsap.registerPlugin(ScrollTrigger);
   const ref = useRef(null);
 
@@ -68,7 +68,6 @@ function App() {
 
   useEffect(() => {
     const element = ref.current;
-
     gsap.fromTo(
       element.querySelector(".contact"),
       {
@@ -89,22 +88,50 @@ function App() {
       }
     );
   }, []);
-  
+
+  useEffect(() => {
+    const element = ref.current;
+    gsap.fromTo(
+      element.querySelector(".scroll"),
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0
+      },
+      {
+        opacity: 0,
+        scale: 0.7,
+        y: -100,
+        scrollTrigger: {
+          trigger: element.querySelector(".carousel"),
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true
+        }
+      }
+    );
+  }, []);
+
+
 
   return (
+    
     <div ref={ref}>
       <Title />
       <Header sticky="top" />
       <Carousel />
       <InfoBar />
+      <InfoBarMobile />
       <Deliveries />
       {/* <Slider /> */}
       <Contact />
       <Map location={location} zoomLevel={17} />
       <Footer />
-      
     </div>
+
+    
   );
 }
 
 export default App;
+

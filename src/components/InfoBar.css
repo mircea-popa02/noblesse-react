@@ -38,3 +38,19 @@
     margin-right: 0 !important;
     padding-right: 0 !important;
 }
+
+.infobar .col.mobile{
+    margin: 0px !important;
+}
+
+.container .d-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 16px;
+    padding: 0;
+    margin-top: 16px;
+    /* margin-left: 16px;
+    margin-right: 16px; */
+
+}

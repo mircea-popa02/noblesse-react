@@ -16,6 +16,13 @@
 
 .deliveries {
   margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+@media screen and (max-width: 768px) {
+  .deliveries {
+    margin-bottom: 0 !important;
+  }
 }
 
 .container-delivery {
@@ -27,7 +34,6 @@
 }
 
 .col {
-  margin-bottom: 5vh;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -82,18 +88,17 @@
 
 .pic {
   overflow: hidden;
-  /* border-radius: 16px !important; */
+  width: 21.5rem !important;
+  
 }
 
 .pic img {
+  object-fit: cover;
   margin: auto;
   transition: 0.3s;
-  /* border-radius: 8px !important; */
   margin-right: 8px;
-  /* object-fit: cover; */
   height: 16rem;
   transform: scale(1.1);
-  /* z-index: -99 !important; */
 }
 
 .pic:hover img,
@@ -101,4 +106,39 @@
   transform: scale(1.2);
   transition: 0.3s;
   z-index: 0;
+}
+
+.scroll {
+  width: 24px;
+  height: 24px;
+  /* border: 2px solid #526336; */
+  /* border-radius: 50%; */
+  /* position: relative; */
+  animation: down 1.5s infinite;
+  -webkit-animation: down 1.5s infinite;
+  margin: auto;
+  margin-top: 16px;
+  /* margin-bottom: 5vh; */
+}
+
+.scroll::before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-left: 2px solid #526336;
+  border-bottom: 2px solid #526336;
+  transform: rotate(-45deg);
+}
+
+@keyframes down {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translateY(15px);
+  }
+  40% {
+    transform: translate(0);
+  }
 }

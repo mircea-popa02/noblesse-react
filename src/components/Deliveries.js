@@ -5,6 +5,7 @@ import { Row } from 'react-bootstrap';
 
 const deliveries = () => {
     return (
+        <>
             <Col className='deliveries'>
                 <Row className='card'>
                     <h2>Livrări de flori</h2>
@@ -23,6 +24,9 @@ const deliveries = () => {
                     <img src="pic3.jpg" alt="delivery" />
                 </Row>
             </Col>
+
+            <div className='scroll' id="scroll-hint"></div>
+        </>
     )
 }
 

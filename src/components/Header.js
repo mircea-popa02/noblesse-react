@@ -58,11 +58,11 @@ const NavbarInstance = () => {
                                 Magazin de coroane
                             </NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="action5" id='section-1'>
+                            <NavDropdown.Item href="/contact" id='section-1'>
                                 Contactează-ne
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link onClick={handleClickScroll}>Contact</Nav.Link>
+                        <Nav.Link onClick={handleClickScroll} href="">Contact</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Brand href="/en" style={{ color: "#fff" }} className="d-none d-lg-flex">
