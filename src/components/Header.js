@@ -3,12 +3,28 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
+import { useState } from 'react';
+import { useRef } from 'react';
 
 
 import './Header.css';
 
 const NavbarInstance = () => {
+    const [expanded, setExpanded] = useState(false);
+    const navMenu = useRef(null)
+
+    const [openSlide, setopenSlide] = useState(""); 
+
+    const closeOpenMenus = (e)=>{
+        if(navMenu.current && expanded && !navMenu.current.contains(e.target)){
+          setExpanded(false)
+        }
+    }
+
+    document.addEventListener('mousedown', closeOpenMenus)
+
     const handleClickScroll = () => {
+        setExpanded(false)
         const element = document.getElementById('contact-form');
         console.log(element);
         if (element) {
@@ -16,13 +32,14 @@ const NavbarInstance = () => {
         }
     };
 
+
     const goToLandingPage = () => {
         window.location.href = '/';
     };
     return (
-        <Navbar expand="lg" sticky="top" style={{ padding: 0 }} className="navbar-main">
+        <Navbar expand="lg" sticky="top" style={{ padding: 0 }} className="navbar-main" expanded={expanded} ref={navMenu}>
             <Container fluid>
-                <Navbar.Toggle aria-controls="basic-navbar-nav">
+                <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={() => setExpanded(expanded ? false : "expanded")}>
 
                     <svg width="24" height="24" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 10H25" stroke="#CAEC7D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
@@ -48,21 +65,21 @@ const NavbarInstance = () => {
                         style={{ maxHeight: '200px' }}
                         navbarScroll
                     >
-                        <Nav.Link href="/">Buchete</Nav.Link>
-                        <Nav.Link href="/coroane">Coroane</Nav.Link>
-                        <Nav.Link href="/">Aranjamente</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(false)} href="/">Buchete</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(false)} href="/coroane">Coroane</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(false)} href="/">Aranjamente</Nav.Link>
                         <NavDropdown title="Diverse" id="navbarScrollingDropdown">
-                            <NavDropdown.Item >Hartă</NavDropdown.Item>
+                            <NavDropdown.Item onClick={() => setExpanded(false)} >Hartă</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="action4">
+                            <NavDropdown.Item onClick={() => setExpanded(false)} href="/coroane">
                                 Magazin de coroane
                             </NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="/contact" id='section-1'>
+                            <NavDropdown.Item onClick={() => setExpanded(false)} href="/contact" id='section-1'>
                                 Contactează-ne
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link onClick={handleClickScroll} href="">Contact</Nav.Link>
+                        <Nav.Link onClick={handleClickScroll}>Contact</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Brand href="/en" style={{ color: "#fff" }} className="d-none d-lg-flex">
