@@ -29,7 +29,7 @@ root.render(
         <Header />,
         <br></br>,
         <Map location={location} zoomLevel={17} />,
-        <Footer />
+        // <Footer />
       ]} />
       <Route path="/contact" element={[
         <Title />,

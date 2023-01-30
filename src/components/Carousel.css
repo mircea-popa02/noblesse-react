@@ -39,3 +39,17 @@
   transition: 0.3s;
   z-index: 0;
 }
+
+.carousel-indicators > button {
+  background-color: #ffffff49 !important;
+  border: 1px solid #ffffff !important;
+  border-radius: 50%;
+  width: 0.5rem !important;
+  height: 0.5rem !important;
+  margin: 0 0.2rem !important;
+  transition: 0.3s !important;
+}
+
+.carousel-control-next span {
+
+}
