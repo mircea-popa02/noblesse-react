@@ -74,25 +74,13 @@ const Contact = () => {
                     placeholder='Mesajul tău'
                     required
                 />
-                {/* <div className="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div> */}
-                <div className="d-lg-none d-xl-none">
-                    <ReCAPTCHA
-                        ref={recaptchaRef}
-                        sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                        size="compact"
-                        hl="ro"
-                    />
-                </div>
-                <div className="d-none d-lg-block d-xl-block">
+
                 <ReCAPTCHA
-                        ref={recaptchaRef}
-                        sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                        hl="ro"
-                    />
-                </div>
-
-
-
+                    ref={recaptchaRef}
+                    sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                    size="compact"
+                    hl="ro"
+                />
                 <Button type='submit'>Trimite</Button>
             </Form>
         </Container>

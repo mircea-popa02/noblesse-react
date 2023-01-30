@@ -42,15 +42,29 @@ const Items = () => {
                 let [metaPoint, img] = await Promise.all([getMetadata(imageRef), getDownloadURL(imageRef)])
                 setMetaDatas((metaDatas) => [...metaDatas, metaPoint.name]);
                 setImages((images) => [...images, img]);
-                
+
             });
         }).catch(function (error) {
             // Uh-oh, an error occurred!
         });
     }, []);
 
+    const openModal = (numberOfImag) => {
+        Swal.fire({
+            title: numberOfImag,
+            text: numberOfImag,
+            // imageUrl: numberOfImag,
+            // imageWidth: 400,
+            imageHeight: 300,
+            showCloseButton: true,
+            showCancelButton: false,
+            showConfirmButton: false,
+            imageAlt: 'Descriere coroană',
+            html:
+                '<a href="https://www.google.com/maps/dir/?api=1&destination=Floraria+Noblesse%2C+Braila">Comandă online</a>'
+        })
+    }
 
-    console.log(metaDatas);
     if (itemInfo[0] !== undefined && images.length === metaDatas.length && images.length !== 0) {
         return (
             <div className="gallery">
@@ -58,26 +72,32 @@ const Items = () => {
                     return (
                         <div className="gallery-item">
                             <img src={image} alt="coroana" />
-                            
+
                             {itemInfo[0].descriptions.map((description) => {
                                 return (
-                                    <div className="gallery-item-info">
+                                    <>
                                         {metaDatas[index] === description.title &&
-                                            <div className="d-flex mini-container">
-                                                {description.desc.map((desc) => {
-                                                    return (
-                                                        <span>{desc}</span>
-                                                    )
-                                                }
-                                                )}
-                                            </div>
+                                            <>
+                                                <div className="gallery-item-info">
+                                                    <div className="d-flex mini-container">
+                                                        <h6>{description.name}</h6>
+                                                        {description.desc.map((desc) => {
+                                                            return (
+                                                                <span>{desc}</span>
+                                                            )
+                                                        }
+                                                        )}
+                                                    </div>
+                                                </div>
+                                                <a href={description.link}>
+                                                    <button className="btn btn-primary">Comandă</button>
+                                                </a>
+                                            </>
                                         }
-                                    </div>
+                                    </>
                                 )
                             })}
-                            <a href="google.com">
-                                <button className="btn btn-primary">Comandă</button>
-                            </a>
+
                         </div>
                     )
                 })
@@ -93,27 +113,7 @@ const Items = () => {
     }
 }
 
-
-
-
-
 const Wreath = () => {
-    // function openModal(numberOfImag) {
-    //     Swal.fire({
-    //         title: 'Descriere coroană',
-    //         text: 'Modal with a custom image.',
-    //         imageUrl: numberOfImag,
-    //         // imageWidth: 400,
-    //         imageHeight: 300,
-    //         showCloseButton: true,
-    //         showCancelButton: false,
-    //         showConfirmButton: false,
-    //         imageAlt: 'Descriere coroană',
-    //         html:
-    //             '<a href="https://www.google.com/maps/dir/?api=1&destination=Floraria+Noblesse%2C+Braila">Comandă online</a>'
-    //     })
-    // }
-
     return (
         <div>
             <Title></Title>

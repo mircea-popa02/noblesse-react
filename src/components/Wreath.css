@@ -10,7 +10,7 @@
 .gallery {
   margin: auto;
   display: grid !important;
-  grid-template-columns: repeat(auto-fill, 10rem) !important;
+  grid-template-columns: repeat(auto-fill, 12rem) !important;
   grid-gap: 8px !important;
   justify-items: center !important;
   align-items: center !important;
@@ -25,7 +25,7 @@
 }
 
 .gallery img {
-  width: 10rem;
+  width: 12rem;
   flex: 1;
   position: relative;
   /* min-height: 10rem;
@@ -76,7 +76,7 @@
 
 .gallery-item {
   background-color: white;
-  height: 20rem;
+  height: 28rem;
   /* box shadow */
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
   /* padding: 8px; */
@@ -93,5 +93,5 @@
 
 .gallery-item-info {
   padding: 8px;
-  width: 10rem  !important;
+  /* width: 12rem  !important; */
 }
