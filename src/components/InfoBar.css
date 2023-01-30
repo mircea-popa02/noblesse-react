@@ -16,11 +16,7 @@
     border: 1px solid rgba(82, 99, 54, 0.25);
 }
 
-.infobar .col:hover {
-    background-color: #CAEC7D;
-    transition: 0.3s;
-    cursor: default;
-}
+
 
 .infobar .row {
     display: flex;

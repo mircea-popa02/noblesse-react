@@ -107,7 +107,7 @@ const Items = () => {
     } else {
         return (
             <div>
-                <p>loading</p>
+                <p>Loading...</p>
             </div>
         )
     }
@@ -132,4 +132,4 @@ const Wreath = () => {
     );
 }
 
-export default Wreath;
+export default Wreath;  

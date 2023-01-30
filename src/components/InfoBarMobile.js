@@ -1,7 +1,6 @@
 import React from 'react';
-import { Col, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import './InfoBar.css';
-import { Row } from 'react-bootstrap';
 
 
 const info = () => {

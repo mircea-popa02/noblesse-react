@@ -89,30 +89,6 @@ function App() {
     );
   }, []);
 
-  useEffect(() => {
-    const element = ref.current;
-    gsap.fromTo(
-      element.querySelector(".scroll"),
-      {
-        opacity: 1,
-        scale: 1,
-        y: 0
-      },
-      {
-        opacity: 0,
-        scale: 0.7,
-        y: -100,
-        scrollTrigger: {
-          trigger: element.querySelector(".carousel"),
-          start: "top top",
-          end: "bottom bottom",
-          scrub: true
-        }
-      }
-    );
-  }, []);
-
-
 
   return (
     

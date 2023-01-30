@@ -68,7 +68,7 @@ const NavbarInstance = () => {
                         <Nav.Link onClick={() => setExpanded(false)} href="/">Buchete</Nav.Link>
                         <Nav.Link onClick={() => setExpanded(false)} href="/coroane">Coroane</Nav.Link>
                         <Nav.Link onClick={() => setExpanded(false)} href="/">Aranjamente</Nav.Link>
-                        <NavDropdown title="Diverse" id="navbarScrollingDropdown">
+                        {/* <NavDropdown title="Diverse" id="navbarScrollingDropdown">
                             <NavDropdown.Item onClick={() => setExpanded(false)} >Hartă</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={() => setExpanded(false)} href="/coroane">
@@ -78,7 +78,7 @@ const NavbarInstance = () => {
                             <NavDropdown.Item onClick={() => setExpanded(false)} href="/contact" id='section-1'>
                                 Contactează-ne
                             </NavDropdown.Item>
-                        </NavDropdown>
+                        </NavDropdown> */}
                         <Nav.Link onClick={handleClickScroll}>Contact</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

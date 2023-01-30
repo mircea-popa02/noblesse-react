@@ -12,6 +12,7 @@
   backdrop-filter: blur(20px);
   z-index: 99;
   border: 0 !important;
+  
 }
 
 .deliveries {
@@ -22,6 +23,10 @@
 @media screen and (max-width: 768px) {
   .deliveries {
     margin-bottom: 0 !important;
+  }
+
+  .card {
+    margin-bottom: 5vh;
   }
 }
 
