@@ -13,9 +13,13 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
 import "./Wreath.css";
 
-
+// render footer after Items is loaded
+let isLoaded = false;
 
 const Items = () => {
+    // if Items is not loaded do not render Footer
+
+
     const [itemInfo, setItemInfo] = useState([]);
 
     const fetchPost = async () => {
@@ -66,7 +70,9 @@ const Items = () => {
     }
 
     if (itemInfo[0] !== undefined && images.length === metaDatas.length && images.length !== 0) {
+        isLoaded = true;
         return (
+            <>
             <div className="gallery">
                 {images.map((image, index) => {
                     return (
@@ -103,10 +109,11 @@ const Items = () => {
                 })
                 }
             </div >
+            </>
         )
     } else {
         return (
-            <div>
+            <div className="loading-screen">
                 <p>Loading...</p>
             </div>
         )
@@ -114,6 +121,7 @@ const Items = () => {
 }
 
 const Wreath = () => {
+
     return (
         <div>
             <Title></Title>
@@ -127,7 +135,9 @@ const Wreath = () => {
 
                 <Items></Items>
             </Container>
+            
             <Footer></Footer>
+            
         </div>
     );
 }
