@@ -2,6 +2,7 @@ import React from 'react';
 import Deliveries from './components/Deliveries';
 import Footer from './components/Footer';
 import Carousel from './components/Carousel';
+import ScrollCards from './components/ScrollCards';
 import './App.css';
 import Header from './components/Header';
 import InfoBar from './components/InfoBar';
@@ -13,6 +14,8 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import { Container } from "react-bootstrap";
 import InfoBarMobile from './components/InfoBarMobile';
+
+
 
 
 // const ExampleToast = ({ children }) => {
@@ -100,6 +103,7 @@ function App() {
       <InfoBarMobile />
       <Deliveries />
       {/* <Slider /> */}
+      <ScrollCards />
       <Contact />
       <Map location={location} zoomLevel={17} />
       <Footer />
