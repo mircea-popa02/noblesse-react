@@ -4,17 +4,12 @@ import { animated, useSpring } from "react-spring";
 import "./ScrollCards.css";
 
 import { useScroll } from '@use-gesture/react'
-import { Container } from "react-bootstrap";
-
-
+import { Button } from "react-bootstrap";
 
 const map1 = new Map();
 map1.set("pic3.jpg", "Buchete")
 map1.set("pic2.jpg", "Aranjamente")
-
 map1.set("pic1.jpg", "Coșuri de flori")
-
-console.log(map1);
 
 
 function clamp(scroll) {
@@ -25,7 +20,6 @@ function clamp(scroll) {
         return -40;
     }
     return scroll;
-
 }
 
 const Cards = () => {
@@ -41,28 +35,25 @@ const Cards = () => {
 
 
     return (
-        <>
-            <Container>
-            <div className="container-scroll" {...bind()}>
-                {[...map1].map(([src, val]) => (
-                    <animated.div
-                        key={src}
-                        className="card-scroll"
-                        style={{
-                            ...style,
-                            backgroundImage: `url(${src})`
-                        }}
-                    >
-
-                        <div className="card-scroll-content">
-                            <h2>{val}</h2>
-                            <button className="btn btn-primary">Descoperă</button>
-                        </div>
-                    </animated.div>
-                ))}
-            </div>
-            </Container>
-        </>
+        <div className="scroll-wrapper">
+                <div className="container-scroll" {...bind()}>
+                    {[...map1].map(([src, val]) => (
+                        <animated.div
+                            key={src}
+                            className="card-scroll"
+                            style={{
+                                ...style,
+                                backgroundImage: `url(${src})`
+                            }}
+                        >
+                            <div className="card-scroll-content">
+                                <h2>{val}</h2>
+                                <Button className="btn btn-primary btn-green">Descoperă</Button>
+                            </div>
+                        </animated.div>
+                    ))}
+                </div>
+        </div>
     );
 }
 

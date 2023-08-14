@@ -1,29 +1,28 @@
 .footer {
-  background-color: #f8fbef;
-  color: #526336;
-  padding: 16px;
-  padding-bottom: 0;
-  text-align: center;
-  border-top: 1px solid #e7e7e7;
-  font-size: small;
-  font-weight: 600; 
+    background-color: var(--light-green-bg);
+    color: var(--dark-green);
+    padding: 16px;
+    padding-bottom: 0;
+    text-align: center;
+    border-top: 1px solid rgba(34, 36, 38, 0.15);
+    font-size: small;
 }
 
 .footer .col a {
-  color: #526336;
-  text-decoration: none;
-  padding: 8px !important;
+    color: var(--dark-green);
+    text-decoration: none;
+    padding: 8px !important;
 }
 
 .footer .col svg {
-  margin: 8px;
-  margin-bottom: 16px;
+    margin: 8px;
+    margin-bottom: 16px;
 }
 
 .footer .col svg path {
-  fill: #526336 !important;
+    fill: var(--dark-green);
 }
 
 .footer .col {
-  margin: 0;
+    margin: 0;
 }

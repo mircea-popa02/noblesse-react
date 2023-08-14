@@ -15,9 +15,6 @@ const Title = () => {
                 <div className="d-none d-lg-block">L-V 9:00-20:00
                 <hr/> S-D 9:00-16:00</div>
             </div>
-
-            
-
         </div>
     );
 }

@@ -1,18 +1,18 @@
-import React from 'react';
-import { Col, Container } from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import { Col, Button } from 'react-bootstrap';
 import './Deliveries.css';
-import { Row } from 'react-bootstrap';
 
-const deliveries = () => {
 
-    
+const deliveries = (props) => {
+    const language = props.language;       
+
     return (
-        
-
-        <>
+        <div className='deliveries-wrapper'>
             <Col className='deliveries'>
-                <Row className='card'>
-                    <h2>Livrări de flori</h2>
+                <div className='card'>
+                    <h2>
+                        {language === "RO" ? "Livrări de flori" : "Flower deliveries"}
+                    </h2>
                     <p>
                         Brăila
                         <svg width="24" height="24" viewBox="0 0 29 35" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,17 +20,15 @@ const deliveries = () => {
                             <path d="M14.43 18.9066C16.9024 18.9066 18.9067 16.9024 18.9067 14.43C18.9067 11.9576 16.9024 9.95331 14.43 9.95331C11.9576 9.95331 9.95334 11.9576 9.95334 14.43C9.95334 16.9024 11.9576 18.9066 14.43 18.9066Z" stroke="#CAEC7D" strokeWidth="2" strokeLinecap="round" />
                         </svg>
                     </p>
-                    <button onClick={() => window.location.href = "https://florariebraila.ro/"}>
-                        <a href="https://florariebraila.ro/">Cumpără</a>
-                    </button>
-                </Row>
-                <Row className="pic d-none d-lg-block">
+                    <Button onClick={() => window.location.href = "https://florariebraila.ro/"} className='btn-green'>
+                        {language === "RO" ? "Comandă" : "Order"}
+                    </Button>
+                </div>
+                <div className="pic d-none d-lg-block">
                     <img src="pic3.jpg" alt="delivery" />
-                </Row>
+                </div>
             </Col>
-
-            {/* <div className='scroll' id="scroll-hint"></div> */}
-        </>
+        </div>
     )
 }
 

@@ -1,20 +1,12 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
-import Swal from 'sweetalert2';
 import './Map.css'
+import { Button, Col } from "react-bootstrap";
+import { Row } from 'react-bootstrap';
+
 
 const LocationPin = ({ text }) => {
     const goToLink = () => {
-        // Swal.fire({
-        //     title: 'Custom image',
-        //     text: 'Modal with a custom image.',
-        //     imageUrl: 'https://unsplash.it/400/200',
-        //     imageWidth: 400,
-        //     imageHeight: 200,
-        //     imageAlt: 'Custom image',
-        //     html:
-        //         '<a href="https://www.google.com/maps/dir/?api=1&destination=Floraria+Noblesse%2C+Braila">Deschide cu Google Maps</a>'
-        // })
         window.open("https://www.google.com/maps/dir/?api=1&destination=Floraria+Noblesse%2C+Braila", "_blank")
 
     }
@@ -29,41 +21,63 @@ const LocationPin = ({ text }) => {
     )
 }
 
-
-const Map = ({ location, zoomLevel }) => {
+const Map = ({ location, zoomLevel, language }) => {
     const defaultMapOptions = {
         rotateControl: false,
         disableDefaultUI: true
     };
+
     const goToLink = () => {
         window.open("https://www.google.com/maps/dir/?api=1&destination=Floraria+Noblesse%2C+Braila", "_blank")
     }
     return (
-        <div className="map">
-            <div className="google-map">
-                <GoogleMapReact
-                    bootstrapURLKeys={{ key: 'AIzaSyCysPPf0Rrw2hUmKoF20mEaPQniOTtimPI' }}
-                    defaultCenter={location}
-                    defaultZoom={zoomLevel}
-                    options={defaultMapOptions}
-                >
-                    <LocationPin
-                        lat={location.lat}
-                        lng={location.lng}
-                        text={location.address}
-                        key="key"
-                    />
-                </GoogleMapReact>
+        <div className='map-wrapper'>
 
+            <div className="map-container">
+                <div className='map-header'>
+                    <h2>{language === "RO" ? "Când și unde ne găsești" : "When and where to find us"}</h2>
+                    <div className="line"></div>
+                    <p>
+                        {language === "RO" ? "Vino să ne vizitezi magazinul pentru a găsi ceea ce ai nevoie. Te așteptăm!" : "Come visit our store to find what you need. We are waiting for you!"}
+                    </p>
+
+                    <Row className='d-flex justify-content-center align-items-center'>
+                        <Col className='col-6 d-lg-flex infobar'>
+                            <strong>
+                                {language === "RO" ? "L-V: 9:00 - 18:00" : "M-F: 9:00 - 18:00"}
+                            </strong>
+                        </Col>
+                        <Col className='col-5 d-lg-flex'>
+                            <strong>
+                                {language === "RO" ? "S: 9:00 - 14:00" : "S: 9:00 - 14:00"}
+                            </strong>
+                        </Col>
+                    </Row>
+                    <br></br>
+                </div>
+                <div className="google-map">
+                    <GoogleMapReact
+                        bootstrapURLKeys={{ key: 'AIzaSyCysPPf0Rrw2hUmKoF20mEaPQniOTtimPI' }}
+                        defaultCenter={location}
+                        defaultZoom={zoomLevel}
+                        options={defaultMapOptions}
+                    >
+                        <LocationPin
+                            lat={location.lat}
+                            lng={location.lng}
+                            text={location.address}
+                            key="key"
+                        />
+                    </GoogleMapReact>
+
+                </div>
+                <div className='d-flex justify-content-center align-items-center flex-column address-container'>
+                    <p>Brăila, Piața Dorobanți, nr. 1, bloc 20B</p>
+                    <Button className="btn btn-primary btn-green" onClick={goToLink}>
+                        {language === "RO" ? "Deschide" : "Open map"}
+                    </Button>
+                </div>
             </div>
-            <p>Brăila, Piața Dorobanți, nr. 1, bloc 20B</p>
-            <button className="btn btn-primary" onClick={goToLink}>
-                Deschide
-                {/* <svg width="16" height="16" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M25 1L11.8 14.2" stroke="#CAEC7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M25 1L16.6 25L11.8 14.2L1 9.4L25 1Z" stroke="#CAEC7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg> */}
-            </button>
         </div>
     )
 }

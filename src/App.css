@@ -1,19 +1,8 @@
-.header {
-  text-align: center;
+::-webkit-scrollbar {
+  display: none;
 }
 
-/* ::-webkit-scrollbar {
-  width: 8px;
-}
 
-::-webkit-scrollbar-track {
-  background: #F8FBEF; 
+.grecaptcha-badge { 
+  visibility: hidden;
 }
- 
-::-webkit-scrollbar-thumb {
-  background: #526336; 
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-} */

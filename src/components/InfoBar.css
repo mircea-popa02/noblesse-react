@@ -1,3 +1,5 @@
+
+
 .infobar .col {
     display: flex;
     align-items: center;
@@ -9,14 +11,11 @@
     flex-wrap: nowrap;
     justify-content: center;
     font-weight: 600;
-    margin: 0.5rem;
-    margin-top: 5vh;
+    margin-top: 0 !important;
     transition: 0.3s;
     cursor: default;
     border: 1px solid rgba(82, 99, 54, 0.25);
 }
-
-
 
 .infobar .row {
     display: flex;
@@ -43,10 +42,17 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    grid-gap: 16px;
-    padding: 0;
-    margin-top: 16px;
-    /* margin-left: 16px;
-    margin-right: 16px; */
+    grid-gap: 16px 16px !important;
+    /* padding: 0; */
+}
 
+.info-wrapper {
+    padding-top: 16px;
+    /* background-color: var(--light-green-bg); */
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.address-container {
+    padding-bottom: 16px;
 }

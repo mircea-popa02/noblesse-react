@@ -25,17 +25,12 @@ function CarouselFadeExample() {
 
 
     for (let i = 0; i < images.length; i++) {
-        // console.log(images[i]);
         let imageRef = ref(storage, images[i]);
         getMetadata(imageRef).then((metadata) => {
-            // Metadata now contains the metadata for 'images/forest.jpg'
-            // console.log(metadata);
         }
         )
 
     }
-
-
 
     const [todos, setTodos] = useState([]);
 
@@ -46,27 +41,12 @@ function CarouselFadeExample() {
                 const newData = querySnapshot.docs
                     .map((doc) => ({ ...doc.data(), id: doc.id }));
                 setTodos(newData);
-                console.log(todos, newData);
             })
-
     }
 
     useEffect(() => {
         fetchPost();
     }, [])
-
-    console.log(todos);
-
-    // // Get metadata properties
-    // getMetadata(storageRef)
-    //     .then((metadata) => {
-    //         // Metadata now contains the metadata for 'images/forest.jpg'
-    //         console.log(metadata);
-    //     })
-    //     .catch((error) => {
-    //         // Uh-oh, an error occurred!
-    //         console.log(error);
-    //     });
 
 
     return (

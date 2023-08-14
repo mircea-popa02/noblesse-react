@@ -8,19 +8,27 @@
   border: none !important;
 }
 
+.carousel-inner {
+  background-color: var(--light-green-bg) !important;
+}
+
 @media only screen and (max-width: 768px) {
   .carousel-fade .carousel-item {
-    height: 20rem;
+    height: 40vh !important;
   }
 
   .carousel-item img {
-    height: 20rem !important;
+    height: 40vh !important;
     object-fit: cover;  
-  
   }
 }
 .carousel-item p {
   text-shadow: 0 0 0.2em black;
+}
+
+.carousel-fade {
+  /* border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px; */
 }
 
 .carousel-item h3 {
@@ -31,13 +39,8 @@
   height: 45vh;
   object-fit: cover;  
   transition: 0.3s;
-}
-
-.carousel-item img:hover ,
-.carousel-item img:focus {
-  transform: scale(1.1);
-  transition: 0.3s;
-  z-index: 0;
+  /* border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px; */
 }
 
 .carousel-indicators > button {
@@ -47,9 +50,5 @@
   width: 0.5rem !important;
   height: 0.5rem !important;
   margin: 0 0.2rem !important;
-  transition: 0.3s !important;
-}
-
-.carousel-control-next span {
-
+  transition: 0.4s !important;
 }

@@ -77,8 +77,8 @@
 
 .navbar-toggler {
   display: flex;
-  align-items: baseline;
-  margin-left: 30%;
+  /* align-items: baseline; */
+  /* margin-left: 30%; */
 }
 
 .container-fluid a {
@@ -96,7 +96,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  margin-left: 2rem;
+  margin-left: 1.9rem;
 }
 
 .container-fluid h1 {
