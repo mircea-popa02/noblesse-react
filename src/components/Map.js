@@ -76,6 +76,7 @@ const Map = ({ location, zoomLevel, language }) => {
                     <Button className="btn btn-primary btn-green" onClick={goToLink}>
                         {language === "RO" ? "Deschide" : "Open map"}
                     </Button>
+                    <br></br>
                 </div>
             </div>
         </div>

@@ -24,7 +24,6 @@ function App() {
 
   useEffect(() => {
     const data = localStorage.getItem('language');
-    console.log(data);
     if (data) {
       setLanguage(data);
     }
@@ -33,7 +32,6 @@ function App() {
   const passLanguage = (language) => {
     setLanguage(language);
     localStorage.setItem('language', language);
-    console.log(language);
   }
 
   return (

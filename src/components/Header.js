@@ -7,8 +7,6 @@ import { useRef } from 'react';
 
 
 import './Header.css';
-
-// pass language to parent component
 const NavbarInstance = ({ passLanguage }) => {
     const [expanded, setExpanded] = useState(false);
     const navMenu = useRef(null)
@@ -23,17 +21,17 @@ const NavbarInstance = ({ passLanguage }) => {
 
     document.addEventListener('mousedown', closeOpenMenus)
 
-    const handleClickScroll = () => {
-        setExpanded(false)
-        const element = document.getElementById('contact-form > h2');
+    const handleClickScroll = (id) => {
+        const element = document.getElementById(id);
         if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+            setExpanded(false)
+            element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
         }
     };
 
     useEffect(() => {
         passLanguage(language);
-    }, [language]);
+    }, [language, passLanguage]);
 
     const changeLanguage = () => {
         if (language === "RO") {
@@ -43,9 +41,7 @@ const NavbarInstance = ({ passLanguage }) => {
             setLanguage("RO");
             passLanguage(language);
         }
-        
     };
-
 
     const goToLandingPage = () => {
         window.location.href = '/';
@@ -83,7 +79,7 @@ const NavbarInstance = ({ passLanguage }) => {
                         <Nav.Link onClick={() => setExpanded(false)} href="/coroane">{language === "RO" ? "Coroane" : "Wreaths"}
                         </Nav.Link>
                         <Nav.Link onClick={() => setExpanded(false)} href="/"> {language === "RO" ? "Coșuri de flori" : "Flower baskets"}</Nav.Link>
-                        <Nav.Link onClick={handleClickScroll}>Contact</Nav.Link>
+                        <Nav.Link onClick={() => handleClickScroll("contact")}>{language === "RO" ? "Contact" : "Contact"}</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Toggle style={{ color: "#fff" }} className="d-none d-lg-flex" onClick={changeLanguage}>
