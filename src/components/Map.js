@@ -31,29 +31,14 @@ const Map = ({ location, zoomLevel, language }) => {
         window.open("https://www.google.com/maps/dir/?api=1&destination=Floraria+Noblesse%2C+Braila", "_blank")
     }
     return (
-        <div className='map-wrapper'>
-
+        <div className='map-wrapper' id='map'>
             <div className="map-container">
                 <div className='map-header'>
-                    <h2>{language === "RO" ? "Când și unde ne găsești" : "When and where to find us"}</h2>
+                    <h2>{language === "RO" ? "Unde ne găsești" : "Where to find us"}</h2>
                     <div className="line"></div>
                     <p>
                         {language === "RO" ? "Vino să ne vizitezi magazinul pentru a găsi ceea ce ai nevoie. Te așteptăm!" : "Come visit our store to find what you need. We are waiting for you!"}
                     </p>
-
-                    <Row className='d-flex justify-content-center align-items-center'>
-                        <Col className='col-6 d-lg-flex infobar'>
-                            <strong>
-                                {language === "RO" ? "L-V: 9:00 - 18:00" : "M-F: 9:00 - 18:00"}
-                            </strong>
-                        </Col>
-                        <Col className='col-5 d-lg-flex'>
-                            <strong>
-                                {language === "RO" ? "S: 9:00 - 14:00" : "S: 9:00 - 14:00"}
-                            </strong>
-                        </Col>
-                    </Row>
-                    <br></br>
                 </div>
                 <div className="google-map">
                     <GoogleMapReact

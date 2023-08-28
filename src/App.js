@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Contact from './components/Contact';
 import Map from './components/Map';
 import Title from './components/Title';
+import Program from './components/Program';
 import { useRef } from "react";
 import './App.css';
 
@@ -40,10 +41,11 @@ function App() {
       <Header sticky="top" passLanguage={passLanguage} />
       <Carousel language={language} />
       <Deliveries language={language} />
-      <ScrollCards language={language} />
       <Contact language={language} />
-      <Map location={location} zoomLevel={17} language={language} />
-      <Footer />
+      <ScrollCards language={language} />
+      <Map location={location} zoomLevel={16} language={language} />
+      <Program language={language} />
+      <Footer language={language} />
     </div>
   );
 }

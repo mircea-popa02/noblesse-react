@@ -5,13 +5,14 @@ import { Col } from "react-bootstrap";
 import "./Footer.css";
 
 
-const footer = () => {
+const footer = (props) => {
+    const language = props.language;
     return (
         <div className="footer">
             <Col>
-                <a href="/despre">Despre</a>
-                <a href="/harta">Hartă</a>
-                <a href="/contact">Contact</a>
+                <a href="/">{language === "RO" ? "Despre noi" : "About us"}</a>
+                <a href="/">{language === "RO" ? "Hartă" : "Map"}</a>
+                <a href="/">{language === "RO" ? "Contact" : "Contact"}</a>
             </Col>
 
             <Col>

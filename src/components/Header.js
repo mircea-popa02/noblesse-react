@@ -50,13 +50,11 @@ const NavbarInstance = ({ passLanguage }) => {
         <Navbar expand="lg" sticky="top" style={{ padding: 0 }} className="navbar-main" expanded={expanded} ref={navMenu}>
             <Container fluid>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={() => setExpanded(expanded ? false : "expanded")}>
-
                     <svg width="24" height="24" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 10H25" stroke="#CAEC7D" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M2 2H17.4531" stroke="#CAEC7D" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M2 18H25" stroke="#CAEC7D" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-
                 </Navbar.Toggle>
                 <h1 className="header-mobile d-lg-none d-xl-none" onClick={goToLandingPage}>Noblesse</h1>
                 <Navbar.Toggle style={{ color: "#fff" }} className="d-lg-none d-xl-none" onClick={changeLanguage}>
@@ -74,12 +72,14 @@ const NavbarInstance = ({ passLanguage }) => {
                         style={{ maxHeight: '200px' }}
                         navbarScroll
                     >
-                        <Nav.Link onClick={() => setExpanded(false)} href="/">{language === "RO" ? "Buchete" : "Bouquets"}
-                        </Nav.Link>
-                        <Nav.Link onClick={() => setExpanded(false)} href="/coroane">{language === "RO" ? "Coroane" : "Wreaths"}
-                        </Nav.Link>
-                        <Nav.Link onClick={() => setExpanded(false)} href="/"> {language === "RO" ? "Coșuri de flori" : "Flower baskets"}</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(false)} href="/">{language === "RO" ? "Buchete" : "Bouquets"}</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(false)} href="/"> {language === "RO" ? "Coșuri de flori" : "Baskets"}</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(false)} href="/">{language === "RO" ? "Coroane" : "Wreaths"}</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(false)} href="/">{language === "RO" ? "Aranjamente" : "Arrangements"}</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(false)} href="/">{language === "RO" ? "Evenimente" : "Events"}</Nav.Link>
                         <Nav.Link onClick={() => handleClickScroll("contact")}>{language === "RO" ? "Contact" : "Contact"}</Nav.Link>
+                        <Nav.Link onClick={() => handleClickScroll("map")}>{language === "RO" ? "Hartă" : "Map"}</Nav.Link>
+                        <Nav.Link onClick={() => handleClickScroll("program")}>{language === "RO" ? "Program" : "Program"}</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Toggle style={{ color: "#fff" }} className="d-none d-lg-flex" onClick={changeLanguage}>

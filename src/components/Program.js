@@ -5,7 +5,7 @@ import "./Program.css";
 const Program = (props) => {
     const language = props.language;
     return (
-        <div className='map-wrapper'>
+        <div className='map-wrapper' id='program'>
             <div className='map-container'>
                 <div className='map-header'>
                     <h2>{language === "RO" ? "Program de lucru" : "Working hours"}</h2>
