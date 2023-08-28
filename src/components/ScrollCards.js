@@ -35,7 +35,7 @@ const Cards = () => {
 
 
     return (
-        <div className="scroll-wrapper">
+        <div className="scroll-wrapper d-block d-sm-none">
                 <div className="container-scroll" {...bind()}>
                     {[...map1].map(([src, val]) => (
                         <animated.div

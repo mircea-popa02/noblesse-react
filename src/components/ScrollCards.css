@@ -2,31 +2,23 @@
   display: flex;
   overflow-x: scroll;
   padding-right: 16px !important;
+  padding-left: 16px !important;
 }
 
 .scroll-wrapper {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  margin-bottom: -15rem
-  
+  margin-bottom: calc(-18rem + 8px);
 }
 
 .card-scroll {
   flex-shrink: 0;
   width: 12rem;
   height: 18rem;
-  margin: 16px;
+  margin: 8px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   box-shadow: 0 0 8px rgb(0 0 0 / 20%);
   border-radius: 8px !important;
-}
-
-.card-scroll-content h2 {
-  font-size: 24px;
-  font-family: "work sans";
-  font-weight: 500;
 }
 
 .card-scroll-content {
@@ -41,5 +33,7 @@
   justify-content: space-between;
   backdrop-filter: blur(16px);
   border-radius: 8px !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 
