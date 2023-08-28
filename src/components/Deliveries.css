@@ -8,11 +8,12 @@
   z-index: 99;
   border: 0 !important;
   padding: 16px;
-  border-radius: 0px !important;
+  border-radius: 8px !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 
 .deliveries-wrapper {
-  /* background-color: var(--light-green-bg); */
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -26,10 +27,6 @@
     border-radius: 8px !important;
   }
 }
-
-/* .container-delivery {
-  margin: 0px;
-} */
 
 .row .picture {
   padding: 0;
@@ -83,6 +80,7 @@
 .pic {
   overflow: hidden;
   width: 21.5rem !important;
+  border-radius: 8px !important;
 }
 
 .pic img {

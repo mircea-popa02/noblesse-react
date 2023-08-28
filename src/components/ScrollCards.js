@@ -9,7 +9,7 @@ import { Button } from "react-bootstrap";
 const map1 = new Map();
 map1.set("pic3.jpg", "Buchete")
 map1.set("pic2.jpg", "Aranjamente")
-map1.set("pic1.jpg", "Coșuri de flori")
+map1.set("pic1.jpg", "Coșuri")
 
 
 function clamp(scroll) {
@@ -47,7 +47,7 @@ const Cards = () => {
                             }}
                         >
                             <div className="card-scroll-content">
-                                <h2>{val}</h2>
+                                <h3>{val}</h3>
                                 <Button className="btn btn-primary btn-green">Descoperă</Button>
                             </div>
                         </animated.div>

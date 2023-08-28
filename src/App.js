@@ -36,7 +36,7 @@ function App() {
       <Carousel language={language} />
       <Deliveries language={language} />
       {/* <InfoBar language={language} /> */}
-      {/* <ScrollCards language={language} /> */}
+      <ScrollCards language={language} />
       <Contact language={language} />
       <Map location={location} zoomLevel={17} language={language} />
       <Footer />
