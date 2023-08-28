@@ -18,7 +18,6 @@ const Contact = (props) => {
     const SERVICE_ID = "service_zf4a1jv";
     const TEMPLATE_ID = "template_0yyo3hd";
     const recaptchaRef = useRef(null);
-    // make async function
 
     const printToken = () => {
         const token = recaptchaRef.current.getValue();

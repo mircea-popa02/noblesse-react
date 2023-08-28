@@ -12,7 +12,8 @@ import './Header.css';
 const NavbarInstance = ({ passLanguage }) => {
     const [expanded, setExpanded] = useState(false);
     const navMenu = useRef(null)
-    const [language, setLanguage] = React.useState("RO");
+    const languageFromStorage = localStorage.getItem('language');
+    const [language, setLanguage] = useState(languageFromStorage ? languageFromStorage : "RO");
 
     const closeOpenMenus = (e)=>{
         if(navMenu.current && expanded && !navMenu.current.contains(e.target)){

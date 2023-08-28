@@ -6,10 +6,6 @@ import "./ScrollCards.css";
 import { useScroll } from '@use-gesture/react'
 import { Button } from "react-bootstrap";
 
-const map1 = new Map();
-map1.set("pic3.jpg", "Buchete")
-map1.set("pic2.jpg", "Aranjamente")
-map1.set("pic1.jpg", "Coșuri")
 
 
 function clamp(scroll) {
@@ -22,7 +18,14 @@ function clamp(scroll) {
     return scroll;
 }
 
-const Cards = () => {
+const Cards = (props) => {
+    const language = props.language;
+
+    const cardContent = new Map();
+
+    language === "RO" ? cardContent.set("pic3.jpg", "Buchete") : cardContent.set("pic3.jpg", "Bouquets");
+    language === "RO" ? cardContent.set("pic2.jpg", "Aranjamente") : cardContent.set("pic2.jpg", "Arrangements");
+    language === "RO" ? cardContent.set("pic1.jpg", "Coșuri") : cardContent.set("pic1.jpg", "Baskets");
     const [style, set] = useSpring(() => ({
         transform: "perspective(500px) rotateY(0deg)"
     }));
@@ -37,7 +40,7 @@ const Cards = () => {
     return (
         <div className="scroll-wrapper d-block d-sm-none">
                 <div className="container-scroll" {...bind()}>
-                    {[...map1].map(([src, val]) => (
+                    {[...cardContent].map(([src, val]) => (
                         <animated.div
                             key={src}
                             className="card-scroll"
@@ -48,7 +51,7 @@ const Cards = () => {
                         >
                             <div className="card-scroll-content">
                                 <h3>{val}</h3>
-                                <Button className="btn btn-primary btn-green">Descoperă</Button>
+                                <Button className="btn btn-primary btn-green">{language === "RO" ? "Descoperă" : "Discover"}</Button>
                             </div>
                         </animated.div>
                     ))}
