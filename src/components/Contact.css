@@ -54,76 +54,77 @@ form {
     margin-bottom: 8px !important;
 }
 
-
 .svg-container {
-  width: 100%;
-  overflow-x: hidden
+    width: 100%;
+    overflow-x: hidden;
 }
 
-
 .animated-path:nth-child(1) {
-  animation: moveLeftRight-1 11s ease-in-out infinite;
+    animation: moveLeftRight-1 11s ease-in-out infinite;
 }
 
 .animated-path:nth-child(2) {
-  animation: moveLeftRight-2 12s ease-in-out infinite;
+    animation: moveLeftRight-2 12s ease-in-out infinite;
 }
 
 .animated-path:nth-child(3) {
-  animation: moveLeftRight-3 13s ease-in-out infinite;
+    animation: moveLeftRight-3 13s ease-in-out infinite;
 }
 
 .animated-path:nth-child(4) {
-  animation: moveLeftRight-4 14s ease-in-out infinite;
+    animation: moveLeftRight-4 14s ease-in-out infinite;
 }
 
 .animated-path:nth-child(5) {
-  animation: moveLeftRight-5 15s ease-in-out infinite;
+    animation: moveLeftRight-5 15s ease-in-out infinite;
 }
 
-
-
 @keyframes moveLeftRight-1 {
-  0%, 100% {
-    transform: translateX(-50%);
-  }
-  50% {
-    transform: translateX(0%);
-  }
+    0%,
+    100% {
+        transform: translateX(-50%);
+    }
+    50% {
+        transform: translateX(0%);
+    }
 }
 
 @keyframes moveLeftRight-2 {
-  0%, 100% {
-    transform: translateX(-45%);
-  }
-  50% {
-    transform: translateX(0%);
-  }
+    0%,
+    100% {
+        transform: translateX(-45%);
+    }
+    50% {
+        transform: translateX(0%);
+    }
 }
 
 @keyframes moveLeftRight-3 {
-  0%, 100% {
-    transform: translateX(-40%);
-  }
-  50% {
-    transform: translateX(0%);
-  }
+    0%,
+    100% {
+        transform: translateX(-40%);
+    }
+    50% {
+        transform: translateX(0%);
+    }
 }
 
 @keyframes moveLeftRight-4 {
-  0%, 100% {
-    transform: translateX(-35%);
-  }
-  50% {
-    transform: translateX(0%);
-  }
+    0%,
+    100% {
+        transform: translateX(-35%);
+    }
+    50% {
+        transform: translateX(0%);
+    }
 }
 
 @keyframes moveLeftRight-5 {
-  0%, 100% {
-    transform: translateX(-30%);
-  }
-  50% {
-    transform: translateX(0%);
-  }
+    0%,
+    100% {
+        transform: translateX(-30%);
+    }
+    50% {
+        transform: translateX(0%);
+    }
 }

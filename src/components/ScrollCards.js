@@ -23,9 +23,9 @@ const Cards = (props) => {
 
     const cardContent = new Map();
 
-    language === "RO" ? cardContent.set("pic3.jpg", "Buchete") : cardContent.set("pic3.jpg", "Bouquets");
+    language === "RO" ? cardContent.set("pic1.jpg", "Buchete") : cardContent.set("pic1.jpg", "Bouquets");
     language === "RO" ? cardContent.set("pic2.jpg", "Aranjamente") : cardContent.set("pic2.jpg", "Arrangements");
-    language === "RO" ? cardContent.set("pic1.jpg", "Coșuri") : cardContent.set("pic1.jpg", "Baskets");
+    language === "RO" ? cardContent.set("pic3.jpg", "Coșuri") : cardContent.set("pic3.jpg", "Baskets");
     const [style, set] = useSpring(() => ({
         transform: "perspective(500px) rotateY(0deg)"
     }));

@@ -19,6 +19,7 @@
 .map-wrapper {
     /* padding-top: 2rem; */
     padding-bottom: 2rem;
+    /* background-color: var(--light-green-bg); */
 }
 
 svg {
