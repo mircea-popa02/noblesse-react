@@ -41,10 +41,10 @@ function App() {
       <Header sticky="top" passLanguage={passLanguage} />
       <Carousel language={language} />
       <Deliveries language={language} />
-      <Contact language={language} />
       <ScrollCards language={language} />
-      <Map location={location} zoomLevel={16} language={language} />
       <Program language={language} />
+      <Map location={location} zoomLevel={16} language={language} />
+      <Contact language={language} />
       <Footer language={language} />
     </div>
   );

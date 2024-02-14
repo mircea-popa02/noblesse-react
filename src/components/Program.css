@@ -1,16 +1,3 @@
-.program-container {
-    margin-top: 2rem;
-    background-color: white;
-    width: 40rem;
-    margin: auto;
-    transition: 0.4s;
-    /* padding-top: 0px !important; */
-    color: var(--dark-green);
-    border-radius: 8px;
-    border: 1px solid rgba(34, 36, 38, 0.15);
-}
-
 .program-wrapper {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
 }

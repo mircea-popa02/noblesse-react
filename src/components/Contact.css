@@ -1,130 +1,148 @@
 .contact {
-    color: var(--dark-green);
-    border: 1px solid rgba(34, 36, 38, 0.15);
-    padding: 16px !important;
-    width: 40rem !important;
-    transition: 0.4s;
-    background-color: white;
-    border-radius: 8px;
+  color: var(--dark-green);
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  padding: 24px !important;
+  width: 51.5rem !important;
+  transition: 0.4s;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0px 0px 18px rgba(44, 47, 37, 0.136);
 }
 
 .contact-wrapper {
-    background-color: var(--light-green-bg);
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+  background-color: var(--light-green-bg);
+  padding-bottom: 2rem;
+  padding-top: 2rem;
 }
 
 @media (max-width: 768px) {
-    .contact {
-        width: 85vw !important;
-        padding: 16px !important;
-        padding-bottom: 0;
-    }
+  .contact {
+    width: 85vw !important;
+    padding: 24px !important;
+    padding-bottom: 0;
+  }
 }
 
 .required.field label {
-    font-weight: 300 !important;
-    color: #526336 !important;
+  font-weight: 300 !important;
+  color: #526336 !important;
 }
 
 .ui.left.icon.input i {
-    color: #526336 !important;
+  color: #526336 !important;
 }
 
 .line {
-    width: 8rem !important;
-    border-bottom: 4px solid #caec7d !important;
-    margin-bottom: 24px !important;
-    border-radius: 32px !important;
+  width: 8rem !important;
+  border-bottom: 4px solid #caec7d !important;
+  margin-bottom: 24px !important;
+  border-radius: 32px !important;
+}
+
+.recaptcha-terms {
+  font-size: 14px !important;
+}
+
+.recaptcha-terms * {
+  font-size: 14px !important;
 }
 
 .contact h2 {
-    font-size: 28px;
-    font-weight: 500;
-    padding-bottom: 0;
-    margin-bottom: 8px;
+  font-weight: 500;
+  padding-bottom: 0;
+  margin-bottom: 8px;
 }
 
 form {
-    align-items: stretch;
-    flex-direction: column;
+  align-items: stretch;
+  flex-direction: column;
 }
 
 .contact p {
-    margin-bottom: 8px !important;
+  margin-bottom: 8px !important;
 }
 
 .svg-container {
-    width: 100%;
-    overflow-x: hidden;
+  overflow-x: hidden !important;
+}
+
+.svg-container svg {
+  width: 200vw;
+  height: 400px;
+}
+
+@media (max-width: 768px) {
+  .svg-container svg {
+    height: 200px;
+  }
 }
 
 .animated-path:nth-child(1) {
-    animation: moveLeftRight-1 11s ease-in-out infinite;
+  animation: moveLeftRight-1 11s ease-in-out infinite;
 }
 
 .animated-path:nth-child(2) {
-    animation: moveLeftRight-2 12s ease-in-out infinite;
+  animation: moveLeftRight-2 12s ease-in-out infinite;
 }
 
 .animated-path:nth-child(3) {
-    animation: moveLeftRight-3 13s ease-in-out infinite;
+  animation: moveLeftRight-3 13s ease-in-out infinite;
 }
 
 .animated-path:nth-child(4) {
-    animation: moveLeftRight-4 14s ease-in-out infinite;
+  animation: moveLeftRight-4 14s ease-in-out infinite;
 }
 
 .animated-path:nth-child(5) {
-    animation: moveLeftRight-5 15s ease-in-out infinite;
+  animation: moveLeftRight-5 15s ease-in-out infinite;
 }
 
 @keyframes moveLeftRight-1 {
-    0%,
-    100% {
-        transform: translateX(-50%);
-    }
-    50% {
-        transform: translateX(0%);
-    }
+  0%,
+  100% {
+    transform: translateX(-50%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
 }
 
 @keyframes moveLeftRight-2 {
-    0%,
-    100% {
-        transform: translateX(-45%);
-    }
-    50% {
-        transform: translateX(0%);
-    }
+  0%,
+  100% {
+    transform: translateX(-45%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
 }
 
 @keyframes moveLeftRight-3 {
-    0%,
-    100% {
-        transform: translateX(-40%);
-    }
-    50% {
-        transform: translateX(0%);
-    }
+  0%,
+  100% {
+    transform: translateX(-40%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
 }
 
 @keyframes moveLeftRight-4 {
-    0%,
-    100% {
-        transform: translateX(-35%);
-    }
-    50% {
-        transform: translateX(0%);
-    }
+  0%,
+  100% {
+    transform: translateX(-35%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
 }
 
 @keyframes moveLeftRight-5 {
-    0%,
-    100% {
-        transform: translateX(-30%);
-    }
-    50% {
-        transform: translateX(0%);
-    }
+  0%,
+  100% {
+    transform: translateX(-30%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
 }

@@ -1,5 +1,5 @@
 .carousel-fade .carousel-item {
-  height: 45vh;
+  height: 40vh;
 }
 
 .carousel-item .carousel-fade{
@@ -26,17 +26,13 @@
   text-shadow: 0 0 0.2em black;
 }
 
-.carousel-fade {
-  /* border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px; */
-}
 
 .carousel-item h3 {
   text-shadow: 0 0 0.1em black;
 }
 
 .carousel-item img {
-  height: 45vh;
+  height: 40vh;
   object-fit: cover;  
   transition: 0.3s;
   /* border-bottom-left-radius: 8px;

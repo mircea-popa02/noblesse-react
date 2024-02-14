@@ -1,21 +1,22 @@
 .card {
   color: #fff;
-  width: 20rem;
+  width: 22rem;
   -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   background: var(--dark-green) !important;
   backdrop-filter: blur(20px);
   z-index: 99;
   border: 0 !important;
-  padding: 16px;
-  border-radius: 8px !important;
+  padding: 24px;
+  border-radius: 16px !important;
   border-bottom-right-radius: 0 !important;
   border-top-right-radius: 0 !important;
+  box-shadow: 0px 0px 18px rgba(44, 47, 37, 0.136);
 }
 
 .deliveries-wrapper {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 3rem;
+  /* padding-bottom: 2rem; */
 }
 
 @media screen and (max-width: 768px) {
@@ -24,7 +25,7 @@
   }
 
   .card {
-    border-radius: 8px !important;
+    border-radius: 16px !important;
   }
 }
 
@@ -47,7 +48,6 @@
 }
 
 .card h2 {
-  font-size: 28px;
   font-family: "work sans";
   font-weight: 500;
 }
@@ -61,26 +61,29 @@
   background: var(--light-green) !important;
   border: 0px !important;
   border-radius: 32px !important;
-  padding: 4px !important;
+  padding: 6px !important;
   transition: 0.4s;
-  width: 6rem !important;
+  max-width: 8rem !important;
   color: var(--dark-green) !important;
+  font-size: 16px !important;
 }
 
 .btn-dark-green {
   background: var(--dark-green) !important;
   border: 0px !important;
   border-radius: 32px !important;
-  padding: 4px !important;
+  padding: 6px !important;
   transition: 0.4s;
-  width: 6rem !important;
-  color: var(--light-green) !important;
+  max-width: 8rem !important;
+  color: var(--dark-green) !important;
+  font-size: 16px !important;
 }
 
 .pic {
   overflow: hidden;
-  width: 21.5rem !important;
-  border-radius: 8px !important;
+  width: 22rem !important;
+  border-radius: 16px !important;
+  box-shadow: 0px 0px 18px rgba(44, 47, 37, 0.136);
 }
 
 .pic img {

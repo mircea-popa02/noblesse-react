@@ -4,9 +4,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import { useState } from 'react';
 import { useRef } from 'react';
-
-
 import './Header.css';
+
 const NavbarInstance = ({ passLanguage }) => {
     const [expanded, setExpanded] = useState(false);
     const navMenu = useRef(null)
@@ -25,7 +24,7 @@ const NavbarInstance = ({ passLanguage }) => {
         const element = document.getElementById(id);
         if (element) {
             setExpanded(false)
-            element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+            element.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
         }
     };
 
@@ -72,14 +71,10 @@ const NavbarInstance = ({ passLanguage }) => {
                         style={{ maxHeight: '200px' }}
                         navbarScroll
                     >
-                        <Nav.Link onClick={() => setExpanded(false)} href="/">{language === "RO" ? "Buchete" : "Bouquets"}</Nav.Link>
-                        <Nav.Link onClick={() => setExpanded(false)} href="/"> {language === "RO" ? "Coșuri de flori" : "Baskets"}</Nav.Link>
-                        <Nav.Link onClick={() => setExpanded(false)} href="/">{language === "RO" ? "Coroane" : "Wreaths"}</Nav.Link>
-                        <Nav.Link onClick={() => setExpanded(false)} href="/">{language === "RO" ? "Aranjamente" : "Arrangements"}</Nav.Link>
-                        <Nav.Link onClick={() => setExpanded(false)} href="/">{language === "RO" ? "Evenimente" : "Events"}</Nav.Link>
-                        <Nav.Link onClick={() => handleClickScroll("contact")}>{language === "RO" ? "Contact" : "Contact"}</Nav.Link>
-                        <Nav.Link onClick={() => handleClickScroll("map")}>{language === "RO" ? "Hartă" : "Map"}</Nav.Link>
+                        <Nav.Link onClick={() => setExpanded(false)} href="/gallery">{language === "RO" ? "Galerie" : "Gallery"}</Nav.Link>
                         <Nav.Link onClick={() => handleClickScroll("program")}>{language === "RO" ? "Program" : "Program"}</Nav.Link>
+                        <Nav.Link onClick={() => handleClickScroll("map")}>{language === "RO" ? "Hartă" : "Map"}</Nav.Link>
+                        <Nav.Link onClick={() => handleClickScroll("contact")}>{language === "RO" ? "Contact" : "Contact"}</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Toggle style={{ color: "#fff" }} className="d-none d-lg-flex" onClick={changeLanguage}>

@@ -60,7 +60,7 @@ const Contact = (props) => {
     return (
         <>
             <div className="svg-container d-block d-sm-none">
-                <svg id="visual" viewBox="0 115 4000 850" width="300%" xmlns="http://www.w3.org/2000/svg" version="1.1" className="waves">
+                <svg id="visual" viewBox="0 115 4000 850" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="none" className="waves">
                     <path className="animated-path" d="M0 199L111.2 183.5C222.3 168 444.7 137 666.8 123.5C889 110 1111 114 1333.2 134.8C1555.3 155.7 1777.7 193.3 2000 219.8C2222.3 246.3 2444.7 261.7 2666.8 256.3C2889 251 3111 225 3333.2 206.3C3555.3 187.7 3777.7 176.3 3888.8 170.7L4000 165L4000 1001L3888.8 1001C3777.7 1001 3555.3 1001 3333.2 1001C3111 1001 2889 1001 2666.8 1001C2444.7 1001 2222.3 1001 2000 1001C1777.7 1001 1555.3 1001 1333.2 1001C1111 1001 889 1001 666.8 1001C444.7 1001 222.3 1001 111.2 1001L0 1001Z" fill="#526336"></path>
                     <path className="animated-path" d="M0 406L111.2 409.7C222.3 413.3 444.7 420.7 666.8 404.2C889 387.7 1111 347.3 1333.2 346.7C1555.3 346 1777.7 385 2000 387.2C2222.3 389.3 2444.7 354.7 2666.8 335.7C2889 316.7 3111 313.3 3333.2 328.3C3555.3 343.3 3777.7 376.7 3888.8 393.3L4000 410L4000 1001L3888.8 1001C3777.7 1001 3555.3 1001 3333.2 1001C3111 1001 2889 1001 2666.8 1001C2444.7 1001 2222.3 1001 2000 1001C1777.7 1001 1555.3 1001 1333.2 1001C1111 1001 889 1001 666.8 1001C444.7 1001 222.3 1001 111.2 1001L0 1001Z" fill="#7a8760"></path>
                     <path className="animated-path" d="M0 447L111.2 462.3C222.3 477.7 444.7 508.3 666.8 529.2C889 550 1111 561 1333.2 545.3C1555.3 529.7 1777.7 487.3 2000 476.5C2222.3 465.7 2444.7 486.3 2666.8 505.8C2889 525.3 3111 543.7 3333.2 559C3555.3 574.3 3777.7 586.7 3888.8 592.8L4000 599L4000 1001L3888.8 1001C3777.7 1001 3555.3 1001 3333.2 1001C3111 1001 2889 1001 2666.8 1001C2444.7 1001 2222.3 1001 2000 1001C1777.7 1001 1555.3 1001 1333.2 1001C1111 1001 889 1001 666.8 1001C444.7 1001 222.3 1001 111.2 1001L0 1001Z" fill="#a3ac8d"></path>
@@ -102,8 +102,9 @@ const Contact = (props) => {
                             hl="ro"
                             onChange={printToken}
                         >
-                            <small>This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-                            </small>
+                            <p className="recaptcha-terms">
+                            This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                            </p>
                         </ReCAPTCHA>
                         <br />
                         <Button className="btn-green" type='submit'>
