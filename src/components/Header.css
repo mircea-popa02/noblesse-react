@@ -10,10 +10,9 @@
 .navbar-light .navbar-nav .nav-link {
   color: white;
   transition: 0.3s;
-  font-family: "Work sans";
+  /* font-family: "Work sans"; */
   font-weight: 400;
   font-size: 24px;
-  /* padding: 0.5rem 1.5rem; */
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
@@ -69,6 +68,7 @@
 .header-mobile {
   color: #ffffff;
   cursor: pointer;
+  font-size: 32px;
 }
 
 .navbar-toggler {
@@ -93,9 +93,5 @@
 
 .container-fluid h1 {
   margin: 0;
-  /* font-weight: 700; */
-  font-weight: 700;
-  /* font-size: 34px; */
-
-  font-family: "Oswald", sans-serif;
+  font-weight: 600;
 }

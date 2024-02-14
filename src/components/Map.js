@@ -58,7 +58,7 @@ const Map = ({ location, zoomLevel, language }) => {
                 </div>
                 <div className='d-flex justify-content-center align-items-center flex-column address-container'>
                     <p>Brăila, Piața Dorobanți, nr. 1, bloc 20B</p>
-                    <Button className="btn btn-primary btn-green" onClick={goToLink}>
+                    <Button className="btn-green" onClick={goToLink}>
                         {language === "RO" ? "Deschide" : "Open map"}
                     </Button>
                     <br></br>

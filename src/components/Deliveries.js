@@ -10,9 +10,9 @@ const deliveries = (props) => {
         <div className='deliveries-wrapper'>
             <Col className='deliveries'>
                 <div className='card'>
-                    <h2>
+                    <h1>
                         {language === "RO" ? "Livrări de flori" : "Flower deliveries"}
-                    </h2>
+                    </h1>
                     <p>
                         Brăila
                         <svg width="24" height="24" viewBox="0 0 29 35" fill="none" xmlns="http://www.w3.org/2000/svg">
