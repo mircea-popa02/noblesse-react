@@ -1,11 +1,7 @@
 .card {
   color: #fff;
   width: 22rem;
-  -webkit-backdrop-filter: blur(20px) !important;
-  backdrop-filter: blur(20px) !important;
   background: var(--dark-green) !important;
-  backdrop-filter: blur(20px);
-  z-index: 99;
   border: 0 !important;
   padding: 24px;
   border-radius: 16px !important;
@@ -15,8 +11,7 @@
 }
 
 .deliveries-wrapper {
-  padding-top: 2rem;
-  /* padding-bottom: 2rem; */
+  padding-top: 4rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -85,7 +80,7 @@
 
 .pic {
   overflow: hidden;
-  width: 22rem !important;
+  width: 28rem !important;
   border-radius: 16px !important;
   box-shadow: 0px 0px 18px rgba(44, 47, 37, 0.136);
 }
@@ -94,7 +89,7 @@
   object-fit: cover;
   margin: auto;
   transition: 0.4s;
-  height: 16rem;
+  height: 20rem;
   transform: scale(1.1);
 }
 

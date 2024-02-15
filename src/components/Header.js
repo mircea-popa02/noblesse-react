@@ -21,6 +21,10 @@ const NavbarInstance = ({ passLanguage }) => {
     document.addEventListener('mousedown', closeOpenMenus)
 
     const handleClickScroll = (id) => {
+        if (window.location.pathname !== '/') {
+            // go to /{id}
+            window.location.href = `/${id}`;
+        }
         const element = document.getElementById(id);
         if (element) {
             setExpanded(false)

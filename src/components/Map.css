@@ -45,7 +45,6 @@ svg {
     width: 128px;
     cursor: pointer;
     color: var(--dark-green);
-    /* font-size: 16px; */
     background-color: white;
     padding: 8px;
     border-radius: 16px;
@@ -68,6 +67,11 @@ svg {
     border-radius: 16px;
     border: 1px solid rgba(34, 36, 38, 0.15);
     box-shadow: 0px 0px 18px rgba(44, 47, 37, 0.136);
+}
+
+.map-container h1 {
+    font-size: 28px;
+    font-weight: 500;
 }
 
 .map-header {

@@ -1,10 +1,7 @@
 import React from "react";
 import { animated, useSpring } from "react-spring";
-
 import "./ScrollCards.css";
-
 import { useScroll } from "@use-gesture/react";
-import { Button } from "react-bootstrap";
 
 function clamp(scroll) {
   if (scroll > 40) {
@@ -48,6 +45,12 @@ const Cards = (props) => {
 
   return (
     <>
+      <div className="scroll-header d-flex flex-column align-items-center">
+        <h1 className="scroll-title">
+          {language === "RO" ? "Galerie" : "Gallery"}
+        </h1>
+        <div className="line"></div>
+      </div>
       <div className="d-block d-flex justify-content-center">
         <div className="container-scroll" {...bind()}>
           {[...cardContent].map(([src, val]) => (
@@ -57,6 +60,10 @@ const Cards = (props) => {
               style={{
                 ...style,
                 backgroundImage: `url(${src})`,
+              }}
+              onClick={() => {
+                localStorage.setItem("filters", val);
+                window.location.href = "/gallery";
               }}
             >
               <div className="card-scroll-content d-flex align-items-center justify-content-center">
