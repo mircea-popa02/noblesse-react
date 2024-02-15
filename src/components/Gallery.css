@@ -2,83 +2,7 @@
   margin-top: 5vh !important;
   margin-bottom: 5vh !important;
 }
-.gallery {
-  margin: auto;
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, 16rem) !important;
-  grid-gap: 8px !important;
-  justify-items: center !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 !important;
-}
 
-@media (max-width: 768px) {
-  .container-gallery {
-    padding: 32px !important;
-  }
-
-  .gallery {
-    grid-template-columns: repeat(auto-fill, 45vw) !important;
-    position: relative;
-  }
-
-  .gallery img {
-    /* position: relative; */
-    width: 45vw !important;
-  }
-}
-
-.gallery img {
-  width: 16rem;
-  flex: 1;
-  position: relative;
-  /* min-height: 10rem;
-  max-height: 16rem !important; */
-  height: calc(100% - 256px);
-  object-fit: cover;
-  /* border-radius: 8px; */
-  /* lower brightness */
-  filter: brightness(1);
-  transition: 0.3s;
-  /* margin-bottom: 4px; */
-}
-
-.gallery img:hover {
-  /* move y */
-  filter: brightness(1.1);
-  transition: 0.3s;
-  /* click cursor */
-  cursor: pointer;
-}
-
-.mini-container {
-  flex-wrap: wrap;
-}
-
-.mini-container span {
-  /* font-size: 12px; */
-  margin: 4px;
-  margin-left: 0;
-  margin-bottom: 0;
-  background-color: #F8FBEF;
-  border-radius: 32px;
-  padding: 2px;
-  padding-left: 4px;
-  padding-right: 4px;
-  color: #81994C;
-  border: 1px solid #81994C;
-}
-
-/* .gallery button {
-  margin-top: 0px !important;
-  margin-bottom: 0 !important;
-  font-size: small !important;
-  margin-bottom: 8px !important;
-  margin-top: 8px !important;
-} */
-
- 
 
 .gallery-item {
   background-color: white;
@@ -93,31 +17,8 @@
   align-items: center;
 }
 
-.gallery-item h6 {
-  margin: 0;
-  margin-bottom: 8px;
-  /* color: #81994C; */
-  /* font-size: large; */
-}
-
-.gallery div:empty {
-  display: none;
-}
-
-.gallery-item-info {
-  padding: 24px;
-  /* width: 12rem  !important; */
-}
-
-.loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
+.product-image {
   width: 100%;
-  height: 100%;
-  background-color: white;
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 20rem;
+  object-fit: cover;
 }

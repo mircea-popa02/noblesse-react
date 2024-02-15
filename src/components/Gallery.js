@@ -1,140 +1,86 @@
 import React from "react";
-import Footer from './Footer';
-import Header from './Header';
-import Title from './Title';
-import Swal from 'sweetalert2';
-import { Container } from "react-bootstrap";
-import { storage } from '../firebase';
-import { ref } from "firebase/storage";
-import { useEffect, useState } from 'react';
-import { listAll, getDownloadURL } from 'firebase/storage';
-import { getMetadata } from "firebase/storage";
+import Footer from "./Footer";
+import Header from "./Header";
+import Title from "./Title";
+import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from '../firebase';
-import { Button } from "react-bootstrap";
+import { db } from "../firebase";
 import "./Gallery.css";
 
-// render footer after Items is loaded
-let isLoaded = false;
-
-// const Items = () => {
-//     const [itemInfo, setItemInfo] = useState([]);
-
-//     const fetchPost = async () => {
-//         await getDocs(collection(db, "wreaths"))
-//             .then((querySnapshot) => {
-//                 const newData = querySnapshot.docs
-//                     .map((doc) => ({ ...doc.data(), id: doc.id }));
-//                 setItemInfo(newData);
-//             })
-//     }
-
-//     useEffect(() => {
-//         fetchPost();
-//     }, [])
-
-//     const [images, setImages] = useState([]);
-//     const storageRef = ref(storage, "wreaths/");
-//     const [metaDatas, setMetaDatas] = useState([]);
-
-//     useEffect(() => {
-//         listAll(storageRef).then(async function (result) {
-//             result.items.forEach(async function (imageRef) {
-
-//                 let [metaPoint, img] = await Promise.all([getMetadata(imageRef), getDownloadURL(imageRef)])
-//                 setMetaDatas((metaDatas) => [...metaDatas, metaPoint.name]);
-//                 setImages((images) => [...images, img]);
-
-//             });
-//         }).catch(function (error) {
-//             // Uh-oh, an error occurred!
-//         });
-//     }, []);
-
-//     const openModal = (numberOfImag) => {
-//         Swal.fire({
-//             title: numberOfImag,
-//             text: numberOfImag,
-//             // imageUrl: numberOfImag,
-//             // imageWidth: 400,
-//             imageHeight: 300,
-//             showCloseButton: true,
-//             showCancelButton: false,
-//             showConfirmButton: false,
-//             imageAlt: 'Descriere coroană',
-//             html:
-//                 '<a href="https://www.google.com/maps/dir/?api=1&destination=Floraria+Noblesse%2C+Braila">Comandă online</a>'
-//         })
-//     }
-
-
-//     if (itemInfo[0] !== undefined && images.length === metaDatas.length && images.length !== 0) {
-//         isLoaded = true;
-//         return (
-//             <>
-//                 <div className="gallery">
-//                     {images.map((image, index) => {
-//                         return (
-//                             <div className="gallery-item">
-//                                 <img src={image} alt="coroana" />
-
-//                                 {itemInfo[0].descriptions.map((description) => {
-//                                     return (
-//                                         <>
-//                                             {metaDatas[index] === description.title &&
-//                                                 <>
-//                                                     <div className="gallery-item-info">
-//                                                         <div className="d-flex mini-container">
-//                                                             <h6>{description.name}</h6>
-//                                                             {description.desc.map((desc) => {
-//                                                                 return (
-//                                                                     <span>{desc}</span>
-//                                                                 )
-//                                                             }
-//                                                             )}
-//                                                         </div>
-//                                                     </div>
-//                                                     <a href={description.link}>
-//                                                         <Button className="btn btn-primary btn-green">Comandă</Button>
-//                                                     </a>
-//                                                 </>
-//                                             }
-//                                         </>
-//                                     )
-//                                 })}
-
-//                             </div>
-//                         )
-//                     })
-//                     }
-//                 </div >
-//             </>
-//         )
-//     } else {
-//         return (
-//             <div className="loading-screen">
-//                 <p>Loading...</p>
-//             </div>
-//         )
-//     }
-// }
-
 const Gallery = () => {
+  const [language, setLanguage] = useState("");
+  const [itemInfo, setItemInfo] = useState([]);
+  // type will be bouquets or baskets
+  const [type, setType] = useState("");
+  const [filteredItems, setFilteredItems] = useState([]);
 
-    return (
+  const fetchPost = async () => {
+    await getDocs(collection(db, "flowers")).then((querySnapshot) => {
+      const newData = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setItemInfo(newData);
+      console.log(newData);
+    });
+  };
 
-        <div>
+  useEffect(() => {
+    fetchPost();
+    const data = localStorage.getItem("language");
+    if (data) {
+      setLanguage(data);
+    }
+  }, []);
 
-            {/* <Container className="gallery-container">
-                <h2>Coroane funerare</h2>
-                <div className="line"></div>
-                <p>
-                    Coroanele funerare sunt o modalitate de a exprima respectul și recunoștința față de persoana decedată. Acestea sunt realizate din flori naturale dar și din flori artificiale, în funcție de preferințele dumneavoastră.
-                </p>
-                <Items></Items>
-            </Container> */}
-        </div>
-    );
-}
+  const changeType = (type) => {
+    setType(type);
+    const filtered = itemInfo.filter((item) => item.id === type);
+    setFilteredItems(Object.values(filtered[0])[0]);
+		console.log(filteredItems);
+  };
 
-export default Gallery;  
+  const passLanguage = (language) => {
+    setLanguage(language);
+    localStorage.setItem("language", language);
+  };
+  return (
+    <div>
+      <Title></Title>
+      <Header sticky="top" passLanguage={passLanguage} />
+
+      <button className="btn-dark-green" onClick={() => changeType("bouquets")}>
+        {language === "RO" ? "Buchete" : "Bouquets"}
+      </button>
+      <button className="btn-dark-green" onClick={() => changeType("baskets")}>
+        {language === "RO" ? "Coșuri" : "Baskets"}
+      </button>
+
+      <div className="gallery-container">
+        {type !== "" && (
+          <>
+            <h2>{type === "bouquets" ? "Buchete" : "Coșuri"}</h2>
+            {/* each filteredItems object has a image link, title string and description array */}
+						{filteredItems.map((item, index) => {
+							return (
+								<div key={index} className="gallery-item">
+									<img className="product-image" src={item.link} alt={item.title} />
+									<h3>{item.title}</h3>
+									<ul>
+										{item.description.map((desc, index) => {
+											return <li key={index}>{desc}</li>;
+										})}
+									</ul>
+								</div>
+							);
+						})}
+          </>
+        )}
+      </div>
+
+      <Footer language={language} />
+    </div>
+  );
+};
+
+export default Gallery;
