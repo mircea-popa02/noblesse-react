@@ -1,8 +1,7 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
 import './Map.css'
-import { Button, Col } from "react-bootstrap";
-import { Row } from 'react-bootstrap';
+import { Button } from "react-bootstrap";
 
 
 const LocationPin = ({ text }) => {

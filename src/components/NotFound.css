@@ -1,0 +1,23 @@
+.not-found-container {
+    position: relative;
+    background-color: rgb(254, 254, 254);
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+    max-width: 28rem;
+    margin: auto;
+    color: var(--dark-green);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(34, 36, 38, 0.15);
+    box-shadow: 0px 0px 18px rgba(44, 47, 37, 0.136);
+    overflow: hidden;
+}
+
+.flower {
+    position: relative;
+    bottom: -24px;
+    right: -180px;
+    width: 200px;
+    transform: scaleX(-1);
+    filter: brightness(1.1);
+}

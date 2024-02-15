@@ -65,6 +65,7 @@
   padding: 8px !important;
   transition: 0.4s;
   max-width: 8rem !important;
+  min-width: 6rem !important;
   color: var(--dark-green) !important;
   font-size: 16px !important;
 }
@@ -76,8 +77,10 @@
   padding: 8px !important;
   transition: 0.4s;
   max-width: 8rem !important;
+  min-width: 6rem !important;
   color: var(--dark-green) !important;
   font-size: 16px !important;
+  color: var(--light-green) !important;
 }
 
 .pic {
