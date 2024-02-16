@@ -52,7 +52,7 @@ function CarouselFadeExample(props) {
               <div className="carousel-text">
                 <h1>{language === "RO" ? item.title.ro : item.title.en}</h1>
                 <p>{language === "RO" ? item.subtitle.ro : item.subtitle.en}</p>
-                <button className="btn-green">
+                <button className="btn-dark-green">
                   {language === "RO" ? "Detalii" : "Details"}
                 </button>
               </div>

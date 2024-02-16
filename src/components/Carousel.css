@@ -33,10 +33,8 @@ video::-webkit-media-controls-enclosure {
 
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
-  opacity: 1 !important;
-  border-radius: 16px !important;
-  width: 48px !important;
-  height: 48px !important;
+  width: 36px !important;
+  height: 36px !important;
 }
 
 .carousel-item img {
@@ -59,5 +57,10 @@ video::-webkit-media-controls-enclosure {
   text-shadow: 0 0 4rem black !important;
   margin: 0 auto;
   padding: 24px;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.491), transparent);
+  background: rgba(255, 255, 255, 0);
+  box-shadow: 0px 0px 18px rgba(44, 47, 37, 0.136);
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+  text-shadow: 0 0 4rem black;
+  max-width: fit-content;
 }
