@@ -57,10 +57,10 @@ video::-webkit-media-controls-enclosure {
   text-shadow: 0 0 4rem black !important;
   margin: 0 auto;
   padding: 24px;
-  background: rgba(255, 255, 255, 0);
+  background: rgba(0, 0, 0, 0.15);
   box-shadow: 0px 0px 18px rgba(44, 47, 37, 0.136);
   border-radius: 16px;
-  backdrop-filter: blur(32px);
+  backdrop-filter: blur(4px);
   text-shadow: 0 0 4rem black;
   max-width: fit-content;
 }
