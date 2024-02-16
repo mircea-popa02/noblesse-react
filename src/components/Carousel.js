@@ -38,12 +38,14 @@ function CarouselFadeExample(props) {
             ) : (
               <video
                 className="d-block w-100"
-                src={item.link}
                 alt={item.alt}
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 autoPlay
                 loop
-              />
+                muted
+              >
+                <source src={item.link} type="video/mp4" />
+              </video>
             )}
 
             <Carousel.Caption>
@@ -53,7 +55,7 @@ function CarouselFadeExample(props) {
                 <button className="btn-green">
                   {language === "RO" ? "Detalii" : "Details"}
                 </button>
-              </div> 
+              </div>
             </Carousel.Caption>
           </Carousel.Item>
         );
