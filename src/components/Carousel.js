@@ -40,9 +40,9 @@ function CarouselFadeExample(props) {
                 className="d-block w-100"
                 alt={item.alt}
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                autoPlay
-                loop
+                autoplay
                 muted
+                loop
               >
                 <source src={item.link} type="video/mp4" />
               </video>
