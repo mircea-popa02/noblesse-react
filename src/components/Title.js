@@ -7,7 +7,7 @@ const Title = () => {
         window.location.href = "/";
     }
     return (
-        <div className="title d-flex justify-content-center align-items-center">
+        <div className="title d-flex justify-content-center align-items-center flex-column">
             <h1 className="header d-none d-lg-block" onClick={goToMainPage}>Noblesse</h1>
         </div>
     );

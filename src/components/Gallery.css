@@ -13,7 +13,7 @@
 
 .gallery-item {
   background-color: white;
-  width: 20rem;
+  max-width: 22rem;
   height: 38rem;
   border: 1px solid rgba(34, 36, 38, 0.15);
   box-shadow: 0px 0px 18px rgba(44, 47, 37, 0.136);
@@ -27,7 +27,7 @@
 }
 
 .product-image {
-  width: 20rem;
+  width: 22rem;
   height: 20rem;
   object-fit: cover;
 }

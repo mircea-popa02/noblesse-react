@@ -49,7 +49,7 @@ const Cards = (props) => {
         <h1 className="scroll-title">
           {language === "RO" ? "Galerie" : "Gallery"}
         </h1>
-        <div className="line"></div>
+        <div className="line no-margin"></div>
       </div>
       <div className="d-block d-flex justify-content-center">
         <div className="container-scroll" {...bind()}>

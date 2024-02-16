@@ -22,7 +22,6 @@ const NavbarInstance = ({ passLanguage }) => {
 
     const handleClickScroll = (id) => {
         if (window.location.pathname !== '/') {
-            // go to /{id}
             window.location.href = `/${id}`;
         }
         const element = document.getElementById(id);
