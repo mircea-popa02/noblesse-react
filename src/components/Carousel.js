@@ -34,15 +34,17 @@ function CarouselFadeExample(props) {
         return (
           <Carousel.Item key={index}>
             {item.type === "photo" ? (
-              <img className="d-block w-100" src={item.link} alt={item.alt} />
+              <img className="d-block w-100" src={item.link} alt={language === "RO" ? item.alt.ro : item.alt.en} />
             ) : (
               <video
                 className="d-block w-100"
-                alt={item.alt}
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 autoPlay
                 muted 
                 loop
+                playsInline
+                preload
+                poster=""
               >
                 <source src={item.link} type="video/mp4" />
               </video>
