@@ -16,6 +16,13 @@ const Gallery = () => {
   const [itemInfo, setItemInfo] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
 
+
+  const typeTranslatorMap = {
+    bouquets: "buchete",
+    baskets: "coșuri",
+    wreaths: "coroane"
+  };
+
   const fetchPost = async () => {
     await getDocs(collection(db, "flowers"))
       .then((querySnapshot) => {
@@ -59,7 +66,8 @@ const Gallery = () => {
           .includes(e.target.value.toLowerCase())
       );
     });
-
+    
+    setType("all");
     setFilteredItems(mergedItems);
     console.log(filteredItems);
   };
@@ -95,16 +103,20 @@ const Gallery = () => {
           {<div className="line"></div>}
 
           <p>
-            {language === "RO" ? "Alege tipul de produs pe care îl cauți" : "Choose the type of product you are looking for"}
+            {language === "RO" ? "Caută produsul dorit" : "Search for the desired product"}
           </p>
 
           <Input
+            className="w-100"
             placeholder={language === "RO" ? "Caută" : "Search"}
             name="search"
             onChange={(e) => {
               handleSearch(e);
             }}
           />
+
+          <br></br>
+          <br></br>
 
           <Tabs
             id="uncontrolled-tab-example"
@@ -122,7 +134,25 @@ const Gallery = () => {
       </div>
 
       <div className="gallery-container">
+        {type !== "" && type !== "all" && filteredItems.length > 0 ?
+          (
+            <>
+              <h1 className="scroll-title">
+                {language === "RO" ? typeTranslatorMap[type].charAt(0).toUpperCase() + typeTranslatorMap[type].slice(1) : type.charAt(0).toUpperCase() + type.slice(1)}
+              </h1>
+              <div className="line"></div>
+            </>
+          ) : (
+            <>
+              <h1 className="scroll-title">
+                {language === "RO" ? "Rezultate" : "Results"}
+              </h1>
+              <div className="line"></div>
+            </>
+          )
+        }
         <div className="gallery">
+
           {filteredItems.map((item, index) => {
             return (
               <div key={index} className="gallery-item">
