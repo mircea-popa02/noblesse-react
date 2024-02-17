@@ -91,6 +91,10 @@ const Gallery = () => {
     }
   }, []);
 
+  // TODO: Add a loading spinner
+  // TODO: Add color search filters (optional: add color array in firebase)
+  // TODO: Add chip selector
+
   return (
     <div>
       <Title></Title>
@@ -142,7 +146,9 @@ const Gallery = () => {
               </h1>
               <div className="line"></div>
             </>
-          ) : (
+          ) : 
+          (
+            filteredItems.length > 0 &&
             <>
               <h1 className="scroll-title">
                 {language === "RO" ? "Rezultate" : "Results"}
