@@ -5,14 +5,15 @@ import Title from "./Title";
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
+import { Tab, Tabs } from "react-bootstrap";
+import { Input } from "semantic-ui-react";
 import "./Gallery.css";
 
-import { Form, Input, TextArea } from "semantic-ui-react";
 
 const Gallery = () => {
+  const [type, setType] = useState("");
   const [language, setLanguage] = useState("");
   const [itemInfo, setItemInfo] = useState([]);
-  const [type, setType] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
 
   const fetchPost = async () => {
@@ -23,32 +24,48 @@ const Gallery = () => {
           id: doc.id,
         }));
         setItemInfo(newData);
-        console.log("done");
-        return newData; // Returning newData for chaining
-      })
-      .then((newData) => {
-        // Chaining another then block
-        const filters = localStorage.getItem("filters");
-        if (filters) {
-          console.log(filters.toLowerCase());
-          changeType(filters.toLowerCase(), newData); // Passing newData to changeType
-        }
+        return newData;
       })
       .catch((error) => {
         console.error("Error fetching posts:", error);
       });
   };
 
-  const changeType = (type, newData) => {
-    setType(type);
-    console.log(newData); // Now newData should contain the updated data
-    const filtered = newData.filter((item) => item.id === type);
-    setFilteredItems(Object.values(filtered[0])[0]);
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    if (e.target.value === "") {
+      setFilteredItems([]);
+      return;
+    }
+
+    let mergedItems = itemInfo.map((item) => {
+      return Object.values(item)[0];
+    });
+
+    mergedItems = mergedItems.flat();
+
+    mergedItems = mergedItems.filter((item) => {
+      return (
+        item.title.ro.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        item.title.en.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        item.description.ro
+          .join(" ")
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase()) ||
+        item.description.en
+          .join(" ")
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase())
+      );
+    });
+
+    setFilteredItems(mergedItems);
+    console.log(filteredItems);
   };
 
   const setTypeFilter = (type) => {
     setType(type);
-    localStorage.setItem("filters", type);
     const filtered = itemInfo.filter((item) => item.id === type);
     setFilteredItems(Object.values(filtered[0])[0]);
   };
@@ -70,103 +87,88 @@ const Gallery = () => {
     <div>
       <Title></Title>
       <Header sticky="top" passLanguage={passLanguage} />
-      {/* // TODO - Add a search bar to filter the items by name */}
+      <div className="search-wrapper">
+        <div className="search-container">
+          <h1 className="scroll-title">
+            {language === "RO" ? "Căutare" : "Search"}
+          </h1>
+          {<div className="line"></div>}
 
-      {/* // TODO - write filters to localstorage and read from them on useffect */}
+          <p>
+            {language === "RO" ? "Alege tipul de produs pe care îl cauți" : "Choose the type of product you are looking for"}
+          </p>
 
-      <div className="search-container">
-        <h1 className="scroll-title">
-          {language === "RO" ? "Filtre de căutare" : "Search filters"}
-        </h1>
-        {<div className="line"></div>}
+          <Input
+            placeholder={language === "RO" ? "Caută" : "Search"}
+            name="search"
+            onChange={(e) => {
+              handleSearch(e);
+            }}
+          />
 
-        {/* search form */}
-        <Form>
-          <Form.Group>
-            <Form.Field
-              control={Input}
-              placeholder={language === "RO" ? "Caută" : "Search"}
-            />
-            <Form.Field
-              control={Input}
-              placeholder={language === "RO" ? "Preț minim" : "Min price"}
-            />
-            <Form.Field
-              control={Input}
-              placeholder={language === "RO" ? "Preț maxim" : "Max price"}
-            />
-          </Form.Group>
-        </Form>
-
-        <div className="chip-container">
-          <button
-            className="btn-green chip"
-            onClick={() => setTypeFilter("bouquets")}
+          <Tabs
+            id="uncontrolled-tab-example"
+            className="mb-3"
+            onSelect={(key) => setTypeFilter(key)}
           >
-            {language === "RO" ? "Buchete" : "Bouquets"}
-          </button>
-          <button
-            className="btn-green chip"
-            onClick={() => setTypeFilter("baskets")}
-          >
-            {language === "RO" ? "Coșuri" : "Baskets"}
-          </button>
+            <Tab eventKey="bouquets" title={language === "RO" ? "Buchete" : "Bouquets"}>
+            </Tab>
+            <Tab eventKey="baskets" title={language === "RO" ? "Coșuri" : "Baskets"}>
+            </Tab>
+            <Tab eventKey="wreaths" title={language === "RO" ? "Coroane" : "Wreaths"} disabled>
+            </Tab>
+          </Tabs>
         </div>
       </div>
 
-      {/* // TODO - add color filters for the items */}
-
       <div className="gallery-container">
-        {type !== "" && (
-          <>
-            <h2 className="scroll-title">
-              {type === "bouquets"
-                ? language === "RO"
-                  ? "Buchete"
-                  : "Bouquets"
-                : language === "RO"
-                ? "Coșuri"
-                : "Baskets"}
-            </h2>
-            {<div className="line"></div>}
-            <div className="gallery">
-              {filteredItems.map((item, index) => {
-                return (
-                  <div key={index} className="gallery-item">
-                    <img
-                      className="product-image"
-                      src={item.link}
-                      alt={item.title}
-                    />
-                    <div className="description-container">
-                      <div>
-                        <h3>{item.title}</h3>
-                        <div className="line"></div>
-                        <div className="chip-container">
-                          <div className="d-flex flex-wrap">
-                            {item.description.map((desc, index) => {
-                              return (
-                                <span
-                                  className="chip d-flex justify-content-center align-items-center"
-                                  key={index}
-                                >
-                                  {desc}
-                                </span>
-                              );
-                            })}
-                          </div>
-                        </div>
+        <div className="gallery">
+          {filteredItems.map((item, index) => {
+            return (
+              <div key={index} className="gallery-item">
+                <img
+                  className="product-image"
+                  src={item.link}
+                  alt={language === "RO" ? item.title.ro : item.title.en}
+                />
+                <div className="description-container">
+                  <div>
+                    <h3>{language === "RO" ? item.title.ro : item.title.en}</h3>
+                    <div className="line"></div>
+                    <div className="chip-container">
+                      <div className="d-flex flex-wrap">
+                        {language === "RO" ? item.description.ro.map((desc, index) => {
+                          return (
+                            <span
+                              className="chip d-flex justify-content-center align-items-center"
+                              key={index}
+                            >
+                              {desc}
+                            </span>
+                          );
+                        }
+                        ) : item.description.en.map((desc, index) => {
+                          return (
+                            <span
+                              className="chip d-flex justify-content-center align-items-center"
+                              key={index}
+                            >
+                              {desc}
+                            </span>
+                          );
+                        }
+                        )}
                       </div>
-                      <button className="btn-dark-green">
-                        {language === "RO" ? "Cumpără" : "Buy"}
-                      </button>
                     </div>
                   </div>
-                );
-              })}
-            </div>
-          </>
-        )}
+                  <button className="btn-dark-green">
+                    {language === "RO" ? "Cumpără" : "Buy"}
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       <Footer language={language} />
