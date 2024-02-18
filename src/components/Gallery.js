@@ -8,6 +8,7 @@ import { db } from "../firebase";
 import { Tab, Tabs } from "react-bootstrap";
 import { Input } from "semantic-ui-react";
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import { Button, ButtonGroup } from "react-bootstrap";
 import "./Gallery.css";
 
 
@@ -92,9 +93,6 @@ const Gallery = () => {
     }
   }, []);
 
-  // TODO: Add a loading spinner
-  // TODO: Add color search filters (optional: add color array in firebase)
-  // TODO: Add chip selector
 
   return (
     <div>
@@ -123,19 +121,27 @@ const Gallery = () => {
           <br></br>
           <br></br>
 
-          <Tabs
-            id="type-selector"
-            className="mb-3"
-            onSelect={(key) => setTypeFilter(key)}
-            defaultActiveKey="bouquets" // Set the default active tab to "bouquets"
-          >
-            <Tab eventKey="bouquets" title={language === "RO" ? "Buchete" : "Bouquets"}>
-            </Tab>
-            <Tab eventKey="baskets" title={language === "RO" ? "Coșuri" : "Baskets"}>
-            </Tab>
-            <Tab eventKey="wreaths" title={language === "RO" ? "Coroane" : "Wreaths"} disabled>
-            </Tab>
-          </Tabs>
+          <ButtonGroup className="mb-3 w-100" aria-label="type-selector">
+            <Button
+              variant={type === "bouquets" ? "primary" : "outline-primary"}
+              onClick={() => setTypeFilter("bouquets")}
+            >
+              {language === "RO" ? "Buchete" : "Bouquets"}
+            </Button>
+            <Button
+              variant={type === "baskets" ? "primary" : "outline-primary"}
+              onClick={() => setTypeFilter("baskets")}
+            >
+              {language === "RO" ? "Coșuri" : "Baskets"}
+            </Button>
+            <Button
+              variant={type === "wreaths" ? "primary" : "outline-primary"}
+              onClick={() => setTypeFilter("wreaths")}
+              disabled
+            >
+              {language === "RO" ? "Coroane" : "Wreaths"}
+            </Button>
+          </ButtonGroup>
         </div>
       </div>
 
@@ -196,7 +202,7 @@ function OffCanvasExample({ name, ...props }) {
 
   return (
     <>
-      <button variant="primary" onClick={handleShow} className="me-2 btn-green">
+      <button variant="primary" onClick={handleShow} className="me-2 btn-dark-green">
         {props.language === "RO" ? "Detalii" : "Details"}
       </button>
       <Offcanvas show={show} onHide={handleClose} {...props}>

@@ -1,7 +1,7 @@
 .gallery-container {
   margin-top: 5vh !important;
   margin-bottom: 5vh !important;
-  width: 80vw;
+  /* width: 80vw; */
   margin: auto;
   padding: 24px;
 }
@@ -9,13 +9,28 @@
 @media (max-width: 768px) {
   .gallery-container {
     width: 100vw !important;
+    padding: 8px !important;
+  }
+
+  .gallery-item {
+    max-width: 10rem !important;
+    height: 15rem !important;
+  }
+
+  .product-image {
+    width: 10rem !important;
+    height: 15rem !important;
+  }
+
+  .gallery {
+    padding: 0 !important;
   }
 }
 
 .gallery-item {
   background-color: white;
-  max-width: 16rem;
-  height: 24rem;
+  max-width: 20rem;
+  height: 30rem;
   border: 1px solid rgba(34, 36, 38, 0.15);
   box-shadow: 0px 0px 18px rgba(44, 47, 37, 0.136);
   margin: auto;
@@ -40,8 +55,8 @@
 }
 
 .product-image {
-  width: 16rem;
-  height: 24rem;
+  width: 20rem;
+  height: 30rem;
   object-fit: cover;
 }
 
@@ -78,10 +93,15 @@
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  gap: 16px; /* Updated horizontal gap to 16px */
-  /* padding: 24px; */
-  margin: auto;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  justify-content: space-between;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  }
 }
 
 .description-container {
