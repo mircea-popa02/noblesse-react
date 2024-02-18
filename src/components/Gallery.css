@@ -3,6 +3,7 @@
   margin-bottom: 5vh !important;
   width: 80vw;
   margin: auto;
+  padding: 24px;
 }
 
 @media (max-width: 768px) {
@@ -13,8 +14,8 @@
 
 .gallery-item {
   background-color: white;
-  max-width: 22rem;
-  height: 38rem;
+  max-width: 16rem;
+  height: 24rem;
   border: 1px solid rgba(34, 36, 38, 0.15);
   box-shadow: 0px 0px 18px rgba(44, 47, 37, 0.136);
   margin: auto;
@@ -34,13 +35,13 @@
   }
 }
 
-.gallery-item h3 {
+.gallery-item {
   color: var(--dark-green);
 }
 
 .product-image {
-  width: 22rem;
-  height: 20rem;
+  width: 16rem;
+  height: 24rem;
   object-fit: cover;
 }
 
@@ -77,16 +78,41 @@
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  gap: 24px;
-  padding: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 16px; /* Updated horizontal gap to 16px */
+  /* padding: 24px; */
   margin: auto;
 }
 
 .description-container {
+  position: relative;
   padding: 24px;
-  height: 18rem !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between
+  bottom: calc(4rem + 24px);
+  margin: auto;
+  text-align: center;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.623), rgba(0, 0, 0, 0));
+}
+
+
+.offcanvas-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--dark-green);
+}
+
+.offcanvas-header {
+  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+  padding: 24px;
+}
+
+.offcanvas-body {
+  padding: 24px;
+}
+
+.offcanvas-image {
+  width: 100%;
+  height: 38rem;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-top: 16px;
 }

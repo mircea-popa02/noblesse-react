@@ -7,6 +7,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { Tab, Tabs } from "react-bootstrap";
 import { Input } from "semantic-ui-react";
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import "./Gallery.css";
 
 
@@ -66,7 +67,7 @@ const Gallery = () => {
           .includes(e.target.value.toLowerCase())
       );
     });
-    
+
     setType("all");
     setFilteredItems(mergedItems);
     console.log(filteredItems);
@@ -123,9 +124,10 @@ const Gallery = () => {
           <br></br>
 
           <Tabs
-            id="uncontrolled-tab-example"
+            id="type-selector"
             className="mb-3"
             onSelect={(key) => setTypeFilter(key)}
+            defaultActiveKey="bouquets" // Set the default active tab to "bouquets"
           >
             <Tab eventKey="bouquets" title={language === "RO" ? "Buchete" : "Bouquets"}>
             </Tab>
@@ -146,7 +148,7 @@ const Gallery = () => {
               </h1>
               <div className="line"></div>
             </>
-          ) : 
+          ) :
           (
             filteredItems.length > 0 &&
             <>
@@ -158,7 +160,6 @@ const Gallery = () => {
           )
         }
         <div className="gallery">
-
           {filteredItems.map((item, index) => {
             return (
               <div key={index} className="gallery-item">
@@ -168,38 +169,11 @@ const Gallery = () => {
                   alt={language === "RO" ? item.title.ro : item.title.en}
                 />
                 <div className="description-container">
-                  <div>
-                    <h3>{language === "RO" ? item.title.ro : item.title.en}</h3>
+                  {/* <div>
+                    <h4>{language === "RO" ? item.title.ro : item.title.en}</h4>
                     <div className="line"></div>
-                    <div className="chip-container">
-                      <div className="d-flex flex-wrap">
-                        {language === "RO" ? item.description.ro.map((desc, index) => {
-                          return (
-                            <span
-                              className="chip d-flex justify-content-center align-items-center"
-                              key={index}
-                            >
-                              {desc}
-                            </span>
-                          );
-                        }
-                        ) : item.description.en.map((desc, index) => {
-                          return (
-                            <span
-                              className="chip d-flex justify-content-center align-items-center"
-                              key={index}
-                            >
-                              {desc}
-                            </span>
-                          );
-                        }
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  <button className="btn-dark-green">
-                    {language === "RO" ? "Cumpără" : "Buy"}
-                  </button>
+                  </div> */}
+                  <OffCanvasExample placement="end" language={language} item={item} />
                 </div>
               </div>
             );
@@ -211,5 +185,65 @@ const Gallery = () => {
     </div>
   );
 };
+
+function OffCanvasExample({ name, ...props }) {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  console.log(props.item);
+
+  return (
+    <>
+      <button variant="primary" onClick={handleShow} className="me-2 btn-green">
+        {props.language === "RO" ? "Detalii" : "Details"}
+      </button>
+      <Offcanvas show={show} onHide={handleClose} {...props}>
+        <Offcanvas.Header closeButton className="offcanvas-header">
+          <Offcanvas.Title className="offcanvas-title">
+            <h2>
+              {props.language === "RO" ? props.item.title.ro : props.item.title.en}
+            </h2>
+          </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body className="offcanvs-body">
+          <div>
+            <div className="chip-container">
+              <div className="d-flex flex-wrap">
+                {props.language === "RO" ? props.item.description.ro.map((desc, index) => {
+                  return (
+                    <span
+                      className="chip d-flex justify-content-center align-items-center"
+                      key={index}
+                    >
+                      {desc}
+                    </span>
+                  );
+                }
+                ) : props.item.description.en.map((desc, index) => {
+                  return (
+                    <span
+                      className="chip d-flex justify-content-center align-items-center"
+                      key={index}
+                    >
+                      {desc}
+                    </span>
+                  );
+                }
+                )}
+              </div>
+            </div>
+            <img
+              className="offcanvas-image"
+              src={props.item.link}
+              alt={props.language === "RO" ? props.item.title.ro : props.item.title.en}
+            />
+          </div>
+        </Offcanvas.Body>
+      </Offcanvas>
+    </>
+  );
+}
 
 export default Gallery;

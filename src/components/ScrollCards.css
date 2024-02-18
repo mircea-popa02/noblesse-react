@@ -19,12 +19,6 @@
   border-radius: 16px !important;
   box-shadow: 0px 0px 18px rgba(44, 47, 37, 0.136);
   cursor: pointer;
-  transition: 0.1s;
-}
-
-.card-scroll:hover {
-  transform: scale(1.05) !important;
-  transition: 0.1s !important;
 }
 
 .card-scroll-content {
