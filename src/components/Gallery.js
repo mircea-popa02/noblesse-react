@@ -5,7 +5,6 @@ import Title from "./Title";
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import { Tab, Tabs } from "react-bootstrap";
 import { Input } from "semantic-ui-react";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Button, ButtonGroup } from "react-bootstrap";
@@ -24,6 +23,34 @@ const Gallery = () => {
     baskets: "coșuri",
     wreaths: "coroane"
   };
+
+  const colorsMap = {
+    "red": "#FF0000",
+    "yellow": "#FFFF00",
+    "green": "#008000",
+    "blue": "#0000FF",
+    "purple": "#800080",
+    "orange": "#FFA500",
+    "pink": "#FFC0CB",
+    "white": "#FFFFFF",
+    "black": "#000000",
+    "brown": "#A52A2A",
+  };
+
+  const flowerTypes = [
+    "trandafiri",
+    "crini",
+    "gerbera",
+    "lalele",
+    "alstroemeria",
+    "frezii",
+    "hortensii",
+    "iris",
+    "gypsophila",
+    "crizanteme",
+    "anthurium",
+    "orchidee",
+  ];
 
   const fetchPost = async () => {
     await getDocs(collection(db, "flowers"))
@@ -98,92 +125,121 @@ const Gallery = () => {
     <div>
       <Title></Title>
       <Header sticky="top" passLanguage={passLanguage} />
-      <div className="search-wrapper">
-        <div className="search-container">
-          <h1 className="scroll-title">
-            {language === "RO" ? "Căutare" : "Search"}
-          </h1>
-          {<div className="line"></div>}
+      <div className="gallery-wrapper">
+        <div className="search-wrapper">
+          <div className="search-container">
+            <h1 className="scroll-title">
+              {language === "RO" ? "Căutare" : "Search"}
+            </h1>
+            {<div className="line"></div>}
 
-          <p>
-            {language === "RO" ? "Caută produsul dorit" : "Search for the desired product"}
-          </p>
+            <Input
+              className="w-100 input-search"
+              style={{ marginBottom: '8px' }}
+              placeholder={language === "RO" ? "Caută" : "Search"}
+              name="search"
+              onChange={(e) => {
+                handleSearch(e);
+              }}
+            />
 
-          <Input
-            className="w-100"
-            placeholder={language === "RO" ? "Caută" : "Search"}
-            name="search"
-            onChange={(e) => {
-              handleSearch(e);
-            }}
-          />
+            <p>
+              {language === "RO" ? "Filtrează după tip" : "Filter by type"}
+            </p>
 
-          <br></br>
-          <br></br>
+            <ButtonGroup className="mb-3 w-100" aria-label="type-selector">
+              <Button
+                className="type-selector left-border"
+                variant={type === "bouquets" ? "primary" : "outline-primary"}
+                onClick={() => setTypeFilter("bouquets")}
+              >
+                {language === "RO" ? "Buchete" : "Bouquets"}
+              </Button>
+              <Button
+                className="type-selector"
+                variant={type === "baskets" ? "primary" : "outline-primary"}
+                onClick={() => setTypeFilter("baskets")}
+              >
+                {language === "RO" ? "Coșuri" : "Baskets"}
+              </Button>
+              <Button
+                className="type-selector right-border"
+                variant={type === "wreaths" ? "primary" : "outline-primary"}
+                onClick={() => setTypeFilter("wreaths")}
+              >
+                {language === "RO" ? "Coroane" : "Wreaths"}
+              </Button>
+            </ButtonGroup>
 
-          <ButtonGroup className="mb-3 w-100" aria-label="type-selector">
-            <Button
-              variant={type === "bouquets" ? "primary" : "outline-primary"}
-              onClick={() => setTypeFilter("bouquets")}
-            >
-              {language === "RO" ? "Buchete" : "Bouquets"}
-            </Button>
-            <Button
-              variant={type === "baskets" ? "primary" : "outline-primary"}
-              onClick={() => setTypeFilter("baskets")}
-            >
-              {language === "RO" ? "Coșuri" : "Baskets"}
-            </Button>
-            <Button
-              variant={type === "wreaths" ? "primary" : "outline-primary"}
-              onClick={() => setTypeFilter("wreaths")}
-              disabled
-            >
-              {language === "RO" ? "Coroane" : "Wreaths"}
-            </Button>
-          </ButtonGroup>
+            <div className="d-flex flex-wrap">
+              {Object.keys(colorsMap).map((color, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="color-circle"
+                    style={{ backgroundColor: colorsMap[color] }}
+                  ></div>
+                );
+              })}
+            </div>
+            <div className="d-flex flex-wrap">
+              {flowerTypes.map((type, index) => {
+                return (
+                  <span
+                    className="chip d-flex justify-content-center align-items-center"
+                    key={index}
+                  >
+                    {type.charAt(0).toUpperCase() + type.slice(1)}
+                  </span>
+                );
+              })}
+            </div>
+
+          </div>
         </div>
-      </div>
 
-      <div className="gallery-container">
-        {type !== "" && type !== "all" && filteredItems.length > 0 ?
-          (
-            <>
-              <h1 className="scroll-title">
-                {language === "RO" ? typeTranslatorMap[type].charAt(0).toUpperCase() + typeTranslatorMap[type].slice(1) : type.charAt(0).toUpperCase() + type.slice(1)}
-              </h1>
-              <div className="line"></div>
-            </>
-          ) :
-          (
-            filteredItems.length > 0 &&
-            <>
-              <h1 className="scroll-title">
-                {language === "RO" ? "Rezultate" : "Results"}
-              </h1>
-              <div className="line"></div>
-            </>
-          )
-        }
-        <div className="gallery">
-          {filteredItems.map((item, index) => {
-            return (
-              <div key={index} className="gallery-item">
-                <img
-                  className="product-image"
-                  src={item.link}
-                  alt={language === "RO" ? item.title.ro : item.title.en}
-                />
-                <div className="description-container">
-                  {/* <div>
-                    <h4>{language === "RO" ? item.title.ro : item.title.en}</h4>
-                    <div className="line"></div>
-                  </div> */}
-                  <OffCanvasExample placement="end" language={language} item={item} />
+        <div className="gallery-container">
+          <div className="gallery-title">
+            {type !== "" && type !== "all" && filteredItems.length > 0 ?
+              (
+                <>
+                  <h1 className="scroll-title">
+                    {language === "RO" ? typeTranslatorMap[type].charAt(0).toUpperCase() + typeTranslatorMap[type].slice(1) : type.charAt(0).toUpperCase() + type.slice(1)}
+                  </h1>
+                  <div className="line"></div>
+                </>
+              ) :
+              (
+                filteredItems.length > 0 &&
+                <>
+                  <h1 className="scroll-title">
+                    {language === "RO" ? "Rezultate" : "Results"}
+                  </h1>
+                  <div className="line"></div>
+                </>
+              )
+            }
+          </div>
+          <div className="gallery">
+            {filteredItems.map((item, index) => {
+              return (
+                <div key={index} className="gallery-item">
+
+                  <img
+                    className="product-image"
+                    src={item.link}
+                    alt={language === "RO" ? item.title.ro : item.title.en}
+                  />
+                  <div className="description-container">
+                    <OffCanvasExample placement="end" language={language} item={item} />
+                  </div>
+                  <p className="product-title">
+                    {language === "RO" ? item.title.ro : item.title.en}
+                  </p>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -208,9 +264,9 @@ function OffCanvasExample({ name, ...props }) {
       <Offcanvas show={show} onHide={handleClose} {...props}>
         <Offcanvas.Header closeButton className="offcanvas-header">
           <Offcanvas.Title className="offcanvas-title">
-            <h2>
+            <h3>
               {props.language === "RO" ? props.item.title.ro : props.item.title.en}
-            </h2>
+            </h3>
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="offcanvs-body">

@@ -78,8 +78,6 @@
 }
 
 .btn-green-outline {
-  /* background: transparent !important; */
-  /* background: var(--light-green) !important; */
   border: 1px solid var(--dark-green) !important;
   border-radius: 32px !important;
   padding: 8px !important;
