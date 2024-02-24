@@ -19,7 +19,7 @@ const Gallery = () => {
   const [itemInfo, setItemInfo] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(2);
+  const [itemsPerPage] = useState(4);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -159,21 +159,21 @@ const Gallery = () => {
 
             <ButtonGroup className="mb-3 w-100" aria-label="type-selector">
               <Button
-                className="type-selector left-border"
+                className="type-selector left-border btn-small"
                 variant={type === "bouquets" ? "primary" : "outline-primary"}
                 onClick={() => setTypeFilter("bouquets")}
               >
                 {language === "RO" ? "Buchete" : "Bouquets"}
               </Button>
               <Button
-                className="type-selector"
+                className="type-selector btn-small"
                 variant={type === "baskets" ? "primary" : "outline-primary"}
                 onClick={() => setTypeFilter("baskets")}
               >
                 {language === "RO" ? "Coșuri" : "Baskets"}
               </Button>
               <Button
-                className="type-selector right-border"
+                className="type-selector right-border btn-small"
                 variant={type === "wreaths" ? "primary" : "outline-primary"}
                 onClick={() => setTypeFilter("wreaths")}
               >
@@ -181,7 +181,7 @@ const Gallery = () => {
               </Button>
             </ButtonGroup>
 
-            <div className="d-flex flex-wrap">
+            {/* <div className="d-flex flex-wrap">
               {Object.keys(colorsMap).map((color, index) => {
                 return (
                   <div
@@ -196,14 +196,14 @@ const Gallery = () => {
               {flowerTypes.map((type, index) => {
                 return (
                   <span
-                    className="chip d-flex justify-content-center align-items-center"
+                    className="chip clickable d-flex justify-content-center align-items-center"
                     key={index}
                   >
                     {type.charAt(0).toUpperCase() + type.slice(1)}
                   </span>
                 );
               })}
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -245,21 +245,11 @@ const Gallery = () => {
             {currentItems.map((item, index) => {
               return (
                 <div key={index} className="gallery-item">
-                  <img
-                    className="product-image"
-                    src={item.link}
-                    alt={language === "RO" ? item.title.ro : item.title.en}
+                  <OffCanvasExample
+                    placement={isMobile ? "bottom" : "end"}
+                    language={language}
+                    item={item}
                   />
-                  <div className="description-container">
-                    <OffCanvasExample
-                      placement={isMobile ? "bottom" : "end"}
-                      language={language}
-                      item={item}
-                    />
-                  </div>
-                  <p className="product-title">
-                    {language === "RO" ? item.title.ro : item.title.en}
-                  </p>
                 </div>
               );
             })}
@@ -267,12 +257,6 @@ const Gallery = () => {
           <div className="pagination-container">
             {Math.ceil(filteredItems.length / itemsPerPage) > 1 && (
               <Pagination>
-                <Pagination.First
-                  onClick={() => {
-                    setCurrentPage(1);
-                  }}
-                />
-
                 <Pagination.Prev
                   onClick={() => {
                     if (currentPage > 1) {
@@ -287,7 +271,8 @@ const Gallery = () => {
                     if (
                       Math.abs(i + 1 - currentPage) <= 1 ||
                       i === 0 ||
-                      i === Math.ceil(filteredItems.length / itemsPerPage) - 1
+                      i === Math.ceil(filteredItems.length / itemsPerPage) - 1 ||
+                      (i >= currentPage - 2 && i <= currentPage + 2)
                     ) {
                       return (
                         <Pagination.Item
@@ -299,8 +284,8 @@ const Gallery = () => {
                         </Pagination.Item>
                       );
                     } else if (
-                      i === 1 ||
-                      i === Math.ceil(filteredItems.length / itemsPerPage) - 2
+                      (i === 1 && currentPage > 4) ||
+                      (i === Math.ceil(filteredItems.length / itemsPerPage) - 2 && currentPage < Math.ceil(filteredItems.length / itemsPerPage) - 3)
                     ) {
                       return <Pagination.Ellipsis key={i + 1} />;
                     } else {
@@ -317,14 +302,6 @@ const Gallery = () => {
                     ) {
                       setCurrentPage(currentPage + 1);
                     }
-                  }}
-                />
-
-                <Pagination.Last
-                  onClick={() => {
-                    setCurrentPage(
-                      Math.ceil(filteredItems.length / itemsPerPage)
-                    );
                   }}
                 />
               </Pagination>
@@ -348,13 +325,14 @@ function OffCanvasExample({ name, ...props }) {
 
   return (
     <>
-      <button
-        variant="primary"
+      <img
+        className="product-image"
+        src={props.item.link}
+        alt={
+          props.language === "RO" ? props.item.title.ro : props.item.title.en
+        }
         onClick={handleShow}
-        className="me-2 btn-dark-green"
-      >
-        {props.language === "RO" ? "Detalii" : "Details"}
-      </button>
+      />
       <Offcanvas show={show} onHide={handleClose} {...props}>
         <Offcanvas.Header closeButton className="offcanvas-header">
           <Offcanvas.Title className="offcanvas-title">
@@ -365,33 +343,8 @@ function OffCanvasExample({ name, ...props }) {
             </h3>
           </Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body className="offcanvs-body">
+        <Offcanvas.Body className="offcanvas-body">
           <div>
-            <div className="chip-container">
-              <div className="d-flex flex-wrap">
-                {props.language === "RO"
-                  ? props.item.description.ro.map((desc, index) => {
-                      return (
-                        <span
-                          className="chip d-flex justify-content-center align-items-center"
-                          key={index}
-                        >
-                          {desc}
-                        </span>
-                      );
-                    })
-                  : props.item.description.en.map((desc, index) => {
-                      return (
-                        <span
-                          className="chip d-flex justify-content-center align-items-center"
-                          key={index}
-                        >
-                          {desc}
-                        </span>
-                      );
-                    })}
-              </div>
-            </div>
             <img
               className="offcanvas-image"
               src={props.item.link}
@@ -401,6 +354,41 @@ function OffCanvasExample({ name, ...props }) {
                   : props.item.title.en
               }
             />
+            <div className="offcanvas-description">
+              <p>
+                This is a placeholder description for what is supposed to be a
+                product description.
+              </p>
+              <div className="chip-container">
+                <div className="d-flex flex-wrap">
+                  {props.language === "RO"
+                    ? props.item.description.ro.map((desc, index) => {
+                        return (
+                          <span
+                            className="chip d-flex justify-content-center align-items-center"
+                            key={index}
+                          >
+                            {desc}
+                          </span>
+                        );
+                      })
+                    : props.item.description.en.map((desc, index) => {
+                        return (
+                          <span
+                            className="chip d-flex justify-content-center align-items-center"
+                            key={index}
+                          >
+                            {desc}
+                          </span>
+                        );
+                      })}
+                </div>
+              </div>
+
+              <button className="btn-dark-green btn-long btn-padding">
+                {props.language === "RO" ? "Comandă" : "Order"}
+              </button>
+            </div>
           </div>
         </Offcanvas.Body>
       </Offcanvas>

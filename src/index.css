@@ -1,34 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Oswald:wght@200;300;400;500;600;700&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Oswald:wght@200;300;400;500;600;700&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
-    font-family: "work sans" !important;
-    font-size: 18px;
+  font-family: "work sans" !important;
+  font-size: 18px;
 }
 
 h2 {
-    font-size: 28px !important;
+  font-size: 28px !important;
 }
 
 small {
-    font-size: 16px !important;
+  font-size: 16px !important;
 }
-
 
 @media (max-width: 768px) {
-    * {
-        font-size: 16px;
-    }
-    h2 {
-        font-size: 24px !important;
-    }
-    small {
-        font-size: 14px !important;
-    }
+  * {
+    font-size: 16px;
+  }
+  h2 {
+    font-size: 24px !important;
+  }
+  small {
+    font-size: 14px !important;
+  }
 }
 
-
 :root {
-    --light-green: #caec7d;
-    --dark-green: #526336;
-    --light-green-bg: #f8fbef;
-    --light-green-bg-hover: #e6e6e6;
-  }
+  --light-green: #caec7d;
+  --dark-green: #526336;
+  --light-green-bg: #f8fbef;
+  --light-green-bg-hover: #e6e6e6;
+}
+
+.btn-green {
+  background: var(--light-green) !important;
+  border: 0px !important;
+  border-radius: 32px !important;
+  padding: 8px !important;
+  transition: 0.4s;
+  max-width: 8rem !important;
+  color: var(--dark-green) !important;
+  font-size: 16px !important;
+}
+
+.btn-dark-green {
+  background: var(--dark-green) !important;
+  border: 0px !important;
+  border-radius: 32px !important;
+  padding: 8px !important;
+  transition: 0.4s;
+  max-width: 8rem !important;
+  font-size: 16px !important;
+  color: var(--light-green) !important;
+}
+
+.btn-green-outline {
+  border: 1px solid var(--dark-green) !important;
+  border-radius: 32px !important;
+  background-color: white !important;
+  padding: 8px !important;
+  transition: 0.4s;
+  max-width: 8rem !important;
+  color: var(--dark-green) !important;
+  font-size: 16px !important;
+}
+
+.btn-long {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.btn-square {
+  border-radius: 0 !important;
+}
+
+.btn-small {
+  font-size: 12px !important;
+}

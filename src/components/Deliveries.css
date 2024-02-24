@@ -53,51 +53,13 @@
   margin-bottom: 8px;
 }
 
-.btn-green {
-  background: var(--light-green) !important;
-  border: 0px !important;
-  border-radius: 32px !important;
-  padding: 8px !important;
-  transition: 0.4s;
-  max-width: 8rem !important;
-  min-width: 6rem !important;
-  color: var(--dark-green) !important;
-  font-size: 16px !important;
-}
-
-.btn-dark-green {
-  background: var(--dark-green) !important;
-  border: 0px !important;
-  border-radius: 32px !important;
-  padding: 8px !important;
-  transition: 0.4s;
-  max-width: 8rem !important;
-  min-width: 6rem !important;
-  font-size: 16px !important;
-  color: var(--light-green) !important;
-}
-
-.btn-green-outline {
-  border: 1px solid var(--dark-green) !important;
-  border-radius: 32px !important;
-  padding: 8px !important;
-  transition: 0.4s;
-  max-width: 8rem !important;
-  min-width: 6rem !important;
-  color: var(--dark-green) !important;
-  font-size: 16px !important;
-}
-
-.btn-small {
-  font-size: 12px !important;
-}
-
 .pic {
   overflow: hidden;
   width: 28rem !important;
   border-radius: 16px !important;
   box-shadow: 0px 0px 18px rgba(44, 47, 37, 0.136);
 }
+
 
 .pic img {
   object-fit: cover;
