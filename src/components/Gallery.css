@@ -37,18 +37,6 @@
   border-radius: 16px;
 }
 
-/* .input-search {
-  border: 0;
-  border-radius: 16px !important;
-  padding: 8px;
-  width: 100%;
-  margin: auto;
-  margin-bottom: 24px;
-  color: var(--dark-green);
-  background-color: var(--light-green-bg);
-
-} */
-
 @keyframes appear {
   0% {
     opacity: 0;
@@ -231,4 +219,10 @@
 
 .gallery-title {
   padding-left: 24px;
+}
+
+.ui input {
+  border-radius: 16px !important;
+  height: 48px !important;
+  border: 1px solid rgba(34, 36, 38, 0.15) !important;
 }

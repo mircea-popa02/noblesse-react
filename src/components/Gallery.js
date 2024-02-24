@@ -6,8 +6,10 @@ import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { Input } from "semantic-ui-react";
-import Offcanvas from 'react-bootstrap/Offcanvas';
+import Offcanvas from "react-bootstrap/Offcanvas";
 import { Button, ButtonGroup } from "react-bootstrap";
+import Pagination from 'react-bootstrap/Pagination';
+
 import "./Gallery.css";
 
 
@@ -16,25 +18,32 @@ const Gallery = () => {
   const [language, setLanguage] = useState("");
   const [itemInfo, setItemInfo] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(2);
 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const typeTranslatorMap = {
     bouquets: "buchete",
     baskets: "coșuri",
-    wreaths: "coroane"
+    wreaths: "coroane",
   };
 
   const colorsMap = {
-    "red": "#FF0000",
-    "yellow": "#FFFF00",
-    "green": "#008000",
-    "blue": "#0000FF",
-    "purple": "#800080",
-    "orange": "#FFA500",
-    "pink": "#FFC0CB",
-    "white": "#FFFFFF",
-    "black": "#000000",
-    "brown": "#A52A2A",
+    red: "#FF0000",
+    yellow: "#FFFF00",
+    green: "#008000",
+    blue: "#0000FF",
+    purple: "#800080",
+    orange: "#FFA500",
+    pink: "#FFC0CB",
+    white: "#FFFFFF",
+    black: "#000000",
+    brown: "#A52A2A",
   };
 
   const flowerTypes = [
@@ -69,6 +78,7 @@ const Gallery = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    setCurrentPage(1);
 
     if (e.target.value === "") {
       setFilteredItems([]);
@@ -103,6 +113,7 @@ const Gallery = () => {
 
   const setTypeFilter = (type) => {
     setType(type);
+    setCurrentPage(1);
     const filtered = itemInfo.filter((item) => item.id === type);
     setFilteredItems(Object.values(filtered[0])[0]);
   };
@@ -120,7 +131,6 @@ const Gallery = () => {
     }
   }, []);
 
-
   return (
     <div>
       <Title></Title>
@@ -135,7 +145,7 @@ const Gallery = () => {
 
             <Input
               className="w-100 input-search"
-              style={{ marginBottom: '8px' }}
+              style={{ marginBottom: "8px" }}
               placeholder={language === "RO" ? "Caută" : "Search"}
               name="search"
               onChange={(e) => {
@@ -143,9 +153,7 @@ const Gallery = () => {
               }}
             />
 
-            <p>
-              {language === "RO" ? "Filtrează după tip" : "Filter by type"}
-            </p>
+            <p>{language === "RO" ? "Filtrează după tip" : "Filter by type"}</p>
 
             <ButtonGroup className="mb-3 w-100" aria-label="type-selector">
               <Button
@@ -194,23 +202,23 @@ const Gallery = () => {
                 );
               })}
             </div>
-
           </div>
         </div>
 
         <div className="gallery-container">
           <div className="gallery-title">
-            {type !== "" && type !== "all" && filteredItems.length > 0 ?
-              (
-                <>
-                  <h1 className="scroll-title">
-                    {language === "RO" ? typeTranslatorMap[type].charAt(0).toUpperCase() + typeTranslatorMap[type].slice(1) : type.charAt(0).toUpperCase() + type.slice(1)}
-                  </h1>
-                  <div className="line"></div>
-                </>
-              ) :
-              (
-                filteredItems.length > 0 &&
+            {type !== "" && type !== "all" && filteredItems.length > 0 ? (
+              <>
+                <h1 className="scroll-title">
+                  {language === "RO"
+                    ? typeTranslatorMap[type].charAt(0).toUpperCase() +
+                      typeTranslatorMap[type].slice(1)
+                    : type.charAt(0).toUpperCase() + type.slice(1)}
+                </h1>
+                <div className="line"></div>
+              </>
+            ) : (
+              filteredItems.length > 0 && (
                 <>
                   <h1 className="scroll-title">
                     {language === "RO" ? "Rezultate" : "Results"}
@@ -218,20 +226,35 @@ const Gallery = () => {
                   <div className="line"></div>
                 </>
               )
-            }
+            )}
+            
+            {Math.ceil(filteredItems.length / itemsPerPage) > 1 && (
+              <div className="pagination">
+                <p>
+                  {language === "RO" ? "Pagina" : "Page"} {currentPage}{" "}
+                  {language === "RO" ? "din" : "of"}{" "}
+                  {Math.ceil(filteredItems.length / itemsPerPage)}
+                </p>
+              </div>
+            )}
           </div>
+          
           <div className="gallery">
-            {filteredItems.map((item, index) => {
+
+            {currentItems.map((item, index) => {
               return (
                 <div key={index} className="gallery-item">
-
                   <img
                     className="product-image"
                     src={item.link}
                     alt={language === "RO" ? item.title.ro : item.title.en}
                   />
                   <div className="description-container">
-                    <OffCanvasExample placement="end" language={language} item={item} />
+                    <OffCanvasExample
+                      placement="end"
+                      language={language}
+                      item={item}
+                    />
                   </div>
                   <p className="product-title">
                     {language === "RO" ? item.title.ro : item.title.en}
@@ -239,6 +262,36 @@ const Gallery = () => {
                 </div>
               );
             })}
+          </div>
+          <div className="pagination-container">
+            
+            {Math.ceil(filteredItems.length / itemsPerPage) > 1 && (
+              <Pagination>
+                <Pagination.Prev
+                  onClick={() => {
+                    if (currentPage > 1) {
+                      setCurrentPage(currentPage - 1);
+                    }
+                  }}
+                />
+
+                {Array.from({ length: Math.ceil(filteredItems.length / itemsPerPage) }, (_, i) => {
+                  return (
+                    <Pagination.Item key={i} active={i + 1 === currentPage} onClick={() => paginate(i + 1)}>
+                      {i + 1}
+                    </Pagination.Item>
+                  );
+                })}
+
+                <Pagination.Next
+                  onClick={() => {
+                    if (currentPage < Math.ceil(filteredItems.length / itemsPerPage)) {
+                      setCurrentPage(currentPage + 1);
+                    }
+                  }}
+                />
+              </Pagination>
+            )}
           </div>
         </div>
       </div>
@@ -258,14 +311,20 @@ function OffCanvasExample({ name, ...props }) {
 
   return (
     <>
-      <button variant="primary" onClick={handleShow} className="me-2 btn-dark-green">
+      <button
+        variant="primary"
+        onClick={handleShow}
+        className="me-2 btn-dark-green"
+      >
         {props.language === "RO" ? "Detalii" : "Details"}
       </button>
       <Offcanvas show={show} onHide={handleClose} {...props}>
         <Offcanvas.Header closeButton className="offcanvas-header">
           <Offcanvas.Title className="offcanvas-title">
             <h3>
-              {props.language === "RO" ? props.item.title.ro : props.item.title.en}
+              {props.language === "RO"
+                ? props.item.title.ro
+                : props.item.title.en}
             </h3>
           </Offcanvas.Title>
         </Offcanvas.Header>
@@ -273,33 +332,37 @@ function OffCanvasExample({ name, ...props }) {
           <div>
             <div className="chip-container">
               <div className="d-flex flex-wrap">
-                {props.language === "RO" ? props.item.description.ro.map((desc, index) => {
-                  return (
-                    <span
-                      className="chip d-flex justify-content-center align-items-center"
-                      key={index}
-                    >
-                      {desc}
-                    </span>
-                  );
-                }
-                ) : props.item.description.en.map((desc, index) => {
-                  return (
-                    <span
-                      className="chip d-flex justify-content-center align-items-center"
-                      key={index}
-                    >
-                      {desc}
-                    </span>
-                  );
-                }
-                )}
+                {props.language === "RO"
+                  ? props.item.description.ro.map((desc, index) => {
+                      return (
+                        <span
+                          className="chip d-flex justify-content-center align-items-center"
+                          key={index}
+                        >
+                          {desc}
+                        </span>
+                      );
+                    })
+                  : props.item.description.en.map((desc, index) => {
+                      return (
+                        <span
+                          className="chip d-flex justify-content-center align-items-center"
+                          key={index}
+                        >
+                          {desc}
+                        </span>
+                      );
+                    })}
               </div>
             </div>
             <img
               className="offcanvas-image"
               src={props.item.link}
-              alt={props.language === "RO" ? props.item.title.ro : props.item.title.en}
+              alt={
+                props.language === "RO"
+                  ? props.item.title.ro
+                  : props.item.title.en
+              }
             />
           </div>
         </Offcanvas.Body>

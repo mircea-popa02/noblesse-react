@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Col, Button } from 'react-bootstrap';
 import './Deliveries.css';
 
