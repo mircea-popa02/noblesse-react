@@ -8,10 +8,9 @@ import { db } from "../firebase";
 import { Input } from "semantic-ui-react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Button, ButtonGroup } from "react-bootstrap";
-import Pagination from 'react-bootstrap/Pagination';
+import Pagination from "react-bootstrap/Pagination";
 
 import "./Gallery.css";
-
 
 const Gallery = () => {
   const [type, setType] = useState("");
@@ -19,7 +18,7 @@ const Gallery = () => {
   const [itemInfo, setItemInfo] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(2);
+  const [itemsPerPage] = useState(1);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -227,7 +226,7 @@ const Gallery = () => {
                 </>
               )
             )}
-            
+
             {Math.ceil(filteredItems.length / itemsPerPage) > 1 && (
               <div className="pagination">
                 <p>
@@ -238,9 +237,8 @@ const Gallery = () => {
               </div>
             )}
           </div>
-          
-          <div className="gallery">
 
+          <div className="gallery">
             {currentItems.map((item, index) => {
               return (
                 <div key={index} className="gallery-item">
@@ -264,9 +262,14 @@ const Gallery = () => {
             })}
           </div>
           <div className="pagination-container">
-            
             {Math.ceil(filteredItems.length / itemsPerPage) > 1 && (
               <Pagination>
+                <Pagination.First
+                  onClick={() => {
+                    setCurrentPage(1);
+                  }}
+                />
+
                 <Pagination.Prev
                   onClick={() => {
                     if (currentPage > 1) {
@@ -275,19 +278,50 @@ const Gallery = () => {
                   }}
                 />
 
-                {Array.from({ length: Math.ceil(filteredItems.length / itemsPerPage) }, (_, i) => {
-                  return (
-                    <Pagination.Item key={i} active={i + 1 === currentPage} onClick={() => paginate(i + 1)}>
-                      {i + 1}
-                    </Pagination.Item>
-                  );
-                })}
+                {Array.from(
+                  { length: Math.ceil(filteredItems.length / itemsPerPage) },
+                  (_, i) => {
+                    if (
+                      Math.abs(i + 1 - currentPage) <= 1 ||
+                      i === 0 ||
+                      i === Math.ceil(filteredItems.length / itemsPerPage) - 1
+                    ) {
+                      return (
+                        <Pagination.Item
+                          key={i + 1}
+                          active={i + 1 === currentPage}
+                          onClick={() => paginate(i + 1)}
+                        >
+                          {i + 1}
+                        </Pagination.Item>
+                      );
+                    } else if (
+                      i === 1 ||
+                      i === Math.ceil(filteredItems.length / itemsPerPage) - 2
+                    ) {
+                      return <Pagination.Ellipsis key={i + 1} />;
+                    } else {
+                      return null;
+                    }
+                  }
+                )}
 
                 <Pagination.Next
                   onClick={() => {
-                    if (currentPage < Math.ceil(filteredItems.length / itemsPerPage)) {
+                    if (
+                      currentPage <
+                      Math.ceil(filteredItems.length / itemsPerPage)
+                    ) {
                       setCurrentPage(currentPage + 1);
                     }
+                  }}
+                />
+
+                <Pagination.Last
+                  onClick={() => {
+                    setCurrentPage(
+                      Math.ceil(filteredItems.length / itemsPerPage)
+                    );
                   }}
                 />
               </Pagination>
