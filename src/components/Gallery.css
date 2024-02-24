@@ -122,6 +122,12 @@
   .product-title {
     padding: 8px !important;
   }
+
+  .offcanvas-bottom {
+    height: 80vh !important;
+    border-top-left-radius: 32px !important;
+    border-top-right-radius: 32px !important;
+  }
 }
 
 .description-container {
@@ -153,6 +159,9 @@
 .offcanvas-header {
   border-bottom: 1px solid rgba(34, 36, 38, 0.15);
   padding: 24px;
+  background-color: var(--light-green-bg);
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
 }
 
 .offcanvas-body {
@@ -187,13 +196,11 @@
   border: 1px solid rgba(34, 36, 38, 0.15) !important;
 }
 
-
 .btn-outline-primary {
   background-color: var(--light-green-bg) !important;
   color: var(--dark-green) !important;
 
 }
-
 
 .left-border {
   border-bottom-left-radius: 32px !important;
@@ -223,6 +230,7 @@
 
 .ui input {
   border-radius: 16px !important;
-  height: 48px !important;
+  height: 56px !important;
   border: 1px solid rgba(34, 36, 38, 0.15) !important;
 }
+

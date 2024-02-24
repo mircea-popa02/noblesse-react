@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 import Title from "./Title";
+import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
@@ -18,13 +19,15 @@ const Gallery = () => {
   const [itemInfo, setItemInfo] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(1);
+  const [itemsPerPage] = useState(2);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   const typeTranslatorMap = {
     bouquets: "buchete",
@@ -249,7 +252,7 @@ const Gallery = () => {
                   />
                   <div className="description-container">
                     <OffCanvasExample
-                      placement="end"
+                      placement={isMobile ? "bottom" : "end"}
                       language={language}
                       item={item}
                     />
