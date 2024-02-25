@@ -235,6 +235,7 @@
 .gallery-title {
   padding: 24px;
   padding-top: 0;
+  padding-bottom: 0;
   color: var(--dark-green);
 }
 
@@ -253,11 +254,14 @@
   display: flex;
   justify-content: center;
   padding: 24px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .pagination {
   margin: 0 !important;
   align-items: center;
+  padding-bottom: 24px;
 }
 
 .page-link {
@@ -303,15 +307,19 @@
 }
 
 .title-product {
-  position: relative;
-  height: 4rem;
-  bottom: 4rem; 
-  padding: 16px;
-  color: var(--light-green-bg);
-  cursor: pointer;
-  background-image: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0)
-  );
+  position: relative !important;
+  height: 4rem !important;
+  bottom: 4rem !important;
+  padding: 16px !important;
+  cursor: pointer !important;
+  color: var(--light-green-bg) !important;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(32px);
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 16px !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }

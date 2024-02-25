@@ -29,6 +29,7 @@ const Map = ({ location, zoomLevel, language }) => {
     const goToLink = () => {
         window.open("https://www.google.com/maps/dir/?api=1&destination=Floraria+Noblesse%2C+Braila", "_blank")
     }
+
     return (
         <div className='map-wrapper' id='map'>
             <div className="map-container">
@@ -41,7 +42,7 @@ const Map = ({ location, zoomLevel, language }) => {
                 </div>
                 <div className="google-map">
                     <GoogleMapReact
-                        bootstrapURLKeys={{ key: 'AIzaSyCysPPf0Rrw2hUmKoF20mEaPQniOTtimPI' }}
+                        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
                         defaultCenter={location}
                         defaultZoom={zoomLevel}
                         options={defaultMapOptions}

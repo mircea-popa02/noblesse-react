@@ -110,7 +110,6 @@ const Gallery = () => {
 
     setType("all");
     setFilteredItems(mergedItems);
-    console.log(filteredItems);
   };
 
   const setTypeFilter = (type) => {
@@ -323,12 +322,8 @@ const Gallery = () => {
 
 function OffCanvasExample({ name, ...props }) {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  // is mobile
-
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   function truncate(str, n) {
@@ -350,8 +345,8 @@ function OffCanvasExample({ name, ...props }) {
       <p className="title-product" onClick={handleShow}>
         {`${
           props.language === "RO"
-            ? truncate(props.item.title.ro, isMobile ? 16 : 24)
-            : truncate(props.item.title.en, isMobile ? 16 : 24)
+            ? truncate(props.item.title.ro, isMobile ? 16 : 26)
+            : truncate(props.item.title.en, isMobile ? 16 : 26)
         }`}
       </p>
 

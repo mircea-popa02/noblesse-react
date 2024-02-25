@@ -17,7 +17,6 @@ function CarouselFadeExample(props) {
           id: doc.id,
         }));
         setItemInfo(newData[0].metadata);
-        console.log(newData[0].metadata);
       })
       .catch((error) => {
         console.error("Error fetching slideshow metadata:", error);
