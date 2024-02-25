@@ -233,9 +233,11 @@ const Gallery = () => {
             {Math.ceil(filteredItems.length / itemsPerPage) > 1 && (
               <div className="pagination">
                 <p>
-                  {language === "RO" ? "Pagina" : "Page"} {currentPage}{" "}
-                  {language === "RO" ? "din" : "of"}{" "}
-                  {Math.ceil(filteredItems.length / itemsPerPage)}
+                  {language === "RO" ? "Pagina" : "Page"}{" "}
+                  <strong>
+                    {currentPage} {language === "RO" ? "din" : "of"}{" "}
+                    {Math.ceil(filteredItems.length / itemsPerPage)}
+                  </strong>
                 </p>
               </div>
             )}

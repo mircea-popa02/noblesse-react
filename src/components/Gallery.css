@@ -235,6 +235,7 @@
 .gallery-title {
   padding: 24px;
   padding-top: 0;
+  color: var(--dark-green);
 }
 
 .ui input {
