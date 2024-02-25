@@ -271,7 +271,8 @@ const Gallery = () => {
                     if (
                       Math.abs(i + 1 - currentPage) <= 1 ||
                       i === 0 ||
-                      i === Math.ceil(filteredItems.length / itemsPerPage) - 1 ||
+                      i ===
+                        Math.ceil(filteredItems.length / itemsPerPage) - 1 ||
                       (i >= currentPage - 2 && i <= currentPage + 2)
                     ) {
                       return (
@@ -285,7 +286,10 @@ const Gallery = () => {
                       );
                     } else if (
                       (i === 1 && currentPage > 4) ||
-                      (i === Math.ceil(filteredItems.length / itemsPerPage) - 2 && currentPage < Math.ceil(filteredItems.length / itemsPerPage) - 3)
+                      (i ===
+                        Math.ceil(filteredItems.length / itemsPerPage) - 2 &&
+                        currentPage <
+                          Math.ceil(filteredItems.length / itemsPerPage) - 3)
                     ) {
                       return <Pagination.Ellipsis key={i + 1} />;
                     } else {
@@ -321,7 +325,11 @@ function OffCanvasExample({ name, ...props }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  console.log(props.item);
+  function truncate(str, n) {
+    return str?.length > n
+      ? str.substr(0, str.lastIndexOf(" ", n)) + "..."
+      : str;
+  }
 
   return (
     <>
@@ -333,6 +341,14 @@ function OffCanvasExample({ name, ...props }) {
         }
         onClick={handleShow}
       />
+      <p className="title-product" onClick={handleShow}>
+        {`${
+          props.language === "RO"
+            ? truncate(props.item.title.ro, 20)
+            : truncate(props.item.title.en, 20)
+        }`}
+      </p>
+
       <Offcanvas show={show} onHide={handleClose} {...props}>
         <Offcanvas.Header closeButton className="offcanvas-header">
           <Offcanvas.Title className="offcanvas-title">
