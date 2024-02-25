@@ -13,6 +13,16 @@
   .gallery {
     padding: 0 !important;
   }
+
+  .gallery-item {
+    width: calc(50vw - 16px) !important;
+    height: calc(50vw * 1.5) !important;
+  }
+
+  .product-image {
+    width: calc(50vw - 16px) !important;
+    height: calc(50vw * 1.5) !important;
+  }
 }
 
 .gallery-item {
@@ -22,8 +32,8 @@
   overflow: hidden;
   animation: appear 0.3s ease-in-out;
   border-radius: 16px;
-  width: calc(50vw - 16px) !important;
-  height: calc(50vw * 1.5) !important;
+  width: 22rem;
+  height: calc(22rem * 1.5);
 }
 
 @keyframes appear {
@@ -42,8 +52,9 @@
 }
 
 .product-image {
-  width: calc(50vw - 16px) !important;
-  height: calc(50vw * 1.5) !important;
+
+  width: 22rem;
+  height: calc(22rem * 1.5);
   border-radius: 16px;
   object-fit: cover;
   cursor: pointer;
@@ -92,7 +103,7 @@
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(50vw, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
   justify-content: space-between;
 }
 
@@ -118,6 +129,12 @@
     height: 80vh !important;
     border-top-left-radius: 32px !important;
     border-top-right-radius: 32px !important;
+  }
+
+  .title-product {
+    padding: 8px !important;
+    height: 3rem !important;
+    bottom: 3rem !important;
   }
 }
 
@@ -285,17 +302,15 @@
 }
 
 .title-product {
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
   position: relative;
-  height: 3rem;
-  top: calc(-75vw);
-  padding: 8px;
+  height: 4rem;
+  bottom: 4rem; 
+  padding: 16px;
   color: var(--light-green-bg);
   cursor: pointer;
   background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.785),
+    to top,
+    rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0)
   );
 }

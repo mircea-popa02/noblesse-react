@@ -325,6 +325,10 @@ function OffCanvasExample({ name, ...props }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // is mobile
+
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
   function truncate(str, n) {
     return str?.length > n
       ? str.substr(0, str.lastIndexOf(" ", n)) + "..."
@@ -344,8 +348,8 @@ function OffCanvasExample({ name, ...props }) {
       <p className="title-product" onClick={handleShow}>
         {`${
           props.language === "RO"
-            ? truncate(props.item.title.ro, 20)
-            : truncate(props.item.title.en, 20)
+            ? truncate(props.item.title.ro, isMobile ? 16 : 24)
+            : truncate(props.item.title.en, isMobile ? 16 : 24)
         }`}
       </p>
 
