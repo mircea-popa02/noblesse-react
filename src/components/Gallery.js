@@ -121,36 +121,38 @@ const Gallery = () => {
     setType("all");
     setSelectedFlowers([]);
     setFilteredItems(mergedItems);
+
   };
 
   useEffect(() => {
     const filter = () => {
-      const searchField = document.querySelector(".input-search");
-      searchField.value = "";
-      let filtered = itemInfo.filter((item) => item.id === type);
-      if (filtered.length === 0) {
-        filtered = itemInfo
-          .map((item) => {
-            return Object.values(item)[0];
-          })
-          .flat();
-      } else {
-        filtered = Object.values(filtered[0])[0];
-      }
+      if (type !== "all" || selectedFlowers.length > 0) {
+        document.getElementById("search").value = "";
+        let filtered = itemInfo.filter((item) => item.id === type);
+        if (filtered.length === 0) {
+          filtered = itemInfo
+            .map((item) => {
+              return Object.values(item)[0];
+            })
+            .flat();
+        } else {
+          filtered = Object.values(filtered[0])[0];
+        }
 
-      if (selectedFlowers.length > 0) {
-        filtered = filtered.filter((item) => {
-          return selectedFlowers.some((flower) => {
-            return item.description.ro.includes(flower);
+        if (selectedFlowers.length > 0) {
+          filtered = filtered.filter((item) => {
+            return selectedFlowers.some((flower) => {
+              return item.description.ro.includes(flower);
+            });
           });
-        });
-      }
+        }
 
-      setFilteredItems(filtered);
+        setFilteredItems(filtered);
+      }
     };
 
     filter();
-  }, [type, selectedFlowers, itemInfo]); // Add itemInfo if its change should also trigger the filter
+  }, [type, selectedFlowers, itemInfo]);
 
   const passLanguage = (language) => {
     setLanguage(language);
@@ -179,6 +181,7 @@ const Gallery = () => {
             {<div className="line"></div>}
 
             <Input
+              id="search"
               className="w-100 input-search"
               style={{ marginBottom: "8px" }}
               placeholder={language === "RO" ? "Caută" : "Search"}
