@@ -10,7 +10,8 @@ import { Input } from "semantic-ui-react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Button, ButtonGroup } from "react-bootstrap";
 import Pagination from "react-bootstrap/Pagination";
-
+import classNames from "classnames";
+import Whatsapp from "./Whatsapp";
 import "./Gallery.css";
 
 const Gallery = () => {
@@ -18,9 +19,10 @@ const Gallery = () => {
   const [language, setLanguage] = useState("");
   const [itemInfo, setItemInfo] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
+  const [selectedFlowers, setSelectedFlowers] = useState([]);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(6);
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
@@ -49,18 +51,18 @@ const Gallery = () => {
   };
 
   const flowerTypes = [
-    "trandafiri",
-    "crini",
-    "gerbera",
-    "lalele",
-    "alstroemeria",
-    "frezii",
-    "hortensii",
-    "iris",
-    "gypsophila",
-    "crizanteme",
-    "anthurium",
-    "orchidee",
+    { ro: "trandafiri", en: "roses" },
+    { ro: "crini", en: "lilies" },
+    { ro: "gerbera", en: "gerbera" },
+    { ro: "lalele", en: "tulips" },
+    { ro: "alstroemeria", en: "alstroemeria" },
+    { ro: "frezii", en: "freesia" },
+    { ro: "hortensii", en: "hydrangea" },
+    { ro: "iris", en: "iris" },
+    { ro: "gypsophila", en: "gypsophila" },
+    { ro: "crizanteme", en: "chrysanthemum" },
+    { ro: "anthurium", en: "anthurium" },
+    { ro: "orchidee", en: "orchid" },
   ];
 
   const fetchPost = async () => {
@@ -76,6 +78,14 @@ const Gallery = () => {
       .catch((error) => {
         console.error("Error fetching posts:", error);
       });
+  };
+
+  const addSelectedFlower = (flower) => {
+    if (selectedFlowers.includes(flower)) {
+      setSelectedFlowers(selectedFlowers.filter((item) => item !== flower));
+    } else {
+      setSelectedFlowers([...selectedFlowers, flower]);
+    }
   };
 
   const handleSearch = (e) => {
@@ -109,15 +119,38 @@ const Gallery = () => {
     });
 
     setType("all");
+    setSelectedFlowers([]);
     setFilteredItems(mergedItems);
   };
 
-  const setTypeFilter = (type) => {
-    setType(type);
-    setCurrentPage(1);
-    const filtered = itemInfo.filter((item) => item.id === type);
-    setFilteredItems(Object.values(filtered[0])[0]);
-  };
+  useEffect(() => {
+    const filter = () => {
+      const searchField = document.querySelector(".input-search");
+      searchField.value = "";
+      let filtered = itemInfo.filter((item) => item.id === type);
+      if (filtered.length === 0) {
+        filtered = itemInfo
+          .map((item) => {
+            return Object.values(item)[0];
+          })
+          .flat();
+      } else {
+        filtered = Object.values(filtered[0])[0];
+      }
+
+      if (selectedFlowers.length > 0) {
+        filtered = filtered.filter((item) => {
+          return selectedFlowers.some((flower) => {
+            return item.description.ro.includes(flower);
+          });
+        });
+      }
+
+      setFilteredItems(filtered);
+    };
+
+    filter();
+  }, [type, selectedFlowers, itemInfo]); // Add itemInfo if its change should also trigger the filter
 
   const passLanguage = (language) => {
     setLanguage(language);
@@ -135,6 +168,7 @@ const Gallery = () => {
   return (
     <div>
       <Title></Title>
+      <Whatsapp language={language} />
       <Header sticky="top" passLanguage={passLanguage} />
       <div className="gallery-wrapper">
         <div className="search-wrapper">
@@ -160,21 +194,21 @@ const Gallery = () => {
               <Button
                 className="type-selector left-border btn-small"
                 variant={type === "bouquets" ? "primary" : "outline-primary"}
-                onClick={() => setTypeFilter("bouquets")}
+                onClick={() => setType("bouquets")}
               >
                 {language === "RO" ? "Buchete" : "Bouquets"}
               </Button>
               <Button
                 className="type-selector btn-small"
                 variant={type === "baskets" ? "primary" : "outline-primary"}
-                onClick={() => setTypeFilter("baskets")}
+                onClick={() => setType("baskets")}
               >
                 {language === "RO" ? "Coșuri" : "Baskets"}
               </Button>
               <Button
                 className="type-selector right-border btn-small"
                 variant={type === "wreaths" ? "primary" : "outline-primary"}
-                onClick={() => setTypeFilter("wreaths")}
+                onClick={() => setType("wreaths")}
               >
                 {language === "RO" ? "Coroane" : "Wreaths"}
               </Button>
@@ -190,19 +224,44 @@ const Gallery = () => {
                   ></div>
                 );
               })}
-            </div>
-            <div className="d-flex flex-wrap">
-              {flowerTypes.map((type, index) => {
-                return (
-                  <span
-                    className="chip clickable d-flex justify-content-center align-items-center"
-                    key={index}
-                  >
-                    {type.charAt(0).toUpperCase() + type.slice(1)}
-                  </span>
-                );
-              })}
             </div> */}
+            <div className="d-flex flex-wrap">
+              <div className="d-flex flex-wrap">
+                {language === "RO"
+                  ? flowerTypes.map((type, index) => (
+                      <Button
+                        key={index}
+                        className={classNames("chip btn-white", {
+                          "chip-selected": selectedFlowers.includes(type.ro),
+                        })}
+                        onClick={() => addSelectedFlower(type.ro)}
+                      >
+                        {type.ro.charAt(0).toUpperCase() + type.ro.slice(1)}
+                      </Button>
+                    ))
+                  : flowerTypes.map((type, index) => (
+                      <Button
+                        key={index}
+                        className={classNames("chip btn-white", {
+                          "chip-selected": selectedFlowers.includes(type.en),
+                        })}
+                        onClick={() => addSelectedFlower(type.en)}
+                      >
+                        {type.en.charAt(0).toUpperCase() + type.en.slice(1)}
+                      </Button>
+                    ))}
+              </div>
+            </div>
+
+            <Button
+              className="btn-green"
+              onClick={() => {
+                setType("");
+                setSelectedFlowers([]);
+              }}
+            >
+              {language === "RO" ? "Șterge" : "Clear"}
+            </Button>
           </div>
         </div>
 
@@ -243,21 +302,15 @@ const Gallery = () => {
           </div>
 
           <div className="gallery">
-            {currentItems && currentItems.length > 0 ? (
-              currentItems.map((item, index) => (
-                <div key={index} className="gallery-item">
-                  <OffCanvasExample
-                    placement={isMobile ? "bottom" : "end"}
-                    language={language}
-                    item={item}
-                  />
-                </div>
-              ))
-            ) : (
-              <div className="recommended">
-                TODO
+            {currentItems.map((item, index) => (
+              <div key={index} className="gallery-item">
+                <OffCanvasExample
+                  placement={isMobile ? "bottom" : "end"}
+                  language={language}
+                  item={item}
+                />
               </div>
-            )}
+            ))}
           </div>
           <div className="pagination-container">
             {Math.ceil(filteredItems.length / itemsPerPage) > 1 && (

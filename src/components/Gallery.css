@@ -66,23 +66,27 @@
 }
 
 .chip {
-  border: 1px solid rgba(34, 36, 38, 0.15);
+  border: 1px solid rgba(34, 36, 38, 0.15) !important;
   margin: 8px;
   margin-top: 0;
-  padding: 8px;
+  padding: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
   margin-left: 0;
   border-radius: 16px;
-  background-color: var(--light-green-bg);
-  color: var(--dark-green);
+  background-color: white !important;
+  color: var(--dark-green) !important;
   font-size: 16px;
   transition: 0.3s;
 }
 
-.chip:active {
-  background-color: var(--dark-green);
-  color: var(--light-green-bg);
+.chip-selected {
+  background-color: var(--dark-green) !important;
+  color: var(--light-green-bg) !important;
   border: 1px solid rgba(34, 36, 38, 0.15);
 }
+
+
 
 .clickable {
   cursor: pointer !important;
