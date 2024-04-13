@@ -34,6 +34,8 @@
   border-radius: 16px;
   width: 22rem;
   height: calc(22rem * 1.5);
+  box-shadow: 0px 0px 18px rgba(44, 47, 37, 0.136);
+  border: 1px solid rgba(34, 36, 38, 0.15);
 }
 
 @keyframes appear {
@@ -85,8 +87,6 @@
   color: var(--light-green-bg) !important;
   border: 1px solid rgba(34, 36, 38, 0.15);
 }
-
-
 
 .clickable {
   cursor: pointer !important;
@@ -142,32 +142,6 @@
   }
 }
 
-.description-container {
-  position: relative;
-  bottom: 40px;
-  margin: auto;
-  text-align: center;
-  background-image: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.244),
-    rgba(0, 0, 0, 0)
-  );
-}
-
-.product-title {
-  position: relative;
-  top: calc(-100% - 6.5rem);
-  color: var(--light-green-bg);
-  margin: auto;
-  z-index: 99;
-  padding: 24px;
-  margin: auto;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.785),
-    rgba(0, 0, 0, 0)
-  );
-}
 
 .offcanvas-title {
   font-size: 24px;
@@ -312,17 +286,16 @@
 
 .title-product {
   position: relative !important;
-  height: 4rem !important;
-  bottom: 4rem !important;
+  height: 5.5rem !important;
+  bottom: 5.5rem !important;
   padding: 16px !important;
   cursor: pointer !important;
-  color: var(--light-green-bg) !important;
+  color: var(--dark-green) !important;
   background-color: transparent;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  backdrop-filter: blur(32px);
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: white;
   border-radius: 16px !important;
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;

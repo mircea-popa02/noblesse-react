@@ -217,7 +217,7 @@ const Gallery = () => {
               </Button>
             </ButtonGroup>
 
-            {/* <div className="d-flex flex-wrap">
+            <div className="d-flex flex-wrap">
               {Object.keys(colorsMap).map((color, index) => {
                 return (
                   <div
@@ -227,7 +227,7 @@ const Gallery = () => {
                   ></div>
                 );
               })}
-            </div> */}
+            </div>
             <div className="d-flex flex-wrap">
               <div className="d-flex flex-wrap">
                 {language === "RO"
@@ -255,15 +255,17 @@ const Gallery = () => {
                     ))}
               </div>
             </div>
-
+            
             <Button
-              className="btn-green"
+              className="btn-red"
               onClick={() => {
-                setType("");
+                setType(""); 
                 setSelectedFlowers([]);
               }}
             >
-              {language === "RO" ? "Șterge" : "Clear"}
+              {/* time */}
+              {language === "RO" ? "Șterge " : "Clear "}
+              &times;
             </Button>
           </div>
         </div>
@@ -405,8 +407,8 @@ function OffCanvasExample({ name, ...props }) {
       <p className="title-product" onClick={handleShow}>
         {`${
           props.language === "RO"
-            ? truncate(props.item.title.ro, isMobile ? 16 : 26)
-            : truncate(props.item.title.en, isMobile ? 16 : 26)
+            ? truncate(props.item.title.ro, isMobile ? 20 : 36)
+            : truncate(props.item.title.en, isMobile ? 20 : 36)
         }`}
       </p>
 
