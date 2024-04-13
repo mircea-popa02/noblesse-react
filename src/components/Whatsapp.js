@@ -32,7 +32,7 @@ const Whatsapp = (props) => {
     const whatsappNumber = "40761332100";
     const encodedMessage = encodeURIComponent(message);
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-    window.open(whatsappLink, "_blank");
+    window.open(whatsappLink);
     setMessage("");
     setIsOpen(false);
   };
@@ -193,17 +193,6 @@ const Whatsapp = (props) => {
                 }}
                 required
               />
-              {/* value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder=
-              {language === "RO" ? "Scrie un mesaj..." : "Type a message..."}
-              style=
-              {{
-                border: "none",
-                padding: "8px",
-                resize: "none",
-                flexGrow: 1,
-              }} */}
             </Form>
             <Button onClick={sendMessage} className="btn-green-whatsapp">
               {language === "RO" ? "Trimite" : "Send"}
