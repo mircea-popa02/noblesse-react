@@ -42,6 +42,17 @@ small {
   font-size: 16px !important;
 }
 
+.btn-green-whatsapp {
+  background: #25d366 !important;
+  border: 0px !important;
+  border-radius: 32px !important;
+  padding: 8px !important;
+  transition: 0.4s;
+  max-width: 8rem !important;
+  color: white;
+  font-size: 16px !important;
+}
+
 .btn-dark-green {
   background: var(--dark-green) !important;
   border: 0px !important;

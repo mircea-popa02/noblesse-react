@@ -9,6 +9,7 @@ import Map from "./components/Map";
 import Title from "./components/Title";
 import Program from "./components/Program";
 import Faq from "./components/Faq";
+import Whatsapp from "./components/Whatsapp";
 import { useRef } from "react";
 import "./App.css";
 
@@ -47,6 +48,7 @@ function App() {
       <Faq language={language} />
       <Contact language={language} />
       <Footer language={language} />
+      <Whatsapp language={language} />
     </div>
   );
 }

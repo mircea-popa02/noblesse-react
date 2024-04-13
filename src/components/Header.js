@@ -12,9 +12,9 @@ const NavbarInstance = ({ passLanguage }) => {
     const languageFromStorage = localStorage.getItem('language');
     const [language, setLanguage] = useState(languageFromStorage ? languageFromStorage : "RO");
 
-    const closeOpenMenus = (e)=>{
-        if(navMenu.current && expanded && !navMenu.current.contains(e.target)){
-          setExpanded(false)
+    const closeOpenMenus = (e) => {
+        if (navMenu.current && expanded && !navMenu.current.contains(e.target)) {
+            setExpanded(false)
         }
     }
 
@@ -22,7 +22,7 @@ const NavbarInstance = ({ passLanguage }) => {
 
     const handleClickScroll = (id) => {
         if (window.location.pathname !== '/') {
-            window.location.href = `/${id}`;
+            window.location.href = "/"
         }
         const element = document.getElementById(id);
         if (element) {
@@ -30,6 +30,7 @@ const NavbarInstance = ({ passLanguage }) => {
             element.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
         }
     };
+
 
     useEffect(() => {
         passLanguage(language);

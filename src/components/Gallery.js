@@ -19,7 +19,7 @@ const Gallery = () => {
   const [itemInfo, setItemInfo] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(4);
+  const [itemsPerPage] = useState(6);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -243,8 +243,8 @@ const Gallery = () => {
           </div>
 
           <div className="gallery">
-            {currentItems.map((item, index) => {
-              return (
+            {currentItems && currentItems.length > 0 ? (
+              currentItems.map((item, index) => (
                 <div key={index} className="gallery-item">
                   <OffCanvasExample
                     placement={isMobile ? "bottom" : "end"}
@@ -252,8 +252,12 @@ const Gallery = () => {
                     item={item}
                   />
                 </div>
-              );
-            })}
+              ))
+            ) : (
+              <div className="recommended">
+                TODO
+              </div>
+            )}
           </div>
           <div className="pagination-container">
             {Math.ceil(filteredItems.length / itemsPerPage) > 1 && (
