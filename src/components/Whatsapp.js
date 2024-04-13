@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Whatsapp.css";
-import { Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { Form, Input, TextArea } from "semantic-ui-react";
 
 const Whatsapp = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,8 +43,8 @@ const Whatsapp = (props) => {
         className="whatsapp-wrapper"
         style={{
           position: "fixed",
-          bottom: "10px",
-          right: "10px",
+          bottom: "8px",
+          right: "8px",
           zIndex: 1000,
         }}
       >
@@ -52,9 +53,9 @@ const Whatsapp = (props) => {
           style={{ cursor: "pointer", background: "none", border: "none" }}
         >
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            src="/whatsapp.svg"
             alt="whatsapp"
-            style={{ width: "50px", height: "50px" }}
+            style={{ width: "48px", height: "48px" }}
           />
         </button>
       </div>
@@ -65,13 +66,13 @@ const Whatsapp = (props) => {
           style={{
             position: "fixed",
             bottom: "70px",
-            right: "10px",
+            right: "8px",
             display: "flex",
             flexDirection: "column",
-            width: "300px",
+            width: "20rem",
             backgroundColor: "white",
             borderRadius: "16px",
-            boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+            boxShadow: "0px 0px 18px rgba(44, 47, 37, 0.136)",
             zIndex: 1000,
             animation: isOpen
               ? "slideIn 0.2s forwards"
@@ -81,12 +82,11 @@ const Whatsapp = (props) => {
           <div
             className="whatsapp-header"
             style={{
-              height: "48px",
               backgroundColor: "#075e54",
               color: "white",
               borderTopLeftRadius: "16px",
               borderTopRightRadius: "16px",
-              padding: "8px 16px",
+              padding: "16px",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
@@ -96,7 +96,11 @@ const Whatsapp = (props) => {
               className="whatsapp-header-content"
               style={{ display: "flex", flexDirection: "column" }}
             >
-              <strong>{language === "RO" ? "Asistență" : "Support"}</strong>
+              <strong>
+                {language === "RO"
+                  ? "Florăria Noblesse"
+                  : "Noblesse Flower Shop"}
+              </strong>
               <small style={{ fontSize: "10px" }}>Online</small>
             </div>
             <button
@@ -129,8 +133,8 @@ const Whatsapp = (props) => {
                 backgroundColor: "#ffffff",
                 borderRadius: "16px",
                 margin: "16px",
-                padding: "4px",
-                maxWidth: "200px",
+                padding: "2px",
+                maxWidth: "12rem",
                 color: "white",
                 width: "fit-content",
                 borderTopLeftRadius: "0",
@@ -142,7 +146,7 @@ const Whatsapp = (props) => {
                   color: "rgb(0, 0, 0)",
                   padding: "8px",
                   margin: "0",
-                  marginBottom: "12px",
+                  marginBottom: "16px",
                 }}
               >
                 {language === "RO"
@@ -152,10 +156,9 @@ const Whatsapp = (props) => {
               <small
                 id="last-seen"
                 style={{
-                  fontSize: "10px",
                   color: "#8d8d8d",
-                  padding: "8px",
                   margin: "0",
+                  paddingRight: "8px",
                   position: "absolute",
                   bottom: "0",
                   right: "0",
@@ -174,19 +177,34 @@ const Whatsapp = (props) => {
               alignItems: "center",
             }}
           >
-            <textarea
-              value={message}
+            <Form className="d-flex">
+              <Form.Field
+                id="form-input-control-message"
+                control={TextArea}
+                name="message"
+                placeholder={
+                  language === "RO" ? "Scrie un mesaj..." : "Type a message..."
+                }
+                onChange={(e) => setMessage(e.target.value)} // Set the onChange handler
+                style={{
+                  border: "none",
+                  resize: "none",
+                  height: "48px",
+                }}
+                required
+              />
+              {/* value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder={
-                language === "RO" ? "Scrie un mesaj..." : "Type a message..."
-              }
-              style={{
+              placeholder=
+              {language === "RO" ? "Scrie un mesaj..." : "Type a message..."}
+              style=
+              {{
                 border: "none",
                 padding: "8px",
                 resize: "none",
                 flexGrow: 1,
-              }}
-            ></textarea>
+              }} */}
+            </Form>
             <Button onClick={sendMessage} className="btn-green-whatsapp">
               {language === "RO" ? "Trimite" : "Send"}
             </Button>
