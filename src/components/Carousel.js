@@ -42,7 +42,7 @@ function CarouselFadeExample(props) {
                 muted 
                 loop
                 playsInline
-                preload
+                preload="true"
                 poster=""
               >
                 <source src={item.link} type="video/mp4" />

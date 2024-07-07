@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Whatsapp.css";
 import { Button } from "react-bootstrap";
-import { Form, Input, TextArea } from "semantic-ui-react";
+import { Form, TextArea } from "semantic-ui-react";
 
 const Whatsapp = (props) => {
   const [isOpen, setIsOpen] = useState(false);

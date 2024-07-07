@@ -12,6 +12,7 @@ import { Button, ButtonGroup } from "react-bootstrap";
 import Pagination from "react-bootstrap/Pagination";
 import classNames from "classnames";
 import Whatsapp from "./Whatsapp";
+import { useLocation } from 'react-router-dom';
 import "./Gallery.css";
 
 const Gallery = () => {
@@ -32,10 +33,11 @@ const Gallery = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   const typeTranslatorMap = {
-    bouquets: "buchete",
-    baskets: "coșuri",
-    wreaths: "coroane",
+    bouquets: "Buchete",
+    baskets: "Coșuri",
+    wreaths: "Coroane",
   };
+
 
   const colorsMap = {
     red: "#FF0000",
@@ -64,6 +66,18 @@ const Gallery = () => {
     { ro: "anthurium", en: "anthurium" },
     { ro: "orchidee", en: "orchid" },
   ];
+
+  const getTitle = () => {
+    if (language === 'RO') {
+      return typeTranslatorMap[type]
+        ? typeTranslatorMap[type].charAt(0).toUpperCase() + typeTranslatorMap[type].slice(1)
+        : 'Default Title'; // Fallback title if typeTranslatorMap[type] is undefined
+    } else {
+      return type
+        ? type.charAt(0).toUpperCase() + type.slice(1)
+        : 'Default Title'; // Fallback title if type is undefined
+    }
+  };
 
   const fetchPost = async () => {
     await getDocs(collection(db, "flowers"))
@@ -124,6 +138,8 @@ const Gallery = () => {
 
   };
 
+  const location = useLocation();
+
   useEffect(() => {
     const filter = () => {
       if (type !== "all" || selectedFlowers.length > 0) {
@@ -161,11 +177,16 @@ const Gallery = () => {
 
   useEffect(() => {
     fetchPost();
+    const params = new URLSearchParams(location.search);
+    const typeFromQuery = params.get('type');
+    if (typeFromQuery) {
+      setType(typeFromQuery);
+    }
     const data = localStorage.getItem("language");
     if (data) {
       setLanguage(data);
     }
-  }, []);
+  }, [location.search]);
 
   return (
     <div>
@@ -197,24 +218,25 @@ const Gallery = () => {
               <Button
                 className="type-selector left-border btn-small"
                 variant={type === "bouquets" ? "primary" : "outline-primary"}
-                onClick={() => setType("bouquets")}
+                onClick={() => setType("bouquets")} // Use lowercase
               >
                 {language === "RO" ? "Buchete" : "Bouquets"}
               </Button>
               <Button
                 className="type-selector btn-small"
                 variant={type === "baskets" ? "primary" : "outline-primary"}
-                onClick={() => setType("baskets")}
+                onClick={() => setType("baskets")} // Use lowercase
               >
                 {language === "RO" ? "Coșuri" : "Baskets"}
               </Button>
               <Button
                 className="type-selector right-border btn-small"
                 variant={type === "wreaths" ? "primary" : "outline-primary"}
-                onClick={() => setType("wreaths")}
+                onClick={() => setType("wreaths")} // Use lowercase
               >
                 {language === "RO" ? "Coroane" : "Wreaths"}
               </Button>
+
             </ButtonGroup>
 
             <div className="d-flex flex-wrap">
@@ -232,34 +254,34 @@ const Gallery = () => {
               <div className="d-flex flex-wrap">
                 {language === "RO"
                   ? flowerTypes.map((type, index) => (
-                      <Button
-                        key={index}
-                        className={classNames("chip btn-white", {
-                          "chip-selected": selectedFlowers.includes(type.ro),
-                        })}
-                        onClick={() => addSelectedFlower(type.ro)}
-                      >
-                        {type.ro.charAt(0).toUpperCase() + type.ro.slice(1)}
-                      </Button>
-                    ))
+                    <Button
+                      key={index}
+                      className={classNames("chip btn-white", {
+                        "chip-selected": selectedFlowers.includes(type.ro),
+                      })}
+                      onClick={() => addSelectedFlower(type.ro)}
+                    >
+                      {type.ro.charAt(0).toUpperCase() + type.ro.slice(1)}
+                    </Button>
+                  ))
                   : flowerTypes.map((type, index) => (
-                      <Button
-                        key={index}
-                        className={classNames("chip btn-white", {
-                          "chip-selected": selectedFlowers.includes(type.en),
-                        })}
-                        onClick={() => addSelectedFlower(type.en)}
-                      >
-                        {type.en.charAt(0).toUpperCase() + type.en.slice(1)}
-                      </Button>
-                    ))}
+                    <Button
+                      key={index}
+                      className={classNames("chip btn-white", {
+                        "chip-selected": selectedFlowers.includes(type.en),
+                      })}
+                      onClick={() => addSelectedFlower(type.en)}
+                    >
+                      {type.en.charAt(0).toUpperCase() + type.en.slice(1)}
+                    </Button>
+                  ))}
               </div>
             </div>
-            
+
             <Button
               className="btn-red"
               onClick={() => {
-                setType(""); 
+                setType("");
                 setSelectedFlowers([]);
               }}
             >
@@ -274,12 +296,7 @@ const Gallery = () => {
           <div className="gallery-title">
             {type !== "" && type !== "all" && filteredItems.length > 0 ? (
               <>
-                <h1 className="scroll-title">
-                  {language === "RO"
-                    ? typeTranslatorMap[type].charAt(0).toUpperCase() +
-                      typeTranslatorMap[type].slice(1)
-                    : type.charAt(0).toUpperCase() + type.slice(1)}
-                </h1>
+                <h1 className="scroll-title">{getTitle()}</h1>
                 <div className="line"></div>
               </>
             ) : (
@@ -335,7 +352,7 @@ const Gallery = () => {
                       Math.abs(i + 1 - currentPage) <= 1 ||
                       i === 0 ||
                       i ===
-                        Math.ceil(filteredItems.length / itemsPerPage) - 1 ||
+                      Math.ceil(filteredItems.length / itemsPerPage) - 1 ||
                       (i >= currentPage - 2 && i <= currentPage + 2)
                     ) {
                       return (
@@ -352,7 +369,7 @@ const Gallery = () => {
                       (i ===
                         Math.ceil(filteredItems.length / itemsPerPage) - 2 &&
                         currentPage <
-                          Math.ceil(filteredItems.length / itemsPerPage) - 3)
+                        Math.ceil(filteredItems.length / itemsPerPage) - 3)
                     ) {
                       return <Pagination.Ellipsis key={i + 1} />;
                     } else {
@@ -405,11 +422,10 @@ function OffCanvasExample({ name, ...props }) {
         onClick={handleShow}
       />
       <p className="title-product" onClick={handleShow}>
-        {`${
-          props.language === "RO"
-            ? truncate(props.item.title.ro, isMobile ? 20 : 36)
-            : truncate(props.item.title.en, isMobile ? 20 : 36)
-        }`}
+        {`${props.language === "RO"
+          ? truncate(props.item.title.ro, isMobile ? 20 : 36)
+          : truncate(props.item.title.en, isMobile ? 20 : 36)
+          }`}
       </p>
 
       <Offcanvas show={show} onHide={handleClose} {...props}>
@@ -442,25 +458,25 @@ function OffCanvasExample({ name, ...props }) {
                 <div className="d-flex flex-wrap">
                   {props.language === "RO"
                     ? props.item.description.ro.map((desc, index) => {
-                        return (
-                          <span
-                            className="chip d-flex justify-content-center align-items-center"
-                            key={index}
-                          >
-                            {desc}
-                          </span>
-                        );
-                      })
+                      return (
+                        <span
+                          className="chip d-flex justify-content-center align-items-center"
+                          key={index}
+                        >
+                          {desc}
+                        </span>
+                      );
+                    })
                     : props.item.description.en.map((desc, index) => {
-                        return (
-                          <span
-                            className="chip d-flex justify-content-center align-items-center"
-                            key={index}
-                          >
-                            {desc}
-                          </span>
-                        );
-                      })}
+                      return (
+                        <span
+                          className="chip d-flex justify-content-center align-items-center"
+                          key={index}
+                        >
+                          {desc}
+                        </span>
+                      );
+                    })}
                 </div>
               </div>
 

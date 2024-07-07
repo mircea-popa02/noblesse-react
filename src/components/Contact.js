@@ -13,15 +13,9 @@ const Contact = (props) => {
   const TEMPLATE_ID = "template_0yyo3hd";
   const recaptchaRef = useRef(null);
 
-  const printToken = () => {
-    const token = recaptchaRef.current.getValue();
-    console.log(token);
-  };
-
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     const token = await recaptchaRef.current.executeAsync();
-    console.log(token);
     recaptchaRef.current.reset();
 
     const form = e.target;
@@ -32,18 +26,14 @@ const Contact = (props) => {
       "g-recaptcha-response": token,
     };
 
-    console.log(params);
-
     emailjs.send(SERVICE_ID, TEMPLATE_ID, params, "YAmXjPUJ52n0jJC4z").then(
       (result) => {
-        console.log(result.text);
         Swal.fire({
           icon: "success",
           title: "Mesajul a fost trimis cu succes",
         });
       },
       (error) => {
-        console.log(error.text);
         Swal.fire({
           icon: "error",
           title: "Ceva nu a funcționat. Vă rugăm să încercați din nou.",
@@ -130,7 +120,6 @@ const Contact = (props) => {
               sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
               size="invisible"
               hl="ro"
-              onChange={printToken}
             >
               <p className="recaptcha-terms">
                 This site is protected by reCAPTCHA and the Google{" "}

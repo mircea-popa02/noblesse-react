@@ -1,35 +1,22 @@
 import React from "react";
 import { animated, useSpring } from "react-spring";
-import "./ScrollCards.css";
 import { useScroll } from "@use-gesture/react";
+import { useNavigate } from "react-router-dom";
+import "./ScrollCards.css";
 
 function clamp(scroll) {
-  if (scroll > 40) {
-    return 40;
-  }
-  if (scroll < -40) {
-    return -40;
-  }
-  return scroll;
+  return Math.max(-40, Math.min(scroll, 40));
 }
 
 const Cards = (props) => {
-  const language = props.language;
+  const { language } = props;
+  const navigate = useNavigate();
 
-  const cardContent = new Map();
-
-  language === "RO"
-    ? cardContent.set("pic1.jpg", "Buchete")
-    : cardContent.set("pic1.jpg", "Bouquets");
-  language === "RO"
-    ? cardContent.set("pic2.jpg", "Aranjamente")
-    : cardContent.set("pic2.jpg", "Arrangements");
-  language === "RO"
-    ? cardContent.set("pic3.jpg", "Coșuri")
-    : cardContent.set("pic3.jpg", "Baskets");
-  language === "RO"
-    ? cardContent.set("pic4.jpg", "Coroane")
-    : cardContent.set("pic4.jpg", "Wreaths");
+  const cardContent = [
+    { src: "pic1.jpg", ro: "Buchete", en: "Bouquets" },
+    { src: "pic3.jpg", ro: "Coșuri", en: "Baskets" },
+    { src: "pic4.jpg", ro: "Coroane", en: "Wreaths" },
+  ];
 
   const [style, set] = useSpring(() => ({
     transform: "perspective(500px) rotateY(0deg)",
@@ -53,7 +40,7 @@ const Cards = (props) => {
       </div>
       <div className="d-block d-flex justify-content-center">
         <div className="container-scroll" {...bind()}>
-          {[...cardContent].map(([src, val]) => (
+          {cardContent.map(({ src, ro, en }) => (
             <animated.div
               key={src}
               className="card-scroll"
@@ -62,12 +49,12 @@ const Cards = (props) => {
                 backgroundImage: `url(${src})`,
               }}
               onClick={() => {
-                localStorage.setItem("filters", val);
-                window.location.href = "/gallery";
+                localStorage.setItem("filters", en);
+                navigate(`/gallery?type=${en.toLowerCase()}`);
               }}
             >
               <div className="card-scroll-content d-flex align-items-center justify-content-center">
-                <h3>{val}</h3>
+                <h3>{language === "RO" ? ro : en}</h3>
               </div>
             </animated.div>
           ))}
