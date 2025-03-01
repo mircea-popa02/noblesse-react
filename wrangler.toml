@@ -4,6 +4,8 @@ type = "javascript"
 [build]
 command = "npm run build"
 directory = "build"
+pages_build_output_dir = "build"
+
 
 [env.production]
 name = "noblesse-braila"
