@@ -1,0 +1,9 @@
+name = "noblesse-braila"
+type = "javascript"
+
+[build]
+command = "npm run build"
+directory = "build"
+
+[env.production]
+name = "noblesse-braila"
